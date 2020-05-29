@@ -11,7 +11,7 @@
     <string name="battery_charge_left">Сharge left:</string>
     <string name="battery_percent_discharge_at_time">Percent discharge per day:</string>
     <string name="should_enough_time_with_full_charge">Days with full charge:</string>
-    <string name="should_enough_time_with_current_charge">Should enough days with current charge:</string>
+    <string name="should_enough_time_with_current_charge">Should enough days with current result:</string>
     <string name="simple_result_many_time">days</string>
     <string name="warning_error_calculation">Error</string>
     <string name="warning_calculation_input_other_value">Please input other value!</string>
@@ -97,4 +97,5 @@
     <string name="functionality_title_preference">Functionality</string>
     <string name="notification_title_switch">Notification</string>
     <string name="notification_summary">Show notification with current result</string>
+    <string name="last_result">Last result:</string>
 </resources>

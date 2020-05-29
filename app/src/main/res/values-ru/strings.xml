@@ -11,7 +11,7 @@
     <string name="battery_charge_left">Ушло заряда:</string>
     <string name="battery_percent_discharge_at_time">Процент разряда в день:</string>
     <string name="should_enough_time_with_full_charge">Дней при полном заряде:</string>
-    <string name="should_enough_time_with_current_charge">Дней при текущем заряде:</string>
+    <string name="should_enough_time_with_current_charge">Дней при текущем результате:</string>
     <string name="simple_result_many_time">дней</string>
     <string name="warning_error_calculation">Ошибка</string>
     <string name="warning_calculation_input_other_value">Введите другое значение!</string>
@@ -95,4 +95,5 @@
     <string name="functionality_title_preference">Функционал</string>
     <string name="notification_title_switch">Уведомление</string>
     <string name="notification_summary">Показать уведомление с текущим результатом</string>
+    <string name="last_result">Последний результат:</string>
 </resources>
