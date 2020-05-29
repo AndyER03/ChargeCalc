@@ -94,4 +94,7 @@
     <string name="alternative_clear_summary">Turn on if clear button doesn\'t work</string>
     <string name="always_advanced_result_switch">Always show advanced result</string>
     <string name="show_clear_title_switch">Clear fields button</string>
+    <string name="functionality_title_preference">Functionality</string>
+    <string name="notification_title_switch">Notification</string>
+    <string name="notification_summary">Show notification with current result</string>
 </resources>

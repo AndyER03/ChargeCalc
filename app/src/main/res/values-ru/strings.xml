@@ -92,4 +92,7 @@
     <string name="alternative_clear_summary">Включите если кнопка очистки не работает</string>
     <string name="always_advanced_result_switch">Всегда подробный результат</string>
     <string name="show_clear_title_switch">Кнопка очистки полей</string>
+    <string name="functionality_title_preference">Функционал</string>
+    <string name="notification_title_switch">Уведомление</string>
+    <string name="notification_summary">Показать уведомление с текущим результатом</string>
 </resources>
