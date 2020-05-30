@@ -1,5 +1,6 @@
 package com.andyer03.chargecalc
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -13,9 +14,9 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.settings, SettingsFragment())
-            .commit()
+                .beginTransaction()
+                .replace(R.id.settings, SettingsFragment())
+                .commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
