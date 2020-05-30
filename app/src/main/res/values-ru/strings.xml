@@ -93,7 +93,7 @@
     <string name="always_advanced_result_switch">Всегда подробный результат</string>
     <string name="show_clear_title_switch">Кнопка очистки полей</string>
     <string name="functionality_title_preference">Функционал</string>
-    <string name="notification_title_switch">Уведомление</string>
+    <string name="notification_title_switch">Постоянное уведомление</string>
     <string name="notification_summary">Показать уведомление с текущим результатом</string>
     <string name="last_result">Последний результат:</string>
 </resources>

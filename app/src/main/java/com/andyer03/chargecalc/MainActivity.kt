@@ -357,7 +357,8 @@ class MainActivity : AppCompatActivity() {
                                 submit_button.text = submitButtonText
                             }
 
-                            val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
+                            val valuesChest =
+                                getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
                             val editor = valuesChest.edit()
                             editor.putString(
                                 "curCharge",
