@@ -29,10 +29,15 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
-        val vibrationOption = sp.getBoolean("vibration_option", true)
+        submit_button.setOnLongClickListener {
+            advancedResult()
+        }
+
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
+        val vibrationOption = sp.getBoolean("vibration_option", true)
 
         when (sp.getString("bg_option", "1")) {
             "1" -> {
@@ -85,15 +90,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        when (valuesChest.getString("counter", "0").toString()) {
-            "0" -> {
-                saveBtn.text = getString(R.string.save_values_btn)
-            }
-            "1" -> {
-                saveBtn.text = getString(R.string.restore_values_btn)
-            }
-        }
-
         when (sp.getBoolean("clear_btn_switch", false)) {
             true -> {
                 clearBtn.visibility = View.VISIBLE
@@ -103,9 +99,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        submit_button.setOnLongClickListener {
-            advancedResult()
-            return@setOnLongClickListener true
+        when (sp.getBoolean("notification_switch", false)) {
+            true -> {
+                return
+            }
+            false -> {
+                notificationManager.cancel(1)
+            }
+        }
+
+        when (valuesChest.getString("counter", "0").toString()) {
+            "0" -> {
+                saveBtn.text = getString(R.string.save_values_btn)
+            }
+            "1" -> {
+                saveBtn.text = getString(R.string.restore_values_btn)
+            }
         }
 
         saveBtn.setOnClickListener {
@@ -419,13 +428,26 @@ class MainActivity : AppCompatActivity() {
                     )
                 builder.show().toString().toBoolean()
 
+                val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
+                val editor = valuesChest.edit()
+                editor.putString(
+                    "curCharge",
+                    curCharge.toInt().toString().trim()
+                )
+                editor.putString(
+                    "remainingTime",
+                    remainingInt.toString().trim()
+                )
+                editor.apply()
+
                 notification()
+
+                return true
             }
             false -> {
                 return false
             }
         }
-        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
