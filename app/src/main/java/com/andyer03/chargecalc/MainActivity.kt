@@ -102,7 +102,8 @@ class MainActivity : AppCompatActivity() {
                 return
             }
             false -> {
-                notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                notificationManager =
+                    getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                 notificationManager.cancel(1)
             }
         }
@@ -264,7 +265,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun emptyFieldsCheck(): Boolean {
-        if (current_charge_value_input.text.toString() == "") {
+        if ((current_charge_value_input.text.toString() == "") && (time_left_value_input.text.toString() == "")) {
             current_charge_value_input.requestFocus()
             current_charge_value_input.error = getString(R.string.warning_input_values)
             time_left_value_input.error = getString(R.string.warning_input_values)
