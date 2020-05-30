@@ -31,34 +31,6 @@
     <string name="vibration_title_switch">Vibration</string>
     <string name="vibration_summary">Vibrate when the save button is pressed for a long time</string>
     <string name="title_activity_settings">ChargeCalc Settings</string>
-    <string-array name="background">
-        <item>Default</item>
-        <item>Blue</item>
-        <item>Pink</item>
-        <item>Azure</item>
-        <item>Peach</item>
-        <item>Orange</item>
-        <item>Lime</item>
-        <item>Rose wine</item>
-        <item>Versus</item>
-        <item>Rainbow</item>
-        <item>Breeze</item>
-        <item>Black</item>
-    </string-array>
-    <string-array name="background_value">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-    </string-array>
     <string name="support_in_developing">Participated in testing:</string>
     <string name="who_support_in_developing">Leshij and Boy77ruS</string>
     <string name="donate">Donate</string>
@@ -93,4 +65,32 @@
     <string name="notification_title_switch">Ongoing notification</string>
     <string name="notification_summary">Show notification with current result</string>
     <string name="last_result">Last result:</string>
+    <string-array name="background">
+        <item>Default</item>
+        <item>Blue</item>
+        <item>Pink</item>
+        <item>Azure</item>
+        <item>Peach</item>
+        <item>Orange</item>
+        <item>Lime</item>
+        <item>Rose wine</item>
+        <item>Versus</item>
+        <item>Rainbow</item>
+        <item>Breeze</item>
+        <item>Black</item>
+    </string-array>
+    <string-array name="background_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
 </resources>
