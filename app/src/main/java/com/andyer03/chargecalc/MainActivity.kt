@@ -278,7 +278,7 @@ class MainActivity : AppCompatActivity() {
             time_left_value_input.error = getString(R.string.warning_input_values)
             return false
         } else if (((current_charge_value_input.text.toString()
-                .toInt() == 100) || (current_charge_value_input.text.toString()
+                .toInt() >= 100) || (current_charge_value_input.text.toString()
                 .toInt() == 0)) && (time_left_value_input.text.toString().toInt() == 0)
         ) {
             current_charge_value_input.error =
