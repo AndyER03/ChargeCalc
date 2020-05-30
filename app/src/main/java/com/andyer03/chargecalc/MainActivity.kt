@@ -102,6 +102,7 @@ class MainActivity : AppCompatActivity() {
                 return
             }
             false -> {
+                notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                 notificationManager.cancel(1)
             }
         }
@@ -188,7 +189,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun restoreButton(@Suppress("UNUSED_PARAMETER")view: View) {
+    fun restoreButton(view: View) {
         submit_button.text = getString(R.string.submit_button)
     }
 
