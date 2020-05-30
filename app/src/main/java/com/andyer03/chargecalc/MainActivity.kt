@@ -153,14 +153,14 @@ class MainActivity : AppCompatActivity() {
 
         saveBtn.setOnLongClickListener {
             if (valuesChest.getString("counter", "0").toString() == "0") {
-                Toast.makeText(this, R.string.toast_values_not_resetted, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_values_not_reset, Toast.LENGTH_SHORT).show()
             } else if (valuesChest.getString("counter", "0").toString() == "1") {
                 val editor = valuesChest.edit()
                 editor.putString("counter", "0")
                 editor.apply()
 
                 saveBtn.text = getString(R.string.save_values_btn)
-                Toast.makeText(this, R.string.toast_values_resetted, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_values_reset, Toast.LENGTH_SHORT).show()
 
                 val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
@@ -302,7 +302,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    fun clickSubmit(view: View): Boolean {
+    fun clickSubmit(view: View) {
 
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
 
@@ -330,7 +330,7 @@ class MainActivity : AppCompatActivity() {
                             Handler().postDelayed({
                                 restoreButton(view = view)
                             }, 3000)
-                            return false
+                            return
                         } else {
                             val lastDigit: Int = remainingInt % 10
                             val penultimateDigitCalc = (remainingInt - lastDigit) / 10
@@ -340,7 +340,7 @@ class MainActivity : AppCompatActivity() {
                                 val submitButtonText =
                                     "$remainingInt " + getString(R.string.simple_result_many_time)
                                 submit_button.text = submitButtonText
-                                return true
+                                return
                             }
                             if (lastDigit == 1) {
                                 val submitButtonText =
@@ -373,12 +373,11 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     false -> {
-                        return false
+                        return
                     }
                 }
             }
         }
-        return true
     }
 
     private fun advancedResult(): Boolean {

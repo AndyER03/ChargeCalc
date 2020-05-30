@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name" translatable="false">ChargeCalc</string>
     <string name="current_charge_title">Current charge in percents</string>
-    <string name="time_left_header">Days сount after disconnect charger</string>
+    <string name="time_left_header">Days count after disconnect charger</string>
     <string name="submit_button">Submit</string>
     <string name="current_charge_value">Current charge:</string>
     <string name="time_left_value">Days count:</string>
-    <string name="average_discharge">Average discharge</string>
     <string name="warning_input_values">Please input value!</string>
     <string name="advanced_result_title">Advanced result</string>
-    <string name="battery_charge_left">Сharge left:</string>
+    <string name="battery_charge_left">Charge left:</string>
     <string name="battery_percent_discharge_at_time">Percent discharge per day:</string>
     <string name="should_enough_time_with_full_charge">Days with full charge:</string>
     <string name="should_enough_time_with_current_charge">Should enough days with current result:</string>
@@ -18,14 +17,13 @@
     <string name="created_by">Created by: AndyER03</string>
     <string name="current_charge_hint">Current charge</string>
     <string name="time_left_hint">Days count</string>
-    <string name="close_button">Close</string>
     <string name="about_title">About</string>
     <string name="simple_result_one_time">day</string>
     <string name="simple_result_some_time">days</string>
     <string name="save_values_btn">Save values</string>
     <string name="restore_values_btn">Restore values</string>
-    <string name="toast_values_resetted">Values in memory reseted!</string>
-    <string name="toast_values_not_resetted">No values for reset in memory!</string>
+    <string name="toast_values_reset">Values in memory has been reset!</string>
+    <string name="toast_values_not_reset">No values for reset in memory!</string>
     <string name="ui_title_preference">Interface</string>
     <string name="version_title">Build version:</string>
     <string name="bg_title_preference">App\'s background</string>
@@ -45,7 +43,7 @@
         <item>Versus</item>
         <item>Rainbow</item>
         <item>Breeze</item>
-        <item>Black AMOLED</item>
+        <item>Black</item>
     </string-array>
     <string-array name="background_value">
         <item>1</item>
@@ -65,33 +63,30 @@
     <string name="who_support_in_developing">Leshij and Boy77ruS</string>
     <string name="donate">Donate</string>
     <string name="donate_text">Toss a coin</string>
-    <string name="easteregg_where_is_the_ice_cream">Where is the Mr. IceCream?</string>
-    <string name="easteregg_press_again">Press again!</string>
-    <string name="easteregg_ice_cream_is_come_back">Mr. Ice cream is come Back =P</string>
-    <string name="easteregg_stop">Stop!</string>
-    <string name="easteregg_really_stop">Seriously stop!</string>
-    <string name="easteregg_offended">I\'m offended!</string>
-    <string name="easteregg_apologize">Do you want to apologize?</string>
-    <string name="easteregg_do_not_believe">I do not believe you!</string>
-    <string name="easteregg_really_apologize">Do you really want to apologize?</string>
-    <string name="easteregg_forgive">Well, I forgive you. =)</string>
-    <string name="easteregg_hahaha">Ha-ha-ha.</string>
-    <string name="easteregg_magic">Do you want to see the magic?</string>
-    <string name="easteregg_magic_part2">Press on Mr. IceCream!</string>
-    <string name="easteregg_forgive_ontext">Mr. IceCream calmed down. =)</string>
-    <string name="night_mode_preference">Night mode</string>
+    <string name="easter_egg_where_is_the_ice_cream">Where is the Mr. IceCream?</string>
+    <string name="easter_egg_press_again">Press again!</string>
+    <string name="easter_egg_ice_cream_is_come_back">Mr. Ice cream is come Back =P</string>
+    <string name="easter_egg_stop">Stop!</string>
+    <string name="easter_egg_really_stop">Seriously stop!</string>
+    <string name="easter_egg_offended">I\'m offended!</string>
+    <string name="easter_egg_apologize">Do you want to apologize?</string>
+    <string name="easter_egg_do_not_believe">I do not believe you!</string>
+    <string name="easter_egg_really_apologize">Do you really want to apologize?</string>
+    <string name="easter_egg_forgive">Well, I forgive you. =)</string>
+    <string name="easter_egg_ha_ha_ha">Ha-ha-ha.</string>
+    <string name="easter_egg_magic">Do you want to see the magic?</string>
+    <string name="easter_egg_magic_part2">Press on Mr. IceCream!</string>
+    <string name="easter_egg_forgive_on_text">Mr. IceCream calmed down. =)</string>
     <string name="splash_title_switch">Splash screen</string>
     <string name="splash_bg_title_preference">Splashscreen\'s background</string>
     <string name="splash_bg_title_switch">Separate splashscreen\'s background</string>
     <string name="splash_summary_option">Non-critical bugs are possible</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="exit_title">Exit</string>
     <string name="exit_dialog">Are you sure you want to exit?</string>
     <string name="no_button">No</string>
     <string name="clear_fields">Clear fields</string>
-    <string name="alternative_clear_switch">Spare fileds clear method</string>
-    <string name="alternative_clear_summary">Turn on if clear button doesn\'t work</string>
+    <string name="alternative_clear_switch">Spare fields clear method</string>
+    <string name="alternative_clear_summary">Turn on if clear button does not work</string>
     <string name="always_advanced_result_switch">Always show advanced result</string>
     <string name="show_clear_title_switch">Clear fields button</string>
     <string name="functionality_title_preference">Functionality</string>
