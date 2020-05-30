@@ -1,19 +1,13 @@
 package com.andyer03.chargecalc
 
-import android.app.Notification
-import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.os.*
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.RemoteViews
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -35,21 +29,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val vibrationOption = sp.getBoolean("vibration_option", true)
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
 
-        when (sp.getBoolean("clear_btn_switch", false)) {
-            true -> {
-                clearBtn.visibility = View.VISIBLE
-            }
-            false -> {
-                clearBtn.visibility = View.GONE
-            }
-        }
-
-        //deprecated in API 26
         when (sp.getString("bg_option", "1")) {
             "1" -> {
                 MainLayout.background = getDrawable(R.color.gray)
@@ -101,28 +85,38 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        when (valuesChest.getString("counter", "0").toString()) {
+            "0" -> {
+                saveBtn.text = getString(R.string.save_values_btn)
+            }
+            "1" -> {
+                saveBtn.text = getString(R.string.restore_values_btn)
+            }
+        }
+
+        when (sp.getBoolean("clear_btn_switch", false)) {
+            true -> {
+                clearBtn.visibility = View.VISIBLE
+            }
+            false -> {
+                clearBtn.visibility = View.GONE
+            }
+        }
+
         submit_button.setOnLongClickListener {
             advancedResult()
             return@setOnLongClickListener true
         }
 
-        val sharedPreferences = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
-
-        if (sharedPreferences.getString("counter", "0").toString() == "0") {
-            saveBtn.text = getString(R.string.save_values_btn)
-        } else {
-            saveBtn.text = getString(R.string.restore_values_btn)
-        }
-
         saveBtn.setOnClickListener {
-            if (sharedPreferences.getString("counter", "0").toString() == "0") {
+            if (valuesChest.getString("counter", "0").toString() == "0") {
                 if ((current_charge_value_input.text.toString() == "") && (time_left_value_input.text.toString() == "")) {
                     current_charge_value_input.requestFocus()
                     return@setOnClickListener
                 } else {
                     val counter = "1"
 
-                    val editor = sharedPreferences.edit()
+                    val editor = valuesChest.edit()
                     editor.putString(
                         "charge_value",
                         current_charge_value_input.text.toString().trim()
@@ -137,12 +131,12 @@ class MainActivity : AppCompatActivity() {
 
                     saveBtn.text = getString(R.string.restore_values_btn)
                 }
-            } else if (sharedPreferences.getString("counter", "0").toString() == "1") {
+            } else if (valuesChest.getString("counter", "0").toString() == "1") {
                 current_charge_value_input.setText(
-                    sharedPreferences.getString("charge_value", "").toString()
+                    valuesChest.getString("charge_value", "").toString()
                 )
                 time_left_value_input.setText(
-                    sharedPreferences.getString("time_after_charge", "").toString()
+                    valuesChest.getString("time_after_charge", "").toString()
                 )
                 submit_button.text = getString(R.string.submit_button)
 
@@ -151,10 +145,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         saveBtn.setOnLongClickListener {
-            if (sharedPreferences.getString("counter", "0").toString() == "0") {
+            if (valuesChest.getString("counter", "0").toString() == "0") {
                 Toast.makeText(this, R.string.toast_values_not_resetted, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferences.getString("counter", "0").toString() == "1") {
-                val editor = sharedPreferences.edit()
+            } else if (valuesChest.getString("counter", "0").toString() == "1") {
+                val editor = valuesChest.edit()
                 editor.putString("counter", "0")
                 editor.apply()
 
@@ -191,87 +185,29 @@ class MainActivity : AppCompatActivity() {
         submit_button.text = getString(R.string.submit_button)
     }
 
-    fun clickSubmit(view: View): Boolean {
-
+    private fun notification() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
+        val curCharge = valuesChest.getString("curCharge", "0").toString()
+        val remainingInt = valuesChest.getString("remainingTime", "0").toString()
 
-        when (sp.getBoolean("always_advanced_result", false)) {
+        when (sp.getBoolean("notification_switch", false)) {
             true -> {
-                restoreButton(view)
-                advancedResult()
-            }
-            false -> {
-                restoreButton(view)
+                val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
+                    .setSmallIcon(R.drawable.ic_notification)
+                    .setContentTitle(getString(R.string.last_result) + " ${curCharge}%")
+                    .setContentText(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
+                    .setOngoing(true)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
-                emptyFieldsCheck()
-                when (emptyFieldsCheck()) {
-                    true -> {
-                        val curCharge = current_charge_value_input.text.toString().toFloat()
-                        val timeAfterCharge = time_left_value_input.text.toString().toFloat()
-                        val percentsLeft: Float = 100 - curCharge
-                        val ratio: Float = percentsLeft / timeAfterCharge
-                        val shouldEnough: Float = 100 / ratio
-                        val remaining: Float = shouldEnough - timeAfterCharge
-                        val remainingInt: Int = remaining.toInt()
-
-                        if (remaining < 0) {
-                            submit_button.text = getString(R.string.warning_error_calculation)
-                            Handler().postDelayed({
-                                restoreButton(view = view)
-                            }, 3000)
-                            return false
-                        } else {
-                            val lastDigit: Int = remainingInt % 10
-                            val penultimateDigitCalc = (remainingInt - lastDigit) / 10
-                            val penultimateDigit: Int = penultimateDigitCalc % 10
-
-                            if (penultimateDigit == 1) {
-                                val submitButtonText =
-                                    "$remainingInt " + getString(R.string.simple_result_many_time)
-                                submit_button.text = submitButtonText
-                                return true
-                            }
-                            if (lastDigit == 1) {
-                                val submitButtonText =
-                                    "$remainingInt " + getString(R.string.simple_result_one_time)
-                                submit_button.text = submitButtonText
-                            } else if ((lastDigit == 2) || (lastDigit == 3) || (lastDigit == 4)) {
-                                val submitButtonText =
-                                    "$remainingInt " + getString(R.string.simple_result_some_time)
-                                submit_button.text = submitButtonText
-                            } else {
-                                val submitButtonText =
-                                    "$remainingInt " + getString(R.string.simple_result_many_time)
-                                submit_button.text = submitButtonText
-                            }
-
-                            when (sp.getBoolean("notification_switch", false)) {
-                                true -> {
-                                    val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
-                                        .setSmallIcon(R.drawable.ic_notification)
-                                        .setContentTitle(getString(R.string.last_result) + " ${curCharge.toInt()}%")
-                                        .setContentText(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
-                                        .setOngoing(true)
-                                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-                                    with(NotificationManagerCompat.from(this)) {
-                                        notify(1, notificationBuilder.build())
-                                    }
-                                }
-                                false -> {
-                                    notificationManager.cancel(1)
-                                }
-                            }
-                            return true
-                        }
-                    }
-                    false -> {
-                        return false
-                    }
+                with(NotificationManagerCompat.from(this)) {
+                    notify(1, notificationBuilder.build())
                 }
             }
+            false -> {
+                notificationManager.cancel(1)
+            }
         }
-        return true
     }
 
     private fun allFieldsClear() {
@@ -358,6 +294,84 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    fun clickSubmit(view: View): Boolean {
+
+        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+
+        when (sp.getBoolean("always_advanced_result", false)) {
+            true -> {
+                restoreButton(view)
+                advancedResult()
+            }
+            false -> {
+                restoreButton(view)
+
+                emptyFieldsCheck()
+                when (emptyFieldsCheck()) {
+                    true -> {
+                        val curCharge = current_charge_value_input.text.toString().toFloat()
+                        val timeAfterCharge = time_left_value_input.text.toString().toFloat()
+                        val percentsLeft: Float = 100 - curCharge
+                        val ratio: Float = percentsLeft / timeAfterCharge
+                        val shouldEnough: Float = 100 / ratio
+                        val remaining: Float = shouldEnough - timeAfterCharge
+                        val remainingInt: Int = remaining.toInt()
+
+                        if (remaining < 0) {
+                            submit_button.text = getString(R.string.warning_error_calculation)
+                            Handler().postDelayed({
+                                restoreButton(view = view)
+                            }, 3000)
+                            return false
+                        } else {
+                            val lastDigit: Int = remainingInt % 10
+                            val penultimateDigitCalc = (remainingInt - lastDigit) / 10
+                            val penultimateDigit: Int = penultimateDigitCalc % 10
+
+                            if (penultimateDigit == 1) {
+                                val submitButtonText =
+                                    "$remainingInt " + getString(R.string.simple_result_many_time)
+                                submit_button.text = submitButtonText
+                                return true
+                            }
+                            if (lastDigit == 1) {
+                                val submitButtonText =
+                                    "$remainingInt " + getString(R.string.simple_result_one_time)
+                                submit_button.text = submitButtonText
+                            } else if ((lastDigit == 2) || (lastDigit == 3) || (lastDigit == 4)) {
+                                val submitButtonText =
+                                    "$remainingInt " + getString(R.string.simple_result_some_time)
+                                submit_button.text = submitButtonText
+                            } else {
+                                val submitButtonText =
+                                    "$remainingInt " + getString(R.string.simple_result_many_time)
+                                submit_button.text = submitButtonText
+                            }
+
+                            val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
+                            val editor = valuesChest.edit()
+                            editor.putString(
+                                "curCharge",
+                                curCharge.toInt().toString().trim()
+                            )
+                            editor.putString(
+                                "remainingTime",
+                                remainingInt.toString().trim()
+                            )
+                            editor.apply()
+
+                            notification()
+                        }
+                    }
+                    false -> {
+                        return false
+                    }
+                }
+            }
+        }
+        return true
+    }
+
     private fun advancedResult(): Boolean {
         if ((current_charge_value_input.text.toString() == "236") && (time_left_value_input.text.toString() == "1")) {
             current_charge_value_input.text.clear()
@@ -405,25 +419,7 @@ class MainActivity : AppCompatActivity() {
                     )
                 builder.show().toString().toBoolean()
 
-                val sp = PreferenceManager.getDefaultSharedPreferences(this)
-                when (sp.getBoolean("notification_switch", false)) {
-                    true -> {
-                        val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
-                            .setSmallIcon(R.drawable.ic_notification)
-                            .setContentTitle(getString(R.string.last_result) + " ${curCharge.toInt()}%")
-                            .setContentText(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
-                            .setOngoing(true)
-                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-                        with(NotificationManagerCompat.from(this)) {
-                            notify(1, notificationBuilder.build())
-                        }
-                    }
-                    false -> {
-                        return false
-                    }
-                }
-
+                notification()
             }
             false -> {
                 return false
