@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var notificationManager: NotificationManager
+    private lateinit var notificationManager: NotificationManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         submit_button.setOnLongClickListener {
             advancedResult()
         }
-
-        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
@@ -195,6 +193,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun notification() {
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
         val curCharge = valuesChest.getString("curCharge", "0").toString()
