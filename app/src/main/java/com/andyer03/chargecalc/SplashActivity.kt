@@ -1,10 +1,10 @@
 package com.andyer03.chargecalc
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_splash.*
 

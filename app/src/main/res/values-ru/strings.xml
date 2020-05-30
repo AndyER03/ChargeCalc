@@ -5,27 +5,25 @@
     <string name="submit_button">Подсчитать</string>
     <string name="current_charge_value">Текущий заряд:</string>
     <string name="time_left_value">Прошло дней:</string>
-    <string name="average_discharge">Средний разряд</string>
     <string name="warning_input_values">Введите значение!</string>
     <string name="advanced_result_title">Подробный результат</string>
     <string name="battery_charge_left">Ушло заряда:</string>
     <string name="battery_percent_discharge_at_time">Процент разряда в день:</string>
     <string name="should_enough_time_with_full_charge">Дней при полном заряде:</string>
-    <string name="should_enough_time_with_current_charge">Дней при текущем заряде:</string>
+    <string name="should_enough_time_with_current_charge">Дней при текущем результате:</string>
     <string name="simple_result_many_time">дней</string>
     <string name="warning_error_calculation">Ошибка</string>
     <string name="warning_calculation_input_other_value">Введите другое значение!</string>
     <string name="created_by">Разработал: AndyER03</string>
     <string name="current_charge_hint">Текущий заряд</string>
     <string name="time_left_hint">Прошло дней</string>
-    <string name="close_button">Закрыть</string>
     <string name="about_title">О программе</string>
     <string name="simple_result_one_time">день</string>
     <string name="simple_result_some_time">дня</string>
     <string name="save_values_btn">Сохранить</string>
     <string name="restore_values_btn">Восстановить значения</string>
-    <string name="toast_values_resetted">Значения в памяти сброшены!</string>
-    <string name="toast_values_not_resetted">В памяти нет значений для сброса!</string>
+    <string name="toast_values_reset">Значения в памяти сброшены!</string>
+    <string name="toast_values_not_reset">В памяти нет значений для сброса!</string>
     <string name="ui_title_preference">Интерфейс</string>
     <string name="version_title">Версия:</string>
     <string name="bg_title_preference">Фон приложения</string>
@@ -33,6 +31,40 @@
     <string name="vibration_title_switch">Вибрация</string>
     <string name="vibration_summary">Вибрировать при длительном нажатии кнопки сохранения</string>
     <string name="title_activity_settings">Настройки ChargeCalc</string>
+    <string name="support_in_developing">Участвовали в тестировании:</string>
+    <string name="who_support_in_developing">Leshij и Boy77ruS</string>
+    <string name="donate">Пожертвовать</string>
+    <string name="donate_text">Скинуть на мороженое</string>
+    <string name="easter_egg_where_is_the_ice_cream">Куда пропал Мистер Мороженка?</string>
+    <string name="easter_egg_press_again">Снова зажми!</string>
+    <string name="easter_egg_ice_cream_is_come_back">Мистер Мороженка вернулся =P</string>
+    <string name="easter_egg_stop">Хватит тыкать!</string>
+    <string name="easter_egg_really_stop">Серьёзно, прекрати!</string>
+    <string name="easter_egg_offended">Я обиделся!</string>
+    <string name="easter_egg_apologize">Ты хочешь извиниться?</string>
+    <string name="easter_egg_do_not_believe">Я тебе не верю!</string>
+    <string name="easter_egg_really_apologize">Ты действительно хочешь извиниться?</string>
+    <string name="easter_egg_forgive">Хорошо, я тебя прощаю. =)</string>
+    <string name="easter_egg_ha_ha_ha">Ха-ха-ха.</string>
+    <string name="easter_egg_magic">Хочешь увидеть магию?</string>
+    <string name="easter_egg_magic_part2">Зажми Мистера Мороженку!</string>
+    <string name="easter_egg_forgive_on_text">Мистер Мороженка успокоился. =)</string>
+    <string name="splash_title_switch">Экран приветствия</string>
+    <string name="splash_bg_title_preference">Фон экрана приветствия</string>
+    <string name="splash_bg_title_switch">Отдельный фон для экрана приветствия</string>
+    <string name="splash_summary_option">Возможны некритичные баги</string>
+    <string name="exit_title">Выход</string>
+    <string name="exit_dialog">Вы действительно хотите выйти?</string>
+    <string name="no_button">Нет</string>
+    <string name="clear_fields">Очистить поля</string>
+    <string name="alternative_clear_switch">Запасной метод очистки полей</string>
+    <string name="alternative_clear_summary">Включите если кнопка очистки не работает</string>
+    <string name="always_advanced_result_switch">Всегда подробный результат</string>
+    <string name="show_clear_title_switch">Кнопка очистки полей</string>
+    <string name="functionality_title_preference">Функционал</string>
+    <string name="notification_title_switch">Постоянное уведомление</string>
+    <string name="notification_summary">Показать уведомление с текущим результатом</string>
+    <string name="last_result">Последний результат:</string>
     <string-array name="background">
         <item>По умолчанию</item>
         <item>Синий</item>
@@ -45,7 +77,7 @@
         <item>Противостояние</item>
         <item>Радужный</item>
         <item>Ветерок</item>
-        <item>Чёрный AMOLED</item>
+        <item>Чёрный</item>
     </string-array>
     <string-array name="background_value">
         <item>1</item>
@@ -61,35 +93,4 @@
         <item>11</item>
         <item>12</item>
     </string-array>
-    <string name="support_in_developing">Участвовали в тестировании:</string>
-    <string name="who_support_in_developing">Leshij и Boy77ruS</string>
-    <string name="donate">Пожертвовать</string>
-    <string name="donate_text">Скинуть на мороженое</string>
-    <string name="easteregg_where_is_the_ice_cream">Куда пропал Мистер Мороженка?</string>
-    <string name="easteregg_press_again">Снова зажми!</string>
-    <string name="easteregg_ice_cream_is_come_back">Мистер Мороженка вернулся =P</string>
-    <string name="easteregg_stop">Хватит тыкать!</string>
-    <string name="easteregg_really_stop">Серьёзно, прекрати!</string>
-    <string name="easteregg_offended">Я обиделся!</string>
-    <string name="easteregg_apologize">Ты хочешь извиниться?</string>
-    <string name="easteregg_do_not_believe">Я тебе не верю!</string>
-    <string name="easteregg_really_apologize">Ты действительно хочешь извиниться?</string>
-    <string name="easteregg_forgive">Хорошо, я тебя прощаю. =)</string>
-    <string name="easteregg_hahaha">Ха-ха-ха.</string>
-    <string name="easteregg_magic">Хочешь увидеть магию?</string>
-    <string name="easteregg_magic_part2">Зажми Мистера Мороженку!</string>
-    <string name="easteregg_forgive_ontext">Мистер Мороженка успокоился. =)</string>
-    <string name="night_mode_preference">Тёмный режим</string>
-    <string name="splash_title_switch">Экран приветствия</string>
-    <string name="splash_bg_title_preference">Фон экрана приветствия</string>
-    <string name="splash_bg_title_switch">Отдельный фон для экрана приветствия</string>
-    <string name="splash_summary_option">Возможны некритичные баги</string>
-    <string name="exit_title">Выход</string>
-    <string name="exit_dialog">Вы действительно хотите выйти?</string>
-    <string name="no_button">Нет</string>
-    <string name="clear_fields">Очистить поля</string>
-    <string name="alternative_clear_switch">Запасной метод очистки полей</string>
-    <string name="alternative_clear_summary">Включите если кнопка очистки не работает</string>
-    <string name="always_advanced_result_switch">Всегда подробный результат</string>
-    <string name="show_clear_title_switch">Кнопка очистки полей</string>
 </resources>
