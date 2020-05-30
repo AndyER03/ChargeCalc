@@ -24,18 +24,89 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
-
-    override fun onResume() {
-        super.onResume()
 
         submit_button.setOnLongClickListener {
             advancedResult()
         }
 
+        clearBtn.setOnClickListener {
+            current_charge_value_input.requestFocus()
+            allFieldsClear()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
         val vibrationOption = sp.getBoolean("vibration_option", true)
+
+        saveBtn.setOnClickListener {
+            if (valuesChest.getString("counter", "0").toString() == "0") {
+                if ((current_charge_value_input.text.toString() == "") && (time_left_value_input.text.toString() == "")) {
+                    current_charge_value_input.requestFocus()
+                    return@setOnClickListener
+                } else {
+                    val counter = "1"
+
+                    val editor = valuesChest.edit()
+                    editor.putString(
+                        "charge_value",
+                        current_charge_value_input.text.toString().trim()
+                    )
+                    editor.putString(
+                        "time_after_charge",
+                        time_left_value_input.text.toString().trim()
+                    )
+                    editor.putString("counter", counter)
+                    editor.apply()
+                    current_charge_value_input.requestFocus()
+
+                    saveBtn.text = getString(R.string.restore_values_btn)
+                }
+            } else if (valuesChest.getString("counter", "0").toString() == "1") {
+                current_charge_value_input.setText(
+                    valuesChest.getString("charge_value", "").toString()
+                )
+                time_left_value_input.setText(
+                    valuesChest.getString("time_after_charge", "").toString()
+                )
+                submit_button.text = getString(R.string.submit_button)
+
+                current_charge_value_input.requestFocus()
+            }
+        }
+
+        saveBtn.setOnLongClickListener {
+            if (valuesChest.getString("counter", "0").toString() == "0") {
+                Toast.makeText(this, R.string.toast_values_not_reset, Toast.LENGTH_SHORT).show()
+            } else if (valuesChest.getString("counter", "0").toString() == "1") {
+                val editor = valuesChest.edit()
+                editor.putString("counter", "0")
+                editor.apply()
+
+                saveBtn.text = getString(R.string.save_values_btn)
+                Toast.makeText(this, R.string.toast_values_reset, Toast.LENGTH_SHORT).show()
+
+                val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+                if (vibrationOption) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        v.vibrate(
+                            VibrationEffect.createOneShot(
+                                100,
+                                VibrationEffect.DEFAULT_AMPLITUDE
+                            )
+                        )
+                    } else {
+                        //deprecated in API 26
+                        v.vibrate(100)
+                    }
+                }
+            }
+            return@setOnLongClickListener true
+        }
 
         when (sp.getString("bg_option", "1")) {
             "1" -> {
@@ -115,78 +186,6 @@ class MainActivity : AppCompatActivity() {
             "1" -> {
                 saveBtn.text = getString(R.string.restore_values_btn)
             }
-        }
-
-        saveBtn.setOnClickListener {
-            if (valuesChest.getString("counter", "0").toString() == "0") {
-                if ((current_charge_value_input.text.toString() == "") && (time_left_value_input.text.toString() == "")) {
-                    current_charge_value_input.requestFocus()
-                    return@setOnClickListener
-                } else {
-                    val counter = "1"
-
-                    val editor = valuesChest.edit()
-                    editor.putString(
-                        "charge_value",
-                        current_charge_value_input.text.toString().trim()
-                    )
-                    editor.putString(
-                        "time_after_charge",
-                        time_left_value_input.text.toString().trim()
-                    )
-                    editor.putString("counter", counter)
-                    editor.apply()
-                    current_charge_value_input.requestFocus()
-
-                    saveBtn.text = getString(R.string.restore_values_btn)
-                }
-            } else if (valuesChest.getString("counter", "0").toString() == "1") {
-                current_charge_value_input.setText(
-                    valuesChest.getString("charge_value", "").toString()
-                )
-                time_left_value_input.setText(
-                    valuesChest.getString("time_after_charge", "").toString()
-                )
-                submit_button.text = getString(R.string.submit_button)
-
-                current_charge_value_input.requestFocus()
-            }
-        }
-
-        saveBtn.setOnLongClickListener {
-            if (valuesChest.getString("counter", "0").toString() == "0") {
-                Toast.makeText(this, R.string.toast_values_not_reset, Toast.LENGTH_SHORT).show()
-            } else if (valuesChest.getString("counter", "0").toString() == "1") {
-                val editor = valuesChest.edit()
-                editor.putString("counter", "0")
-                editor.apply()
-
-                saveBtn.text = getString(R.string.save_values_btn)
-                Toast.makeText(this, R.string.toast_values_reset, Toast.LENGTH_SHORT).show()
-
-                val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-
-                if (vibrationOption) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v.vibrate(
-                            VibrationEffect.createOneShot(
-                                100,
-                                VibrationEffect.DEFAULT_AMPLITUDE
-                            )
-                        )
-                    } else {
-                        //deprecated in API 26
-                        v.vibrate(100)
-                    }
-                }
-            }
-            return@setOnLongClickListener true
-        }
-
-        clearBtn.setOnClickListener {
-            current_charge_value_input.requestFocus()
-            current_charge_value_input.text.clear()
-            time_left_value_input.text.clear()
         }
     }
 
