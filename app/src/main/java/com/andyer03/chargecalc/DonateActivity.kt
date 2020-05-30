@@ -3,9 +3,9 @@ package com.andyer03.chargecalc
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_donate.*
@@ -25,7 +25,8 @@ class DonateActivity : AppCompatActivity() {
             startActivity(i)
         }
 
-        val sharedPreferencesDonateActivity = getSharedPreferences("Donate_Chest", Context.MODE_PRIVATE)
+        val sharedPreferencesDonateActivity =
+            getSharedPreferences("Donate_Chest", Context.MODE_PRIVATE)
         IceCream.setOnLongClickListener {
             if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "0") {
                 val counter = "1"
@@ -33,110 +34,146 @@ class DonateActivity : AppCompatActivity() {
                 editor.putString("counter", counter)
                 editor.apply()
                 IceCream.animate().translationZBy(100F).alpha(0F).duration = 0
-                Toast.makeText(this, R.string.easteregg_where_is_the_ice_cream, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.easteregg_where_is_the_ice_cream, Toast.LENGTH_SHORT)
+                    .show()
                 Toast.makeText(this, R.string.easteregg_press_again, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "1") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "1"
+            ) {
                 val counter = "2"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 IceCream.animate().translationZBy(100F).alpha(100F).duration = 0
-                Toast.makeText(this, R.string.easteregg_ice_cream_is_come_back, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "2") {
+                Toast.makeText(this, R.string.easteregg_ice_cream_is_come_back, Toast.LENGTH_SHORT)
+                    .show()
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "2"
+            ) {
                 val counter = "3"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 IceCream.animate().translationZBy(100F).alpha(0F).duration = 0
-                Toast.makeText(this, R.string.easteregg_where_is_the_ice_cream, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.easteregg_where_is_the_ice_cream, Toast.LENGTH_SHORT)
+                    .show()
                 Toast.makeText(this, R.string.easteregg_press_again, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "3") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "3"
+            ) {
                 val counter = "4"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 IceCream.animate().translationZBy(100F).alpha(100F).duration = 0
-                Toast.makeText(this, R.string.easteregg_ice_cream_is_come_back, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "4") {
+                Toast.makeText(this, R.string.easteregg_ice_cream_is_come_back, Toast.LENGTH_SHORT)
+                    .show()
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "4"
+            ) {
                 val counter = "5"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 IceCream.animate().translationZBy(100F).alpha(100F).duration = 0
                 Toast.makeText(this, "=/", Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "5") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "5"
+            ) {
                 val counter = "6"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, R.string.easteregg_stop, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "6") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "6"
+            ) {
                 val counter = "7"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, R.string.easteregg_really_stop, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "7") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "7"
+            ) {
                 val counter = "8"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, R.string.easteregg_offended, Toast.LENGTH_SHORT).show()
                 finish()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "8") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "8"
+            ) {
                 val counter = "9"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, "...", Toast.LENGTH_SHORT).show()
                 finish()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "9") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "9"
+            ) {
                 val counter = "10"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, "...", Toast.LENGTH_SHORT).show()
                 finish()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "10") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "10"
+            ) {
                 val counter = "11"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, R.string.easteregg_apologize, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "11") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "11"
+            ) {
                 val counter = "12"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, R.string.easteregg_do_not_believe, Toast.LENGTH_SHORT).show()
                 finish()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "12") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "12"
+            ) {
                 val counter = "13"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, R.string.easteregg_do_not_believe, Toast.LENGTH_SHORT).show()
                 finish()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "13") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "13"
+            ) {
                 val counter = "14"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, R.string.easteregg_really_apologize, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "14") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "14"
+            ) {
                 val counter = "15"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, R.string.easteregg_forgive, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "15") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "15"
+            ) {
                 val counter = "16"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
                 editor.apply()
                 Toast.makeText(this, R.string.easteregg_hahaha, Toast.LENGTH_SHORT).show()
                 finish()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "16") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() == "16"
+            ) {
                 val counter = "0"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)
@@ -151,7 +188,9 @@ class DonateActivity : AppCompatActivity() {
             if (sharedPreferencesDonateActivity.getString("counter", "0").toString() == "0") {
                 Toast.makeText(this, R.string.easteregg_magic, Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, R.string.easteregg_magic_part2, Toast.LENGTH_SHORT).show()
-            } else if (sharedPreferencesDonateActivity.getString("counter", "0").toString() != "0") {
+            } else if (sharedPreferencesDonateActivity.getString("counter", "0")
+                    .toString() != "0"
+            ) {
                 val counter = "0"
                 val editor = sharedPreferencesDonateActivity.edit()
                 editor.putString("counter", counter)

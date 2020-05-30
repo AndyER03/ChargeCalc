@@ -1,86 +1,82 @@
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory
-        android:title="@string/ui_title_preference">
+    <PreferenceCategory android:title="@string/ui_title_preference">
 
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/background"
             android:entryValues="@array/background_value"
+            android:icon="@drawable/ic_background_24dp"
             android:key="bg_option"
             android:title="@string/bg_title_preference"
-            android:icon="@drawable/ic_background_24dp"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true" />
 
         <SwitchPreference
             android:defaultValue="true"
+            android:icon="@drawable/ic_splash_24dp"
             android:key="splash_option"
-            android:title="@string/splash_title_switch"
             android:summaryOn="@string/splash_summary_option"
-            android:icon="@drawable/ic_splash_24dp"/>
+            android:title="@string/splash_title_switch" />
 
         <SwitchPreference
             android:defaultValue="false"
-            android:key="splash_bg_switch"
-            android:title="@string/splash_bg_title_switch"
+            android:dependency="splash_option"
             android:icon="@drawable/ic_splash_24dp"
-            android:dependency="splash_option"/>
+            android:key="splash_bg_switch"
+            android:title="@string/splash_bg_title_switch" />
 
         <ListPreference
             android:defaultValue="1"
+            android:dependency="splash_bg_switch"
             android:entries="@array/background"
             android:entryValues="@array/background_value"
+            android:icon="@drawable/ic_background_24dp"
             android:key="splash_bg_option"
             android:title="@string/splash_bg_title_preference"
-            android:icon="@drawable/ic_background_24dp"
-            app:useSimpleSummaryProvider="true"
-            android:dependency="splash_bg_switch"/>
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/functionality_title_preference">
+    <PreferenceCategory android:title="@string/functionality_title_preference">
 
         <SwitchPreference
             android:defaultValue="false"
+            android:icon="@drawable/ic_list_24dp"
             android:key="always_advanced_result"
-            android:title="@string/always_advanced_result_switch"
-            android:icon="@drawable/ic_list_24dp"/>
+            android:title="@string/always_advanced_result_switch" />
 
         <SwitchPreference
             android:defaultValue="false"
+            android:icon="@drawable/ic_clear_24dp"
             android:key="clear_btn_switch"
-            android:title="@string/show_clear_title_switch"
-            android:icon="@drawable/ic_clear_24dp"/>
+            android:title="@string/show_clear_title_switch" />
 
         <SwitchPreference
             android:defaultValue="false"
-            android:key="alternative_clear_switch"
-            android:title="@string/alternative_clear_switch"
-            android:summary="@string/alternative_clear_summary"
+            android:dependency="clear_btn_switch"
             android:icon="@drawable/ic_alternative_24dp"
-            android:dependency="clear_btn_switch"/>
+            android:key="alternative_clear_switch"
+            android:summary="@string/alternative_clear_summary"
+            android:title="@string/alternative_clear_switch" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/other_title_preference">
+    <PreferenceCategory android:title="@string/other_title_preference">
 
         <SwitchPreference
             android:defaultValue="false"
+            android:icon="@drawable/ic_baseline_notifications_24"
             android:key="notification_switch"
-            android:title="@string/notification_title_switch"
             android:summary="@string/notification_summary"
-            android:icon="@drawable/ic_baseline_notifications_24"/>
+            android:title="@string/notification_title_switch" />
 
         <SwitchPreference
             android:defaultValue="true"
+            android:icon="@drawable/ic_vibration_24dp"
             android:key="vibration_switch"
-            android:title="@string/vibration_title_switch"
             android:summary="@string/vibration_summary"
-            android:icon="@drawable/ic_vibration_24dp"/>
+            android:title="@string/vibration_title_switch" />
 
     </PreferenceCategory>
 

@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var notificationManager : NotificationManager
+    lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
     lateinit var notificationBuilder: Notification.Builder
     private val channelId = "com.andyer03.chargecalc"
@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
-        val notification_switch = sp.getBoolean("notification_switch", false)
         val vibrationOption = sp.getBoolean("vibration_option", true)
 
         when (sp.getBoolean("clear_btn_switch", false)) {
@@ -126,8 +125,14 @@ class MainActivity : AppCompatActivity() {
                     val counter = "1"
 
                     val editor = sharedPreferences.edit()
-                    editor.putString("charge_value", current_charge_value_input.text.toString().trim())
-                    editor.putString("time_after_charge", time_left_value_input.text.toString().trim())
+                    editor.putString(
+                        "charge_value",
+                        current_charge_value_input.text.toString().trim()
+                    )
+                    editor.putString(
+                        "time_after_charge",
+                        time_left_value_input.text.toString().trim()
+                    )
                     editor.putString("counter", counter)
                     editor.apply()
                     current_charge_value_input.requestFocus()
@@ -135,8 +140,12 @@ class MainActivity : AppCompatActivity() {
                     saveBtn.text = getString(R.string.restore_values_btn)
                 }
             } else if (sharedPreferences.getString("counter", "0").toString() == "1") {
-                current_charge_value_input.setText(sharedPreferences.getString("charge_value", "").toString())
-                time_left_value_input.setText(sharedPreferences.getString("time_after_charge", "").toString())
+                current_charge_value_input.setText(
+                    sharedPreferences.getString("charge_value", "").toString()
+                )
+                time_left_value_input.setText(
+                    sharedPreferences.getString("time_after_charge", "").toString()
+                )
                 submit_button.text = getString(R.string.submit_button)
 
                 current_charge_value_input.requestFocus()
@@ -240,34 +249,57 @@ class MainActivity : AppCompatActivity() {
 
                             when (sp.getBoolean("notification_switch", false)) {
                                 true -> {
-                                    val intent = Intent(this,MainActivity::class.java)
-                                    val pendingIntent = PendingIntent.getActivity(this,0,intent,
-                                        PendingIntent.FLAG_UPDATE_CURRENT)
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    val pendingIntent = PendingIntent.getActivity(
+                                        this, 0, intent,
+                                        PendingIntent.FLAG_UPDATE_CURRENT
+                                    )
 
-                                    val contentView = RemoteViews(packageName,R.layout.activity_notification)
-                                    contentView.setTextViewText(R.id.tv_title, getString(R.string.app_name))
-                                    contentView.setTextViewText(R.id.tv_content,getString(R.string.last_result) + " ${curCharge.toInt()}%" + "\n" +
-                                            getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
+                                    val contentView =
+                                        RemoteViews(packageName, R.layout.activity_notification)
+                                    contentView.setTextViewText(
+                                        R.id.tv_title,
+                                        getString(R.string.app_name)
+                                    )
+                                    contentView.setTextViewText(
+                                        R.id.tv_content,
+                                        getString(R.string.last_result) + " ${curCharge.toInt()}%" + "\n" +
+                                                getString(R.string.should_enough_time_with_current_charge) + " $remainingInt"
+                                    )
 
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                        notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
+                                        notificationChannel = NotificationChannel(
+                                            channelId,
+                                            description,
+                                            NotificationManager.IMPORTANCE_HIGH
+                                        )
                                         notificationChannel.enableLights(true)
                                         notificationChannel.lightColor = Color.GREEN
                                         notificationChannel.enableVibration(false)
-                                        notificationManager.createNotificationChannel(notificationChannel)
+                                        notificationManager.createNotificationChannel(
+                                            notificationChannel
+                                        )
 
-                                        notificationBuilder = Notification.Builder(this,channelId)
+                                        notificationBuilder = Notification.Builder(this, channelId)
                                             .setContent(contentView)
                                             .setSmallIcon(R.mipmap.ic_launcher_round)
-                                            .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.mipmap.ic_launcher))
+                                            .setLargeIcon(
+                                                BitmapFactory.decodeResource(
+                                                    this.resources,
+                                                    R.mipmap.ic_launcher
+                                                )
+                                            )
                                             .setContentIntent(pendingIntent)
-                                    }
-                                    else {
-
+                                    } else {
                                         notificationBuilder = Notification.Builder(this)
                                             .setContent(contentView)
                                             .setSmallIcon(R.mipmap.ic_launcher_round)
-                                            .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.mipmap.ic_launcher))
+                                            .setLargeIcon(
+                                                BitmapFactory.decodeResource(
+                                                    this.resources,
+                                                    R.mipmap.ic_launcher
+                                                )
+                                            )
                                             .setContentIntent(pendingIntent)
                                     }
                                     notificationManager.notify(1, notificationBuilder.build())
@@ -333,7 +365,7 @@ class MainActivity : AppCompatActivity() {
         current_charge_value_input.requestFocus()
     }
 
-    private fun emptyFieldsCheck() : Boolean {
+    private fun emptyFieldsCheck(): Boolean {
         if (current_charge_value_input.text.toString() == "") {
             current_charge_value_input.requestFocus()
             current_charge_value_input.error = getString(R.string.warning_input_values)
@@ -423,34 +455,52 @@ class MainActivity : AppCompatActivity() {
                 val sp = PreferenceManager.getDefaultSharedPreferences(this)
                 when (sp.getBoolean("notification_switch", false)) {
                     true -> {
-                        val intent = Intent(this,MainActivity::class.java)
-                        val pendingIntent = PendingIntent.getActivity(this,0,intent,
-                            PendingIntent.FLAG_UPDATE_CURRENT)
+                        val intent = Intent(this, MainActivity::class.java)
+                        val pendingIntent = PendingIntent.getActivity(
+                            this, 0, intent,
+                            PendingIntent.FLAG_UPDATE_CURRENT
+                        )
 
-                        val contentView = RemoteViews(packageName,R.layout.activity_notification)
+                        val contentView = RemoteViews(packageName, R.layout.activity_notification)
                         contentView.setTextViewText(R.id.tv_title, getString(R.string.app_name))
-                        contentView.setTextViewText(R.id.tv_content,getString(R.string.last_result) + " ${curCharge.toInt()}%" + "\n" +
-                                getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
+                        contentView.setTextViewText(
+                            R.id.tv_content,
+                            getString(R.string.last_result) + " ${curCharge.toInt()}%" + "\n" +
+                                    getString(R.string.should_enough_time_with_current_charge) + " $remainingInt"
+                        )
 
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
+                            notificationChannel = NotificationChannel(
+                                channelId,
+                                description,
+                                NotificationManager.IMPORTANCE_HIGH
+                            )
                             notificationChannel.enableLights(true)
                             notificationChannel.lightColor = Color.GREEN
                             notificationChannel.enableVibration(false)
                             notificationManager.createNotificationChannel(notificationChannel)
 
-                            notificationBuilder = Notification.Builder(this,channelId)
+                            notificationBuilder = Notification.Builder(this, channelId)
                                 .setContent(contentView)
                                 .setSmallIcon(R.mipmap.ic_launcher_round)
-                                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.mipmap.ic_launcher))
+                                .setLargeIcon(
+                                    BitmapFactory.decodeResource(
+                                        this.resources,
+                                        R.mipmap.ic_launcher
+                                    )
+                                )
                                 .setContentIntent(pendingIntent)
-                        }
-                        else {
+                        } else {
 
                             notificationBuilder = Notification.Builder(this)
                                 .setContent(contentView)
                                 .setSmallIcon(R.mipmap.ic_launcher_round)
-                                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.mipmap.ic_launcher))
+                                .setLargeIcon(
+                                    BitmapFactory.decodeResource(
+                                        this.resources,
+                                        R.mipmap.ic_launcher
+                                    )
+                                )
                                 .setContentIntent(pendingIntent)
                         }
                         notificationManager.notify(1, notificationBuilder.build())
