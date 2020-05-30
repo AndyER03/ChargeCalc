@@ -188,7 +188,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun restoreButton(view: View) {
+    fun restoreButton(@Suppress("UNUSED_PARAMETER")view: View) {
         submit_button.text = getString(R.string.submit_button)
     }
 
