@@ -207,7 +207,7 @@ class MainActivity : AppCompatActivity() {
                     .setContentTitle(getString(R.string.last_result) + " ${curCharge}%")
                     .setContentText(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
                     .setOngoing(true)
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setPriority(NotificationCompat.PRIORITY_MIN)
 
                 with(NotificationManagerCompat.from(this)) {
                     notify(1, notificationBuilder.build())
