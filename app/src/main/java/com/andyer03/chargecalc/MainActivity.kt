@@ -1,6 +1,7 @@
 package com.andyer03.chargecalc
 
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -202,12 +203,15 @@ class MainActivity : AppCompatActivity() {
 
         when (sp.getBoolean("notification_switch", false)) {
             true -> {
+                val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+
                 val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
                     .setSmallIcon(R.drawable.ic_notification)
                     .setContentTitle(getString(R.string.last_result) + " ${curCharge}%")
                     .setContentText(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
                     .setOngoing(true)
                     .setPriority(NotificationCompat.PRIORITY_MIN)
+                    .setContentIntent(pendingIntent)
 
                 with(NotificationManagerCompat.from(this)) {
                     notify(1, notificationBuilder.build())
