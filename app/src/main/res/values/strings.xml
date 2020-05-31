@@ -14,7 +14,7 @@
     <string name="simple_result_many_time">days</string>
     <string name="warning_error_calculation">Error</string>
     <string name="warning_calculation_input_other_value">Please input other value!</string>
-    <string name="created_by">Created by: AndyER03</string>
+    <string name="created_by">Developed by: AndyER03</string>
     <string name="current_charge_hint">Current charge</string>
     <string name="time_left_hint">Days count</string>
     <string name="about_title">About</string>
