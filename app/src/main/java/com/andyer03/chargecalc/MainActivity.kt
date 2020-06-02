@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.os.*
 import android.view.Menu
 import android.view.MenuItem
@@ -198,8 +199,21 @@ class MainActivity : AppCompatActivity() {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
-        val curCharge = valuesChest.getString("curCharge", "0").toString()
+        val curCharge = valuesChest.getInt("curCharge", 0)
+        val timeLeft = valuesChest.getString("timeLeft", "0").toString()
         val remainingInt = valuesChest.getString("remainingTime", "0").toString()
+        var color = 0
+        when {
+            curCharge > 31 -> {
+                color = 0xFF00FF00.toInt()
+            }
+            curCharge in 16..30 -> {
+                color = 0xFFFFFF00.toInt()
+            }
+            curCharge in 1..15 -> {
+                color = 0xFFFF0000.toInt()
+            }
+        }
 
         when (sp.getBoolean("notification_switch", false)) {
             true -> {
@@ -207,9 +221,17 @@ class MainActivity : AppCompatActivity() {
 
                 val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
                     .setSmallIcon(R.drawable.ic_notification)
-                    .setContentTitle(getString(R.string.last_result) + " ${curCharge}%")
-                    .setContentText(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
+                    .setContentTitle(getString(R.string.last_result) + " $curCharge%")
+                    .setContentText(
+                        getString(R.string.should_enough_time_with_current_charge) + " $remainingInt" + " (" + getString(
+                            R.string.time_left_value
+                        ) + " $timeLeft" + ")"
+                    )
+                    .setColor(Color.GREEN)
+                    .setProgress(100, curCharge.toInt(), false)
                     .setOngoing(true)
+                    .setColor(color)
+                    .setShowWhen(false)
                     .setPriority(NotificationCompat.PRIORITY_MIN)
                     .setContentIntent(pendingIntent)
 
@@ -218,7 +240,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             false -> {
-                notificationManager.cancel(1)
+                notificationManager.cancelAll()
             }
         }
     }
@@ -364,9 +386,13 @@ class MainActivity : AppCompatActivity() {
                             val valuesChest =
                                 getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
                             val editor = valuesChest.edit()
-                            editor.putString(
+                            editor.putInt(
                                 "curCharge",
-                                curCharge.toInt().toString().trim()
+                                curCharge.toInt()
+                            )
+                            editor.putString(
+                                "timeLeft",
+                                timeAfterCharge.toInt().toString().trim()
                             )
                             editor.putString(
                                 "remainingTime",
@@ -434,9 +460,13 @@ class MainActivity : AppCompatActivity() {
 
                 val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
                 val editor = valuesChest.edit()
-                editor.putString(
+                editor.putInt(
                     "curCharge",
-                    curCharge.toInt().toString().trim()
+                    curCharge.toInt()
+                )
+                editor.putString(
+                    "timeLeft",
+                    timeAfterCharge.toInt().toString().trim()
                 )
                 editor.putString(
                     "remainingTime",

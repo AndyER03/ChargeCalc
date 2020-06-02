@@ -13,6 +13,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        appVer.text = BuildConfig.VERSION_NAME
 
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
 
@@ -115,6 +116,7 @@ class SplashActivity : AppCompatActivity() {
 
                     icon.animate().alphaBy(100F).alpha(0F).duration = 1000
                     appName.animate().alphaBy(100F).alpha(0F).duration = 1000
+                    appVer.animate().alphaBy(100F).alpha(0F).duration = 1000
                 }, 3000)
 
                 Handler().postDelayed({
