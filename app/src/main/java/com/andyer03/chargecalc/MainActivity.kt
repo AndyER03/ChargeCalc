@@ -7,7 +7,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.*
 import android.view.Menu
@@ -17,25 +16,31 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var notificationManager : NotificationManager
-    lateinit var notificationChannel : NotificationChannel
-    lateinit var builder : Notification.Builder
+    private lateinit var notificationManager: NotificationManager
+    lateinit var notificationChannel: NotificationChannel
+    lateinit var builder: Notification.Builder
     private val channelId = "com.andyer03.chargecalc"
     private val description = "Test notification"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
+        when {
+            valuesChest.getString("counter", "0").toString() == "0" -> {
+                saveBtn.text = getString(R.string.save_values_btn)
+            }
+            valuesChest.getString("counter", "0").toString() == "1" -> {
+                saveBtn.text = getString(R.string.restore_values_btn)
+            }
+        }
 
         submit_button.setOnLongClickListener {
             advancedResult()
@@ -238,26 +243,17 @@ class MainActivity : AppCompatActivity() {
                     val importance = NotificationManager.IMPORTANCE_DEFAULT
                     val mChannel = NotificationChannel(channelId, name, importance)
                     mChannel.description = descriptionText
-                    val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+                    val notificationManager =
+                        getSystemService(NOTIFICATION_SERVICE) as NotificationManager
                     notificationManager.createNotificationChannel(mChannel)
 
-                    notificationChannel = NotificationChannel(
-                        channelId,
-                        description,
-                        NotificationManager.IMPORTANCE_HIGH
-                    )
-                    notificationChannel.enableLights(true)
-                    notificationChannel.lightColor = Color.GREEN
-                    notificationChannel.enableVibration(false)
-                    notificationManager.createNotificationChannel(notificationChannel)
-
-                    val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
+                    val notificationBuilder = NotificationCompat.Builder(this, name)
                         .setChannelId(channelId)
+                        .setSound(null)
+                        .setVibrate(null)
                         .setSmallIcon(R.drawable.ic_notification)
-                        .setContentTitle(getString(R.string.last_result) + " $curCharge%")
-                        .setContentText(
-                            getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
-                        .setColor(Color.GREEN)
+                        .setContentTitle(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
+                        .setContentText("$curCharge%")
                         .setProgress(100, curCharge.toInt(), false)
                         .setSubText(getString(R.string.time_left_value) + " $timeLeft")
                         .setOngoing(true)
@@ -267,11 +263,10 @@ class MainActivity : AppCompatActivity() {
                         .setContentIntent(pendingIntent)
                     notificationManager.notify(1, notificationBuilder.build())
                 } else {
-                    val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
+                    val notificationBuilder = NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_notification)
-                        .setContentTitle(getString(R.string.last_result) + " $curCharge%")
-                        .setContentText(
-                            getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
+                        .setContentTitle(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
+                        .setContentText("$curCharge%")
                         .setColor(Color.GREEN)
                         .setProgress(100, curCharge.toInt(), false)
                         .setSubText(getString(R.string.time_left_value) + " $timeLeft")
