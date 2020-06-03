@@ -232,6 +232,15 @@ class MainActivity : AppCompatActivity() {
                 val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+                    val name = getString(R.string.result_channel_name)
+                    val descriptionText = getString(R.string.result_channel_description)
+                    val importance = NotificationManager.IMPORTANCE_DEFAULT
+                    val mChannel = NotificationChannel(channelId, name, importance)
+                    mChannel.description = descriptionText
+                    val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+                    notificationManager.createNotificationChannel(mChannel)
+
                     notificationChannel = NotificationChannel(
                         channelId,
                         description,
@@ -243,15 +252,14 @@ class MainActivity : AppCompatActivity() {
                     notificationManager.createNotificationChannel(notificationChannel)
 
                     val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
+                        .setChannelId(channelId)
                         .setSmallIcon(R.drawable.ic_notification)
                         .setContentTitle(getString(R.string.last_result) + " $curCharge%")
                         .setContentText(
-                            getString(R.string.should_enough_time_with_current_charge) + " $remainingInt" + " (" + getString(
-                                R.string.time_left_value
-                            ) + " $timeLeft" + ")"
-                        )
+                            getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
                         .setColor(Color.GREEN)
                         .setProgress(100, curCharge.toInt(), false)
+                        .setSubText(getString(R.string.time_left_value) + " $timeLeft")
                         .setOngoing(true)
                         .setColor(color)
                         .setShowWhen(false)
@@ -263,12 +271,10 @@ class MainActivity : AppCompatActivity() {
                         .setSmallIcon(R.drawable.ic_notification)
                         .setContentTitle(getString(R.string.last_result) + " $curCharge%")
                         .setContentText(
-                            getString(R.string.should_enough_time_with_current_charge) + " $remainingInt" + " (" + getString(
-                                R.string.time_left_value
-                            ) + " $timeLeft" + ")"
-                        )
+                            getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
                         .setColor(Color.GREEN)
                         .setProgress(100, curCharge.toInt(), false)
+                        .setSubText(getString(R.string.time_left_value) + " $timeLeft")
                         .setOngoing(true)
                         .setColor(color)
                         .setShowWhen(false)

@@ -10,7 +10,7 @@
     <string name="battery_charge_left">Charge left:</string>
     <string name="battery_percent_discharge_at_time">Percent discharge per day:</string>
     <string name="should_enough_time_with_full_charge">Days with full charge:</string>
-    <string name="should_enough_time_with_current_charge">Should enough days with current result:</string>
+    <string name="should_enough_time_with_current_charge">Days left:</string>
     <string name="simple_result_many_time">days</string>
     <string name="warning_error_calculation">Error</string>
     <string name="warning_calculation_input_other_value">Please input other value!</string>
