@@ -93,4 +93,6 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+    <string name="result_channel_name">Результат автономности</string>
+    <string name="result_channel_description">Показывать результат автономности</string>
 </resources>

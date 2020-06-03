@@ -93,4 +93,6 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+    <string name="result_channel_name">Autonomy result</string>
+    <string name="result_channel_description">Show autonomy result</string>
 </resources>

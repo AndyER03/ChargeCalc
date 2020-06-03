@@ -1,10 +1,13 @@
 package com.andyer03.chargecalc
 
+import android.app.Notification
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.*
 import android.view.Menu
@@ -14,14 +17,21 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var notificationManager: NotificationManager
+    private lateinit var notificationManager : NotificationManager
+    lateinit var notificationChannel : NotificationChannel
+    lateinit var builder : Notification.Builder
+    private val channelId = "com.andyer03.chargecalc"
+    private val description = "Test notification"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +49,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
@@ -177,7 +189,7 @@ class MainActivity : AppCompatActivity() {
             false -> {
                 notificationManager =
                     getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                notificationManager.cancel(1)
+                notificationManager.cancelAll()
             }
         }
 
@@ -219,24 +231,50 @@ class MainActivity : AppCompatActivity() {
             true -> {
                 val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
-                val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
-                    .setSmallIcon(R.drawable.ic_notification)
-                    .setContentTitle(getString(R.string.last_result) + " $curCharge%")
-                    .setContentText(
-                        getString(R.string.should_enough_time_with_current_charge) + " $remainingInt" + " (" + getString(
-                            R.string.time_left_value
-                        ) + " $timeLeft" + ")"
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    notificationChannel = NotificationChannel(
+                        channelId,
+                        description,
+                        NotificationManager.IMPORTANCE_HIGH
                     )
-                    .setColor(Color.GREEN)
-                    .setProgress(100, curCharge.toInt(), false)
-                    .setOngoing(true)
-                    .setColor(color)
-                    .setShowWhen(false)
-                    .setPriority(NotificationCompat.PRIORITY_MIN)
-                    .setContentIntent(pendingIntent)
+                    notificationChannel.enableLights(true)
+                    notificationChannel.lightColor = Color.GREEN
+                    notificationChannel.enableVibration(false)
+                    notificationManager.createNotificationChannel(notificationChannel)
 
-                with(NotificationManagerCompat.from(this)) {
-                    notify(1, notificationBuilder.build())
+                    val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
+                        .setSmallIcon(R.drawable.ic_notification)
+                        .setContentTitle(getString(R.string.last_result) + " $curCharge%")
+                        .setContentText(
+                            getString(R.string.should_enough_time_with_current_charge) + " $remainingInt" + " (" + getString(
+                                R.string.time_left_value
+                            ) + " $timeLeft" + ")"
+                        )
+                        .setColor(Color.GREEN)
+                        .setProgress(100, curCharge.toInt(), false)
+                        .setOngoing(true)
+                        .setColor(color)
+                        .setShowWhen(false)
+                        .setPriority(NotificationCompat.PRIORITY_MIN)
+                        .setContentIntent(pendingIntent)
+                    notificationManager.notify(1, notificationBuilder.build())
+                } else {
+                    val notificationBuilder = NotificationCompat.Builder(this, 1.toString())
+                        .setSmallIcon(R.drawable.ic_notification)
+                        .setContentTitle(getString(R.string.last_result) + " $curCharge%")
+                        .setContentText(
+                            getString(R.string.should_enough_time_with_current_charge) + " $remainingInt" + " (" + getString(
+                                R.string.time_left_value
+                            ) + " $timeLeft" + ")"
+                        )
+                        .setColor(Color.GREEN)
+                        .setProgress(100, curCharge.toInt(), false)
+                        .setOngoing(true)
+                        .setColor(color)
+                        .setShowWhen(false)
+                        .setPriority(NotificationCompat.PRIORITY_MIN)
+                        .setContentIntent(pendingIntent)
+                    notificationManager.notify(1, notificationBuilder.build())
                 }
             }
             false -> {
