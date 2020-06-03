@@ -1,6 +1,5 @@
 package com.andyer03.chargecalc
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -23,10 +22,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var notificationManager: NotificationManager
-    lateinit var notificationChannel: NotificationChannel
-    lateinit var builder: Notification.Builder
     private val channelId = "com.andyer03.chargecalc"
-    private val description = "Test notification"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
-        val vibrationOption = sp.getBoolean("vibration_option", true)
+        val vibrationSwitch = sp.getBoolean("vibration_switch", true)
 
         saveBtn.setOnClickListener {
             if (valuesChest.getString("counter", "0").toString() == "0") {
@@ -110,7 +106,7 @@ class MainActivity : AppCompatActivity() {
 
                 val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
-                if (vibrationOption) {
+                if (vibrationSwitch) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         v.vibrate(
                             VibrationEffect.createOneShot(
@@ -239,22 +235,19 @@ class MainActivity : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
                     val name = getString(R.string.result_channel_name)
-                    val descriptionText = getString(R.string.result_channel_description)
-                    val importance = NotificationManager.IMPORTANCE_DEFAULT
+                    val importance = NotificationManager.IMPORTANCE_MIN
                     val mChannel = NotificationChannel(channelId, name, importance)
-                    mChannel.description = descriptionText
+                    mChannel.description = getString(R.string.result_channel_description)
                     val notificationManager =
                         getSystemService(NOTIFICATION_SERVICE) as NotificationManager
                     notificationManager.createNotificationChannel(mChannel)
 
                     val notificationBuilder = NotificationCompat.Builder(this, name)
                         .setChannelId(channelId)
-                        .setSound(null)
-                        .setVibrate(null)
                         .setSmallIcon(R.drawable.ic_notification)
                         .setContentTitle(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
                         .setContentText("$curCharge%")
-                        .setProgress(100, curCharge.toInt(), false)
+                        .setProgress(100, curCharge, false)
                         .setSubText(getString(R.string.time_left_value) + " $timeLeft")
                         .setOngoing(true)
                         .setColor(color)
@@ -268,7 +261,7 @@ class MainActivity : AppCompatActivity() {
                         .setContentTitle(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
                         .setContentText("$curCharge%")
                         .setColor(Color.GREEN)
-                        .setProgress(100, curCharge.toInt(), false)
+                        .setProgress(100, curCharge, false)
                         .setSubText(getString(R.string.time_left_value) + " $timeLeft")
                         .setOngoing(true)
                         .setColor(color)
