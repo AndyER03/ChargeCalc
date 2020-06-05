@@ -21,7 +21,7 @@
     <string name="simple_result_one_time">день</string>
     <string name="simple_result_some_time">дня</string>
     <string name="save_values_btn">Сохранить</string>
-    <string name="restore_values_btn">Восстановить значения</string>
+    <string name="restore_values_btn">Восстановить</string>
     <string name="toast_values_reset">Значения в памяти сброшены!</string>
     <string name="toast_values_not_reset">В памяти нет значений для сброса!</string>
     <string name="ui_title_preference">Интерфейс</string>
@@ -56,7 +56,7 @@
     <string name="exit_title">Выход</string>
     <string name="exit_dialog">Вы действительно хотите выйти?</string>
     <string name="no_button">Нет</string>
-    <string name="clear_fields">Очистить поля</string>
+    <string name="clear_fields">Очистить</string>
     <string name="alternative_clear_switch">Запасной метод очистки полей</string>
     <string name="alternative_clear_summary">Включите если кнопка очистки не работает</string>
     <string name="always_advanced_result_switch">Всегда подробный результат</string>
@@ -95,4 +95,6 @@
     </string-array>
     <string name="result_channel_name">Результат подсчета автономности</string>
     <string name="result_channel_description">Показывать результат автономности</string>
+    <string name="estimated_autonomy_days_number_header">Количество живых дней</string>
+    <string name="estimated_autonomy_days_number_hint">Примерное количество дней</string>
 </resources>
