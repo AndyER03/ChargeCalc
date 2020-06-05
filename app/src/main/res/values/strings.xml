@@ -94,6 +94,8 @@
     </string-array>
     <string name="result_channel_name">Autonomy calculation result</string>
     <string name="result_channel_description">Show autonomy result</string>
-    <string name="estimated_autonomy_days_number_header">Live days number</string>
-    <string name="estimated_autonomy_days_number_hint">Estimated days number</string>
+    <string name="estimated_autonomy_days_number_header">Estimated autonomy days number</string>
+    <string name="estimated_autonomy_days_number_hint">Days number (not important)</string>
+    <string name="estimated_autonomy_days_number_switch">Autonomy days number field</string>
+    <string name="estimated_autonomy_days_number_summary">Helps to get more accurate value</string>
 </resources>

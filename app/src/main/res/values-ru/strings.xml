@@ -94,6 +94,8 @@
     </string-array>
     <string name="result_channel_name">Результат подсчета автономности</string>
     <string name="result_channel_description">Показывать результат автономности</string>
-    <string name="estimated_autonomy_days_number_header">Количество живых дней</string>
-    <string name="estimated_autonomy_days_number_hint">Примерное количество дней</string>
+    <string name="estimated_autonomy_days_number_header">Примерное количество дней автономности</string>
+    <string name="estimated_autonomy_days_number_hint">Количество дней (необязательно)</string>
+    <string name="estimated_autonomy_days_number_switch">Поле ввода количества дней автономности</string>
+    <string name="estimated_autonomy_days_number_summary">Поможет получить более точное значение</string>
 </resources>

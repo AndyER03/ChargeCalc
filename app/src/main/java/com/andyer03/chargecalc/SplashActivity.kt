@@ -22,37 +22,37 @@ class SplashActivity : AppCompatActivity() {
             true -> {
                 when (sp.getString("splash_bg_option", "1")) {
                     "1" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient)
+                        SplashActivity.background = getDrawable(R.color.gray)
                     }
                     "2" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient_2)
+                        SplashActivity.background = getDrawable(R.drawable.gradient)
                     }
                     "3" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient_3)
+                        SplashActivity.background = getDrawable(R.drawable.gradient_2)
                     }
                     "4" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient_4)
+                        SplashActivity.background = getDrawable(R.drawable.gradient_3)
                     }
                     "5" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient_5)
+                        SplashActivity.background = getDrawable(R.drawable.gradient_4)
                     }
                     "6" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient_6)
+                        SplashActivity.background = getDrawable(R.drawable.gradient_5)
                     }
                     "7" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient_7)
+                        SplashActivity.background = getDrawable(R.drawable.gradient_6)
                     }
                     "8" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient_8)
+                        SplashActivity.background = getDrawable(R.drawable.gradient_7)
                     }
                     "9" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient_9)
+                        SplashActivity.background = getDrawable(R.drawable.gradient_8)
                     }
                     "10" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient_10)
+                        SplashActivity.background = getDrawable(R.drawable.gradient_9)
                     }
                     "11" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient)
+                        SplashActivity.background = getDrawable(R.drawable.gradient_10)
                     }
                     "12" -> {
                         SplashActivity.background = getDrawable(R.color.black)

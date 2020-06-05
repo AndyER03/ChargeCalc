@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             current_charge_value_input.requestFocus()
             allFieldsClear()
         }
+
     }
 
     override fun onResume() {
@@ -74,6 +75,10 @@ class MainActivity : AppCompatActivity() {
                         "time_after_charge",
                         time_left_value_input.text.toString().trim()
                     )
+                    editor.putString(
+                        "live_time",
+                        estimated_autonomy_days_number_input.text.toString().trim()
+                    )
                     editor.putString("counter", counter)
                     editor.apply()
                     current_charge_value_input.requestFocus()
@@ -86,6 +91,9 @@ class MainActivity : AppCompatActivity() {
                 )
                 time_left_value_input.setText(
                     valuesChest.getString("time_after_charge", "").toString()
+                )
+                estimated_autonomy_days_number_input.setText(
+                    valuesChest.getString("live_time", "").toString()
                 )
                 submit_button.text = getString(R.string.submit_button)
 
@@ -171,6 +179,17 @@ class MainActivity : AppCompatActivity() {
             "12" -> {
                 MainLayout.background = getDrawable(R.color.black)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+        }
+
+        when (sp.getBoolean("estimated_autonomy_days_switch", false)) {
+            true -> {
+                estimated_autonomy_days_number_header.visibility = View.VISIBLE
+                estimated_autonomy_days_number_input.visibility = View.VISIBLE
+            }
+            false -> {
+                estimated_autonomy_days_number_header.visibility = View.GONE
+                estimated_autonomy_days_number_input.visibility = View.GONE
             }
         }
 
@@ -505,29 +524,12 @@ class MainActivity : AppCompatActivity() {
                 // Calculating
                 val curCharge = current_charge_value_input.text.toString().toFloat()
                 val timeAfterCharge = time_left_value_input.text.toString().toFloat()
-                val liveTime = estimated_autonomy_days_number_input.toString().toFloat()
+                val liveTime = estimated_autonomy_days_number_input.text.toString()
                 val percentsLeft: Float = 100 - curCharge
                 val ratio: Float = percentsLeft / timeAfterCharge
                 val shouldEnough: Float = 100 / ratio
                 val remaining: Float = shouldEnough - timeAfterCharge
                 val remainingInt: Int = remaining.toInt()
-
-                val ratio2: Float = percentsLeft / liveTime * timeAfterCharge
-                val shouldEnough2: Float = 100 / ratio2
-                val remaining2: Float = shouldEnough2 - timeAfterCharge
-                val remainingInt2: Int = remaining2.toInt()
-
-                val builder = AlertDialog.Builder(this)
-                    .setTitle(R.string.advanced_result_title)
-                    .setMessage(
-                        getString(R.string.current_charge_value) + " ${curCharge.toInt()}%" + "\n" +
-                                getString(R.string.battery_charge_left) + " ${percentsLeft.toInt()}%" + "\n" +
-                                getString(R.string.battery_percent_discharge_at_time) + " ${ratio.toInt()}%" + "\n\n" +
-                                getString(R.string.time_left_value) + " ${timeAfterCharge.toInt()}" + "\n" +
-                                getString(R.string.should_enough_time_with_full_charge) + " ${shouldEnough.toInt()}" + "\n" +
-                                getString(R.string.should_enough_time_with_current_charge) + " $remainingInt"
-                    )
-                builder.show().toString().toBoolean()
 
 
                 val lastDigit: Int = remainingInt % 10
@@ -539,6 +541,7 @@ class MainActivity : AppCompatActivity() {
                         val submitButtonText =
                             "$remainingInt " + getString(R.string.simple_result_many_time)
                         submit_button.text = submitButtonText
+                        return true
                     }
                     if (lastDigit == 1) {
                         val submitButtonText =
@@ -553,29 +556,58 @@ class MainActivity : AppCompatActivity() {
                             "$remainingInt " + getString(R.string.simple_result_many_time)
                         submit_button.text = submitButtonText
                     }
+
+                    val builder = AlertDialog.Builder(this)
+                        .setTitle(R.string.advanced_result_title)
+                        .setMessage(
+                            getString(R.string.current_charge_value) + " ${curCharge.toInt()}%" + "\n" +
+                                    getString(R.string.battery_charge_left) + " ${percentsLeft.toInt()}%" + "\n" +
+                                    getString(R.string.battery_percent_discharge_at_time) + " ${ratio.toInt()}%" + "\n\n" +
+                                    getString(R.string.time_left_value) + " ${timeAfterCharge.toInt()}" + "\n" +
+                                    getString(R.string.should_enough_time_with_full_charge) + " ${shouldEnough.toInt()}" + "\n" +
+                                    getString(R.string.should_enough_time_with_current_charge) + " $remainingInt"
+                        )
+                    builder.show().toString().toBoolean()
                 } else {
+                    val ratio2: Float =
+                        liveTime.toFloat() / (percentsLeft / timeAfterCharge)
+                    val remainingInt2: Int = ratio2.toInt()
+
                     val lastDigit2: Int = remainingInt2 % 10
                     val penultimateDigitCalc2 = (remainingInt2 - lastDigit2) / 10
                     val penultimateDigit2: Int = penultimateDigitCalc2 % 10
 
                     if (penultimateDigit2 == 1) {
                         val submitButtonText =
-                            "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_many_time)
+                            "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_many_time)
                         submit_button.text = submitButtonText
+                        return true
                     }
                     if (lastDigit2 == 1) {
                         val submitButtonText =
-                            "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_one_time)
+                            "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_one_time)
                         submit_button.text = submitButtonText
                     } else if ((lastDigit2 == 2) || (lastDigit2 == 3) || (lastDigit2 == 4)) {
                         val submitButtonText =
-                            "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_some_time)
+                            "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_some_time)
                         submit_button.text = submitButtonText
                     } else {
                         val submitButtonText =
-                            "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_many_time)
+                            "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_many_time)
                         submit_button.text = submitButtonText
                     }
+
+                    val builder = AlertDialog.Builder(this)
+                        .setTitle(R.string.advanced_result_title)
+                        .setMessage(
+                            getString(R.string.current_charge_value) + " ${curCharge.toInt()}%" + "\n" +
+                                    getString(R.string.battery_charge_left) + " ${percentsLeft.toInt()}%" + "\n" +
+                                    getString(R.string.battery_percent_discharge_at_time) + " ${ratio.toInt()}%" + "\n\n" +
+                                    getString(R.string.time_left_value) + " ${timeAfterCharge.toInt()}" + "\n" +
+                                    getString(R.string.should_enough_time_with_full_charge) + " ${shouldEnough.toInt()}" + "\n" +
+                                    getString(R.string.should_enough_time_with_current_charge) + " $remainingInt ~ $remainingInt2"
+                        )
+                    builder.show().toString().toBoolean()
                 }
 
                 val valuesChest =
@@ -596,7 +628,6 @@ class MainActivity : AppCompatActivity() {
                 editor.apply()
 
                 notification()
-
             }
             false -> {
                 return false
