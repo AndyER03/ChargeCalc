@@ -98,4 +98,5 @@
     <string name="estimated_autonomy_days_number_hint">Количество дней (необязательно)</string>
     <string name="estimated_autonomy_days_number_switch">Поле ввода количества дней автономности</string>
     <string name="estimated_autonomy_days_number_summary">Поможет получить более точное значение</string>
+    <string name="should_enough_time_with_current_charge_notification">До разрядки:</string>
 </resources>

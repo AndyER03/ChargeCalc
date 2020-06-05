@@ -265,7 +265,7 @@ class MainActivity : AppCompatActivity() {
                     val notificationBuilder = NotificationCompat.Builder(this, name)
                         .setChannelId(channelId)
                         .setSmallIcon(R.drawable.ic_notification)
-                        .setContentTitle(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
+                        .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
                         .setContentText("$curCharge%")
                         .setProgress(100, curCharge, false)
                         .setSubText(getString(R.string.time_left_value) + " $timeLeft")
@@ -278,7 +278,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     val notificationBuilder = NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_notification)
-                        .setContentTitle(getString(R.string.should_enough_time_with_current_charge) + " $remainingInt")
+                        .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
                         .setContentText("$curCharge%")
                         .setColor(Color.GREEN)
                         .setProgress(100, curCharge, false)
@@ -455,30 +455,59 @@ class MainActivity : AppCompatActivity() {
                             } else {
                                 val ratio2: Float =
                                     liveTime.toFloat() / (percentsLeft / timeAfterCharge)
-                                val remainingInt2: Int = ratio2.toInt()
+                                val remainingInt2var1: Int = ratio2.toInt()
+                                val remainingInt2var2: Int = (remainingInt + remainingInt2var1) / 2
 
-                                val lastDigit2: Int = remainingInt2 % 10
-                                val penultimateDigitCalc2 = (remainingInt2 - lastDigit2) / 10
-                                val penultimateDigit2: Int = penultimateDigitCalc2 % 10
+                                val lastDigit2var1: Int = remainingInt2var1 % 10
+                                val penultimateDigitCalc2var1 =
+                                    (remainingInt2var1 - lastDigit2var1) / 10
+                                val penultimateDigit2var1: Int = penultimateDigitCalc2var1 % 10
 
-                                if (penultimateDigit2 == 1) {
-                                    val submitButtonText =
-                                        "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_many_time)
-                                    submit_button.text = submitButtonText
-                                    return
-                                }
-                                if (lastDigit2 == 1) {
-                                    val submitButtonText =
-                                        "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_one_time)
-                                    submit_button.text = submitButtonText
-                                } else if ((lastDigit2 == 2) || (lastDigit2 == 3) || (lastDigit2 == 4)) {
-                                    val submitButtonText =
-                                        "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_some_time)
-                                    submit_button.text = submitButtonText
+                                val lastDigit2var2: Int = remainingInt2var2 % 10
+                                val penultimateDigitCalc2var2 =
+                                    (remainingInt2var2 - lastDigit2var2) / 10
+                                val penultimateDigit2var2: Int = penultimateDigitCalc2var2 % 10
+
+                                if (remainingInt < remainingInt2var1) {
+                                    if (penultimateDigit2var1 == 1) {
+                                        val submitButtonText =
+                                            "$remainingInt2var1 " + getString(R.string.simple_result_many_time)
+                                        submit_button.text = submitButtonText
+                                        return
+                                    }
+                                    if (lastDigit2var1 == 1) {
+                                        val submitButtonText =
+                                            "$remainingInt2var1 " + getString(R.string.simple_result_one_time)
+                                        submit_button.text = submitButtonText
+                                    } else if ((lastDigit2var1 == 2) || (lastDigit2var1 == 3) || (lastDigit2var1 == 4)) {
+                                        val submitButtonText =
+                                            "$remainingInt2var1 " + getString(R.string.simple_result_some_time)
+                                        submit_button.text = submitButtonText
+                                    } else {
+                                        val submitButtonText =
+                                            "$remainingInt2var1 " + getString(R.string.simple_result_many_time)
+                                        submit_button.text = submitButtonText
+                                    }
                                 } else {
-                                    val submitButtonText =
-                                        "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_many_time)
-                                    submit_button.text = submitButtonText
+                                    if (penultimateDigit2var2 == 1) {
+                                        val submitButtonText =
+                                            "$remainingInt2var2 " + getString(R.string.simple_result_many_time)
+                                        submit_button.text = submitButtonText
+                                        return
+                                    }
+                                    if (lastDigit2var2 == 1) {
+                                        val submitButtonText =
+                                            "$remainingInt2var2 " + getString(R.string.simple_result_one_time)
+                                        submit_button.text = submitButtonText
+                                    } else if ((lastDigit2var2 == 2) || (lastDigit2var2 == 3) || (lastDigit2var2 == 4)) {
+                                        val submitButtonText =
+                                            "$remainingInt2var2 " + getString(R.string.simple_result_some_time)
+                                        submit_button.text = submitButtonText
+                                    } else {
+                                        val submitButtonText =
+                                            "$remainingInt2var2 " + getString(R.string.simple_result_many_time)
+                                        submit_button.text = submitButtonText
+                                    }
                                 }
                             }
 
@@ -586,43 +615,82 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     val ratio2: Float =
                         liveTime.toFloat() / (percentsLeft / timeAfterCharge)
-                    val remainingInt2: Int = ratio2.toInt()
+                    val remainingInt2var1: Int = ratio2.toInt()
+                    val remainingInt2var2: Int = (remainingInt + remainingInt2var1) / 2
 
-                    val lastDigit2: Int = remainingInt2 % 10
-                    val penultimateDigitCalc2 = (remainingInt2 - lastDigit2) / 10
-                    val penultimateDigit2: Int = penultimateDigitCalc2 % 10
+                    val lastDigit2var1: Int = remainingInt2var1 % 10
+                    val penultimateDigitCalc2var1 = (remainingInt2var1 - lastDigit2var1) / 10
+                    val penultimateDigit2var1: Int = penultimateDigitCalc2var1 % 10
 
-                    if (penultimateDigit2 == 1) {
-                        val submitButtonText =
-                            "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_many_time)
-                        submit_button.text = submitButtonText
-                        return true
-                    }
-                    if (lastDigit2 == 1) {
-                        val submitButtonText =
-                            "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_one_time)
-                        submit_button.text = submitButtonText
-                    } else if ((lastDigit2 == 2) || (lastDigit2 == 3) || (lastDigit2 == 4)) {
-                        val submitButtonText =
-                            "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_some_time)
-                        submit_button.text = submitButtonText
+                    val lastDigit2var2: Int = remainingInt2var2 % 10
+                    val penultimateDigitCalc2var2 = (remainingInt2var2 - lastDigit2var2) / 10
+                    val penultimateDigit2var2: Int = penultimateDigitCalc2var2 % 10
+
+                    if (remainingInt < remainingInt2var1) {
+                        if (penultimateDigit2var1 == 1) {
+                            val submitButtonText =
+                                "$remainingInt2var1 " + getString(R.string.simple_result_many_time)
+                            submit_button.text = submitButtonText
+                            return true
+                        }
+                        if (lastDigit2var1 == 1) {
+                            val submitButtonText =
+                                "$remainingInt2var1 " + getString(R.string.simple_result_one_time)
+                            submit_button.text = submitButtonText
+                        } else if ((lastDigit2var1 == 2) || (lastDigit2var1 == 3) || (lastDigit2var1 == 4)) {
+                            val submitButtonText =
+                                "$remainingInt2var1 " + getString(R.string.simple_result_some_time)
+                            submit_button.text = submitButtonText
+                        } else {
+                            val submitButtonText =
+                                "$remainingInt2var1 " + getString(R.string.simple_result_many_time)
+                            submit_button.text = submitButtonText
+                        }
+
+                        val builder = AlertDialog.Builder(this)
+                            .setTitle(R.string.advanced_result_title)
+                            .setMessage(
+                                getString(R.string.current_charge_value) + " ${curCharge.toInt()}%" + "\n" +
+                                        getString(R.string.battery_charge_left) + " ${percentsLeft.toInt()}%" + "\n" +
+                                        getString(R.string.battery_percent_discharge_at_time) + " ${ratio.toInt()}%" + "\n\n" +
+                                        getString(R.string.time_left_value) + " ${timeAfterCharge.toInt()}" + "\n" +
+                                        getString(R.string.should_enough_time_with_full_charge) + " ${shouldEnough.toInt()}" + "\n" +
+                                        getString(R.string.should_enough_time_with_current_charge) + " $remainingInt2var1"
+                            )
+                        builder.show().toString().toBoolean()
                     } else {
-                        val submitButtonText =
-                            "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_many_time)
-                        submit_button.text = submitButtonText
-                    }
+                        if (penultimateDigit2var2 == 1) {
+                            val submitButtonText =
+                                "$remainingInt2var2 " + getString(R.string.simple_result_many_time)
+                            submit_button.text = submitButtonText
+                            return true
+                        }
+                        if (lastDigit2var2 == 1) {
+                            val submitButtonText =
+                                "$remainingInt2var2 " + getString(R.string.simple_result_one_time)
+                            submit_button.text = submitButtonText
+                        } else if ((lastDigit2var2 == 2) || (lastDigit2var2 == 3) || (lastDigit2var2 == 4)) {
+                            val submitButtonText =
+                                "$remainingInt2var2 " + getString(R.string.simple_result_some_time)
+                            submit_button.text = submitButtonText
+                        } else {
+                            val submitButtonText =
+                                "$remainingInt2var2 " + getString(R.string.simple_result_many_time)
+                            submit_button.text = submitButtonText
+                        }
 
-                    val builder = AlertDialog.Builder(this)
-                        .setTitle(R.string.advanced_result_title)
-                        .setMessage(
-                            getString(R.string.current_charge_value) + " ${curCharge.toInt()}%" + "\n" +
-                                    getString(R.string.battery_charge_left) + " ${percentsLeft.toInt()}%" + "\n" +
-                                    getString(R.string.battery_percent_discharge_at_time) + " ${ratio.toInt()}%" + "\n\n" +
-                                    getString(R.string.time_left_value) + " ${timeAfterCharge.toInt()}" + "\n" +
-                                    getString(R.string.should_enough_time_with_full_charge) + " ${shouldEnough.toInt()}" + "\n" +
-                                    getString(R.string.should_enough_time_with_current_charge) + " $remainingInt ~ $remainingInt2"
-                        )
-                    builder.show().toString().toBoolean()
+                        val builder = AlertDialog.Builder(this)
+                            .setTitle(R.string.advanced_result_title)
+                            .setMessage(
+                                getString(R.string.current_charge_value) + " ${curCharge.toInt()}%" + "\n" +
+                                        getString(R.string.battery_charge_left) + " ${percentsLeft.toInt()}%" + "\n" +
+                                        getString(R.string.battery_percent_discharge_at_time) + " ${ratio.toInt()}%" + "\n\n" +
+                                        getString(R.string.time_left_value) + " ${timeAfterCharge.toInt()}" + "\n" +
+                                        getString(R.string.should_enough_time_with_full_charge) + " ${shouldEnough.toInt()}" + "\n" +
+                                        getString(R.string.should_enough_time_with_current_charge) + " $remainingInt2var2"
+                            )
+                        builder.show().toString().toBoolean()
+                    }
                 }
 
                 val valuesChest =
