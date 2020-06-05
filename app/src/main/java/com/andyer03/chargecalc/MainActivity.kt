@@ -419,9 +419,9 @@ class MainActivity : AppCompatActivity() {
                                     submit_button.text = submitButtonText
                                 }
                             } else {
-                                val ratio2: Float = liveTime.toFloat() / (percentsLeft / timeAfterCharge)
-                                val shouldEnough2: Float = (remaining + ratio2) / 2
-                                val remainingInt2: Int = shouldEnough2.toInt()
+                                val ratio2: Float =
+                                    liveTime.toFloat() / (percentsLeft / timeAfterCharge)
+                                val remainingInt2: Int = ratio2.toInt()
 
                                 val lastDigit2: Int = remainingInt2 % 10
                                 val penultimateDigitCalc2 = (remainingInt2 - lastDigit2) / 10
@@ -429,21 +429,21 @@ class MainActivity : AppCompatActivity() {
 
                                 if (penultimateDigit2 == 1) {
                                     val submitButtonText =
-                                        "$remainingInt2 " + getString(R.string.simple_result_many_time)
+                                        "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_many_time)
                                     submit_button.text = submitButtonText
                                     return
                                 }
                                 if (lastDigit2 == 1) {
                                     val submitButtonText =
-                                        "$remainingInt2 " + getString(R.string.simple_result_one_time)
+                                        "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_one_time)
                                     submit_button.text = submitButtonText
                                 } else if ((lastDigit2 == 2) || (lastDigit2 == 3) || (lastDigit2 == 4)) {
                                     val submitButtonText =
-                                        "$remainingInt2 " + getString(R.string.simple_result_some_time)
+                                        "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_some_time)
                                     submit_button.text = submitButtonText
                                 } else {
                                     val submitButtonText =
-                                        "$remainingInt2 " + getString(R.string.simple_result_many_time)
+                                        "$remainingInt ~ $remainingInt2 " + getString(R.string.simple_result_many_time)
                                     submit_button.text = submitButtonText
                                 }
                             }
