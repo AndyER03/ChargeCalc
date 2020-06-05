@@ -190,6 +190,7 @@ class MainActivity : AppCompatActivity() {
             false -> {
                 estimated_autonomy_days_number_header.visibility = View.GONE
                 estimated_autonomy_days_number_input.visibility = View.GONE
+                liveTimeFieldClear()
             }
         }
 
@@ -337,6 +338,20 @@ class MainActivity : AppCompatActivity() {
             }
             false -> {
                 time_left_value_input.text.clear()
+            }
+        }
+        current_charge_value_input.requestFocus()
+    }
+
+    private fun liveTimeFieldClear() {
+        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+
+        when (sp.getBoolean("alternative_clear_switch", false)) {
+            true -> {
+                estimated_autonomy_days_number_input.text = null
+            }
+            false -> {
+                estimated_autonomy_days_number_input.text.clear()
             }
         }
         current_charge_value_input.requestFocus()
