@@ -419,11 +419,9 @@ class MainActivity : AppCompatActivity() {
                                     submit_button.text = submitButtonText
                                 }
                             } else {
-                                val ratio2: Float = (percentsLeft / liveTime.toFloat()) * timeAfterCharge
-                                val shouldEnough2: Float = 100 / ratio2
-                                val remaining2: Float = shouldEnough2 - timeAfterCharge
-                                val estimated2: Float = (remaining + remaining2) / 2
-                                val remainingInt2: Int = estimated2.toInt()
+                                val ratio2: Float = liveTime.toFloat() / (percentsLeft / timeAfterCharge)
+                                val shouldEnough2: Float = (remaining + ratio2) / 2
+                                val remainingInt2: Int = shouldEnough2.toInt()
 
                                 val lastDigit2: Int = remainingInt2 % 10
                                 val penultimateDigitCalc2 = (remainingInt2 - lastDigit2) / 10
