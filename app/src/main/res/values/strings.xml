@@ -64,7 +64,6 @@
     <string name="functionality_title_preference">Functionality</string>
     <string name="notification_title_switch">Ongoing notification</string>
     <string name="notification_summary">Show notification with current result</string>
-    <string name="last_result">Last result:</string>
     <string-array name="background">
         <item>Default</item>
         <item>Blue</item>

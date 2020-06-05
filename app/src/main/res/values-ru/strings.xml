@@ -64,7 +64,6 @@
     <string name="functionality_title_preference">Функционал</string>
     <string name="notification_title_switch">Постоянное уведомление</string>
     <string name="notification_summary">Показать уведомление с текущим результатом</string>
-    <string name="last_result">Последний результат:</string>
     <string-array name="background">
         <item>По умолчанию</item>
         <item>Синий</item>
