@@ -284,10 +284,12 @@ class MainActivity : AppCompatActivity() {
             true -> {
                 current_charge_value_input.text = null
                 time_left_value_input.text = null
+                estimated_autonomy_days_number_input.text = null
             }
             false -> {
                 current_charge_value_input.text.clear()
                 time_left_value_input.text.clear()
+                estimated_autonomy_days_number_input.text.clear()
             }
         }
         current_charge_value_input.requestFocus()
@@ -316,6 +318,20 @@ class MainActivity : AppCompatActivity() {
             }
             false -> {
                 time_left_value_input.text.clear()
+            }
+        }
+        current_charge_value_input.requestFocus()
+    }
+
+    private fun liveTimeFieldClear() {
+        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+
+        when (sp.getBoolean("alternative_clear_switch", false)) {
+            true -> {
+                estimated_autonomy_days_number_input.text = null
+            }
+            false -> {
+                estimated_autonomy_days_number_input.text.clear()
             }
         }
         current_charge_value_input.requestFocus()
@@ -378,13 +394,19 @@ class MainActivity : AppCompatActivity() {
                     true -> {
                         val curCharge = current_charge_value_input.text.toString().toFloat()
                         val timeAfterCharge = time_left_value_input.text.toString().toFloat()
+                        val liveTime = estimated_autonomy_days_number_input.toString().toFloat()
                         val percentsLeft: Float = 100 - curCharge
                         val ratio: Float = percentsLeft / timeAfterCharge
                         val shouldEnough: Float = 100 / ratio
                         val remaining: Float = shouldEnough - timeAfterCharge
                         val remainingInt: Int = remaining.toInt()
 
-                        if (remaining < 0) {
+                        val ratio2: Float = percentsLeft / liveTime * timeAfterCharge
+                        val shouldEnough2: Float = 100 / ratio2
+                        val remaining2: Float = shouldEnough2 - timeAfterCharge
+                        val remainingInt2: Int = remaining2.toInt()
+
+                        if ((remaining < 0) || (remaining2 < 0)) {
                             submit_button.text = getString(R.string.warning_error_calculation)
                             Handler().postDelayed({
                                 restoreButton(view = view)
@@ -395,24 +417,50 @@ class MainActivity : AppCompatActivity() {
                             val penultimateDigitCalc = (remainingInt - lastDigit) / 10
                             val penultimateDigit: Int = penultimateDigitCalc % 10
 
-                            if (penultimateDigit == 1) {
-                                val submitButtonText =
-                                    "$remainingInt " + getString(R.string.simple_result_many_time)
-                                submit_button.text = submitButtonText
-                                return
-                            }
-                            if (lastDigit == 1) {
-                                val submitButtonText =
-                                    "$remainingInt " + getString(R.string.simple_result_one_time)
-                                submit_button.text = submitButtonText
-                            } else if ((lastDigit == 2) || (lastDigit == 3) || (lastDigit == 4)) {
-                                val submitButtonText =
-                                    "$remainingInt " + getString(R.string.simple_result_some_time)
-                                submit_button.text = submitButtonText
+                            if (estimated_autonomy_days_number_input.text.toString() == "") {
+                                if (penultimateDigit == 1) {
+                                    val submitButtonText =
+                                        "$remainingInt " + getString(R.string.simple_result_many_time)
+                                    submit_button.text = submitButtonText
+                                    return
+                                }
+                                if (lastDigit == 1) {
+                                    val submitButtonText =
+                                        "$remainingInt " + getString(R.string.simple_result_one_time)
+                                    submit_button.text = submitButtonText
+                                } else if ((lastDigit == 2) || (lastDigit == 3) || (lastDigit == 4)) {
+                                    val submitButtonText =
+                                        "$remainingInt " + getString(R.string.simple_result_some_time)
+                                    submit_button.text = submitButtonText
+                                } else {
+                                    val submitButtonText =
+                                        "$remainingInt " + getString(R.string.simple_result_many_time)
+                                    submit_button.text = submitButtonText
+                                }
                             } else {
-                                val submitButtonText =
-                                    "$remainingInt " + getString(R.string.simple_result_many_time)
-                                submit_button.text = submitButtonText
+                                val lastDigit2: Int = remainingInt2 % 10
+                                val penultimateDigitCalc2 = (remainingInt2 - lastDigit2) / 10
+                                val penultimateDigit2: Int = penultimateDigitCalc2 % 10
+
+                                if (penultimateDigit2 == 1) {
+                                    val submitButtonText =
+                                        "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_many_time)
+                                    submit_button.text = submitButtonText
+                                    return
+                                }
+                                if (lastDigit2 == 1) {
+                                    val submitButtonText =
+                                        "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_one_time)
+                                    submit_button.text = submitButtonText
+                                } else if ((lastDigit2 == 2) || (lastDigit2 == 3) || (lastDigit2 == 4)) {
+                                    val submitButtonText =
+                                        "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_some_time)
+                                    submit_button.text = submitButtonText
+                                } else {
+                                    val submitButtonText =
+                                        "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_many_time)
+                                    submit_button.text = submitButtonText
+                                }
                             }
 
                             val valuesChest =
@@ -428,7 +476,7 @@ class MainActivity : AppCompatActivity() {
                             )
                             editor.putString(
                                 "remainingTime",
-                                remainingInt.toString().trim()
+                                submit_button.text.toString().trim()
                             )
                             editor.apply()
 
@@ -472,11 +520,17 @@ class MainActivity : AppCompatActivity() {
                 // Calculating
                 val curCharge = current_charge_value_input.text.toString().toFloat()
                 val timeAfterCharge = time_left_value_input.text.toString().toFloat()
+                val liveTime = estimated_autonomy_days_number_input.toString().toFloat()
                 val percentsLeft: Float = 100 - curCharge
                 val ratio: Float = percentsLeft / timeAfterCharge
                 val shouldEnough: Float = 100 / ratio
                 val remaining: Float = shouldEnough - timeAfterCharge
                 val remainingInt: Int = remaining.toInt()
+
+                val ratio2: Float = percentsLeft / liveTime * timeAfterCharge
+                val shouldEnough2: Float = 100 / ratio2
+                val remaining2: Float = shouldEnough2 - timeAfterCharge
+                val remainingInt2: Int = remaining2.toInt()
 
                 val builder = AlertDialog.Builder(this)
                     .setTitle(R.string.advanced_result_title)
@@ -490,7 +544,57 @@ class MainActivity : AppCompatActivity() {
                     )
                 builder.show().toString().toBoolean()
 
-                val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
+
+                val lastDigit: Int = remainingInt % 10
+                val penultimateDigitCalc = (remainingInt - lastDigit) / 10
+                val penultimateDigit: Int = penultimateDigitCalc % 10
+
+                if (estimated_autonomy_days_number_input.text.toString() == "") {
+                    if (penultimateDigit == 1) {
+                        val submitButtonText =
+                            "$remainingInt " + getString(R.string.simple_result_many_time)
+                        submit_button.text = submitButtonText
+                    }
+                    if (lastDigit == 1) {
+                        val submitButtonText =
+                            "$remainingInt " + getString(R.string.simple_result_one_time)
+                        submit_button.text = submitButtonText
+                    } else if ((lastDigit == 2) || (lastDigit == 3) || (lastDigit == 4)) {
+                        val submitButtonText =
+                            "$remainingInt " + getString(R.string.simple_result_some_time)
+                        submit_button.text = submitButtonText
+                    } else {
+                        val submitButtonText =
+                            "$remainingInt " + getString(R.string.simple_result_many_time)
+                        submit_button.text = submitButtonText
+                    }
+                } else {
+                    val lastDigit2: Int = remainingInt2 % 10
+                    val penultimateDigitCalc2 = (remainingInt2 - lastDigit2) / 10
+                    val penultimateDigit2: Int = penultimateDigitCalc2 % 10
+
+                    if (penultimateDigit2 == 1) {
+                        val submitButtonText =
+                            "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_many_time)
+                        submit_button.text = submitButtonText
+                    }
+                    if (lastDigit2 == 1) {
+                        val submitButtonText =
+                            "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_one_time)
+                        submit_button.text = submitButtonText
+                    } else if ((lastDigit2 == 2) || (lastDigit2 == 3) || (lastDigit2 == 4)) {
+                        val submitButtonText =
+                            "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_some_time)
+                        submit_button.text = submitButtonText
+                    } else {
+                        val submitButtonText =
+                            "$remainingInt " + "-" + "$remainingInt2 " + getString(R.string.simple_result_many_time)
+                        submit_button.text = submitButtonText
+                    }
+                }
+
+                val valuesChest =
+                    getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
                 val editor = valuesChest.edit()
                 editor.putInt(
                     "curCharge",
@@ -502,18 +606,18 @@ class MainActivity : AppCompatActivity() {
                 )
                 editor.putString(
                     "remainingTime",
-                    remainingInt.toString().trim()
+                    submit_button.text.toString().trim()
                 )
                 editor.apply()
 
                 notification()
 
-                return true
             }
             false -> {
                 return false
             }
         }
+        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
