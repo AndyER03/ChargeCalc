@@ -26,7 +26,7 @@
     <string name="toast_values_not_reset">В памяти нет значений для сброса!</string>
     <string name="ui_title_preference">Интерфейс</string>
     <string name="version_title">Версия:</string>
-    <string name="bg_title_preference">Фон приложения</string>
+    <string name="bg_title_preference">Тема приложения</string>
     <string name="other_title_preference">Прочее</string>
     <string name="vibration_title_switch">Вибрация</string>
     <string name="vibration_summary">Вибрировать при длительном нажатии кнопки сохранения</string>

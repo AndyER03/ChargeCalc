@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.*
 import android.view.Menu
@@ -46,11 +47,12 @@ class MainActivity : AppCompatActivity() {
             current_charge_value_input.requestFocus()
             allFieldsClear()
         }
-
     }
 
     override fun onResume() {
         super.onResume()
+
+        notification()
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -236,15 +238,42 @@ class MainActivity : AppCompatActivity() {
         val timeLeft = valuesChest.getString("timeLeft", "0").toString()
         val remainingInt = valuesChest.getString("remainingTime", "0").toString()
         var color = 0
-        when {
-            curCharge > 31 -> {
-                color = 0xFF00FF00.toInt()
+        when (sp.getString("bg_option", "1")) {
+            "1" -> {
+                color = 0xFF000000.toInt()
             }
-            curCharge in 16..30 -> {
-                color = 0xFFFFFF00.toInt()
+            "2" -> {
+                color = 0xFF5C3F9F.toInt()
             }
-            curCharge in 1..15 -> {
-                color = 0xFFFF0000.toInt()
+            "3" -> {
+                color = 0xFFA81A84.toInt()
+            }
+            "4" -> {
+                color = 0xFF009FB3.toInt()
+            }
+            "5" -> {
+                color = 0xFFE69152.toInt()
+            }
+            "6" -> {
+                color = 0xFFDD9C00.toInt()
+            }
+            "7" -> {
+                color = 0xFF5F981C.toInt()
+            }
+            "8" -> {
+                color = 0xFF9C27B0.toInt()
+            }
+            "9" -> {
+                color = 0xFF673AB7.toInt()
+            }
+            "10" -> {
+                color = 0xFF0092A5.toInt()
+            }
+            "11" -> {
+                color = 0xFF673AB7.toInt()
+            }
+            "12" -> {
+                color = 0xFF000000.toInt()
             }
         }
 
@@ -264,6 +293,12 @@ class MainActivity : AppCompatActivity() {
 
                     val notificationBuilder = NotificationCompat.Builder(this, name)
                         .setChannelId(channelId)
+                        .setLargeIcon(
+                            BitmapFactory.decodeResource(
+                                resources,
+                                R.mipmap.ic_launcher
+                            )
+                        )
                         .setSmallIcon(R.drawable.ic_notification)
                         .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
                         .setContentText("$curCharge%")
@@ -277,6 +312,12 @@ class MainActivity : AppCompatActivity() {
                     notificationManager.notify(1, notificationBuilder.build())
                 } else {
                     val notificationBuilder = NotificationCompat.Builder(this)
+                        .setLargeIcon(
+                            BitmapFactory.decodeResource(
+                                resources,
+                                R.mipmap.ic_launcher
+                            )
+                        )
                         .setSmallIcon(R.drawable.ic_notification)
                         .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
                         .setContentText("$curCharge%")
