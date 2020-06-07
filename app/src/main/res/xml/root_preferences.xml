@@ -48,13 +48,6 @@
 
         <SwitchPreference
             android:defaultValue="false"
-            android:icon="@drawable/ic_autonomy_field_24dp"
-            android:key="estimated_autonomy_days_switch"
-            android:summary="@string/estimated_autonomy_days_number_summary"
-            android:title="@string/estimated_autonomy_days_number_switch" />
-
-        <SwitchPreference
-            android:defaultValue="false"
             android:icon="@drawable/ic_clear_24dp"
             android:key="clear_btn_switch"
             android:title="@string/show_clear_title_switch" />

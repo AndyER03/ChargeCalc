@@ -20,8 +20,8 @@
     <string name="about_title">About</string>
     <string name="simple_result_one_time">day</string>
     <string name="simple_result_some_time">days</string>
-    <string name="save_values_btn">Save</string>
-    <string name="restore_values_btn">Restore</string>
+    <string name="save_values_btn">Save values</string>
+    <string name="restore_values_btn">Restore values</string>
     <string name="toast_values_reset">Values in memory has been reset!</string>
     <string name="toast_values_not_reset">No values for reset in memory!</string>
     <string name="ui_title_preference">Interface</string>
@@ -56,7 +56,7 @@
     <string name="exit_title">Exit</string>
     <string name="exit_dialog">Are you sure you want to exit?</string>
     <string name="no_button">No</string>
-    <string name="clear_fields">Clear</string>
+    <string name="clear_fields">Clear fields</string>
     <string name="alternative_clear_switch">Spare fields clear method</string>
     <string name="alternative_clear_summary">Turn on if clear button does not work</string>
     <string name="always_advanced_result_switch">Always show advanced result</string>
@@ -64,6 +64,7 @@
     <string name="functionality_title_preference">Functionality</string>
     <string name="notification_title_switch">Ongoing notification</string>
     <string name="notification_summary">Show notification with current result</string>
+    <string name="last_result">Last result:</string>
     <string-array name="background">
         <item>Default</item>
         <item>Blue</item>
@@ -94,9 +95,4 @@
     </string-array>
     <string name="result_channel_name">Autonomy calculation result</string>
     <string name="result_channel_description">Show autonomy result</string>
-    <string name="estimated_autonomy_days_number_header">Estimated autonomy days number</string>
-    <string name="estimated_autonomy_days_number_hint">Days number (not important)</string>
-    <string name="estimated_autonomy_days_number_switch">Autonomy days number field</string>
-    <string name="estimated_autonomy_days_number_summary">Helps to get more accurate value</string>
-    <string name="should_enough_time_with_current_charge_notification">Days left:</string>
 </resources>

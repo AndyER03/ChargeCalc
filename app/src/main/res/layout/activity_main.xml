@@ -6,6 +6,7 @@
     android:id="@+id/MainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".MainActivity">
 
     <TextView
@@ -69,93 +70,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_left_header" />
 
-    <TextView
-        android:id="@+id/estimated_autonomy_days_number_header"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="@string/estimated_autonomy_days_number_header"
-        android:textColor="@color/mainText"
-        android:textStyle="bold"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="clickSubmit"
+        android:text="@string/submit_button"
+        android:textColor="@color/gray"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_left_value_input" />
 
-    <EditText
-        android:id="@+id/estimated_autonomy_days_number_input"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/estimated_autonomy_days_number_hint"
-        android:inputType="number"
-        android:maxLength="3"
-        android:onClick="restoreButton"
-        android:textAlignment="center"
-        android:textColor="@color/mainText"
-        android:textColorHint="@color/textAlt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/estimated_autonomy_days_number_header" />
-
-    <TableRow
-        android:id="@+id/firstLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_bg"
+        android:text="@string/save_values_btn"
+        android:textColor="@color/gray"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/estimated_autonomy_days_number_input">
+        app:layout_constraintTop_toBottomOf="@+id/submit_button" />
 
-        <Button
-            android:id="@+id/submit_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_bg"
-            android:clickable="true"
-            android:focusable="true"
-            android:minWidth="200dp"
-            android:onClick="clickSubmit"
-            android:text="@string/submit_button"
-            android:textColor="@color/gray"
-            android:textSize="18sp" />
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/clearBtn"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_bg"
+        android:text="@string/clear_fields"
+        android:textColor="@color/gray"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstLine">
-
-        <Button
-            android:id="@+id/saveBtn"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/btn_bg"
-            android:minWidth="200dp"
-            android:text="@string/save_values_btn"
-            android:textColor="@color/gray"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/clearBtn"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:background="@drawable/btn_bg"
-            android:minWidth="150dp"
-            android:text="@string/clear_fields"
-            android:textColor="@color/gray"
-            android:textSize="18sp" />
-
-    </TableRow>
+        app:layout_constraintTop_toBottomOf="@+id/saveBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
