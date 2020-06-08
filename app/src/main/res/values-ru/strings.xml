@@ -20,9 +20,9 @@
     <string name="about_title">О программе</string>
     <string name="simple_result_one_time">день</string>
     <string name="simple_result_some_time">дня</string>
-    <string name="save_values_btn">Сохранить</string>
-    <string name="restore_values_btn">Восстановить</string>
-    <string name="toast_values_reset">Значения в памяти сброшены!</string>
+    <string name="save_values_btn">Запомнить</string>
+    <string name="restore_values_btn">Вставить</string>
+    <string name="toast_values_reset">Значения в памяти сброшены</string>
     <string name="toast_values_not_reset">В памяти нет значений для сброса!</string>
     <string name="ui_title_preference">Интерфейс</string>
     <string name="version_title">Версия:</string>
@@ -99,4 +99,5 @@
     <string name="estimated_autonomy_days_number_switch">Поле ввода количества дней автономности</string>
     <string name="estimated_autonomy_days_number_summary">Поможет получить более точное значение</string>
     <string name="should_enough_time_with_current_charge_notification">До разрядки:</string>
+    <string name="notification_values_reset">Значения уведомления сброшены</string>
 </resources>

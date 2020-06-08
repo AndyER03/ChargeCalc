@@ -47,6 +47,28 @@ class MainActivity : AppCompatActivity() {
             current_charge_value_input.requestFocus()
             allFieldsClear()
         }
+
+        clearBtn.setOnLongClickListener {
+            val editor = valuesChest.edit()
+            editor.putInt(
+                "curCharge",
+                0
+            )
+            editor.putString(
+                "timeLeft",
+                0.toString().trim()
+            )
+            editor.putString(
+                "remainingTime",
+                0.toString().trim()
+            )
+            editor.apply()
+            notification()
+            Toast.makeText(this, R.string.notification_values_reset, Toast.LENGTH_SHORT).show()
+            vibration()
+
+            return@setOnLongClickListener true
+        }
     }
 
     override fun onResume() {
@@ -114,21 +136,7 @@ class MainActivity : AppCompatActivity() {
                 saveBtn.text = getString(R.string.save_values_btn)
                 Toast.makeText(this, R.string.toast_values_reset, Toast.LENGTH_SHORT).show()
 
-                val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-
-                if (vibrationSwitch) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        v.vibrate(
-                            VibrationEffect.createOneShot(
-                                100,
-                                VibrationEffect.DEFAULT_AMPLITUDE
-                            )
-                        )
-                    } else {
-                        //deprecated in API 26
-                        v.vibrate(100)
-                    }
-                }
+                vibration()
             }
             return@setOnLongClickListener true
         }
@@ -226,6 +234,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun vibration() {
+        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        val vibrationSwitch = sp.getBoolean("vibration_switch", true)
+        val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+        if (vibrationSwitch) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                v.vibrate(
+                    VibrationEffect.createOneShot(
+                        100,
+                        VibrationEffect.DEFAULT_AMPLITUDE
+                    )
+                )
+            } else {
+                //deprecated in API 26
+                v.vibrate(100)
+            }
+        }
+    }
+
     fun restoreButton(view: View) {
         submit_button.text = getString(R.string.submit_button)
     }
@@ -239,9 +267,6 @@ class MainActivity : AppCompatActivity() {
         val remainingInt = valuesChest.getString("remainingTime", "0").toString()
         var color = 0
         when (sp.getString("bg_option", "1")) {
-            "1" -> {
-                color = 0xFF000000.toInt()
-            }
             "2" -> {
                 color = 0xFF5C3F9F.toInt()
             }
@@ -255,7 +280,7 @@ class MainActivity : AppCompatActivity() {
                 color = 0xFFE69152.toInt()
             }
             "6" -> {
-                color = 0xFFDD9C00.toInt()
+                color = 0xFFFF9800.toInt()
             }
             "7" -> {
                 color = 0xFF5F981C.toInt()
@@ -270,7 +295,7 @@ class MainActivity : AppCompatActivity() {
                 color = 0xFF0092A5.toInt()
             }
             "11" -> {
-                color = 0xFF673AB7.toInt()
+                color = 0xFF00A7D1.toInt()
             }
             "12" -> {
                 color = 0xFF000000.toInt()
@@ -494,7 +519,8 @@ class MainActivity : AppCompatActivity() {
                                     submit_button.text = submitButtonText
                                 }
                             } else {
-                                val remaining2: Float = ((remaining / liveTime.toFloat()) * (shouldEnough - remaining)) + (liveTime.toFloat() / 2)
+                                val remaining2: Float =
+                                    ((remaining / liveTime.toFloat()) * (shouldEnough - remaining)) + (liveTime.toFloat() / 2)
                                 val remainingInt2: Int = remaining2.toInt()
 
                                 val lastDigit2var1: Int = remainingInt2 % 10

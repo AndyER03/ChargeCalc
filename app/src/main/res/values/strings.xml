@@ -20,9 +20,9 @@
     <string name="about_title">About</string>
     <string name="simple_result_one_time">day</string>
     <string name="simple_result_some_time">days</string>
-    <string name="save_values_btn">Save</string>
-    <string name="restore_values_btn">Restore</string>
-    <string name="toast_values_reset">Values in memory has been reset!</string>
+    <string name="save_values_btn">Remember</string>
+    <string name="restore_values_btn">Paste</string>
+    <string name="toast_values_reset">Values in memory has been reset</string>
     <string name="toast_values_not_reset">No values for reset in memory!</string>
     <string name="ui_title_preference">Interface</string>
     <string name="version_title">Build version:</string>
@@ -99,4 +99,5 @@
     <string name="estimated_autonomy_days_number_switch">Autonomy days number field</string>
     <string name="estimated_autonomy_days_number_summary">Helps to get more accurate value</string>
     <string name="should_enough_time_with_current_charge_notification">Days left:</string>
+    <string name="notification_values_reset">Notification values ​​reset</string>
 </resources>
