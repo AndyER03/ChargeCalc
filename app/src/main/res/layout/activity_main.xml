@@ -116,7 +116,7 @@
             android:background="@drawable/btn_bg"
             android:clickable="true"
             android:focusable="true"
-            android:minWidth="200dp"
+            android:minWidth="160dp"
             android:onClick="clickSubmit"
             android:text="@string/submit_button"
             android:textColor="@color/gray"
@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:background="@drawable/btn_bg"
-            android:minWidth="200dp"
+            android:minWidth="160dp"
             android:text="@string/save_values_btn"
             android:textColor="@color/gray"
             android:textSize="18sp" />
@@ -151,7 +151,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:background="@drawable/btn_bg"
-            android:minWidth="150dp"
+            android:minWidth="130dp"
+            android:nestedScrollingEnabled="false"
             android:text="@string/clear_fields"
             android:textColor="@color/gray"
             android:textSize="18sp" />
