@@ -100,4 +100,6 @@
     <string name="estimated_autonomy_days_number_summary">Helps to get more accurate value</string>
     <string name="should_enough_time_with_current_charge_notification">Days left:</string>
     <string name="notification_values_reset">Notification values ​​reset</string>
+    <string name="start_on_startup_switch">Start app on startup</string>
+    <string name="start_on_startup_summary">Starting app when device is started up</string>
 </resources>

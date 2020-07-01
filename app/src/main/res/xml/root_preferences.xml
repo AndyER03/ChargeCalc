@@ -85,6 +85,13 @@
             android:summary="@string/vibration_summary"
             android:title="@string/vibration_title_switch" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_start_up_24"
+            android:key="start_on_startup"
+            android:summary="@string/start_on_startup_summary"
+            android:title="@string/start_on_startup_switch" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

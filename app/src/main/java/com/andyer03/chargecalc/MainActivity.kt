@@ -1,5 +1,6 @@
 package com.andyer03.chargecalc
 
+import RunServiceOnBoot
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -80,6 +81,18 @@ class MainActivity : AppCompatActivity() {
 
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
+        val startupIntent: Intent
+
+        when (sp.getBoolean("bg_option", false)) {
+            true -> {
+                startupIntent = Intent(this@MainActivity, RunServiceOnBoot::class.java)
+                startService(startupIntent)
+            }
+            false -> {
+                startupIntent = Intent(this@MainActivity, MainActivity::class.java)
+            }
+        }
+
 
         saveBtn.setOnClickListener {
             if (valuesChest.getString("counter", "0").toString() == "0") {

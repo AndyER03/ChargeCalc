@@ -100,4 +100,6 @@
     <string name="estimated_autonomy_days_number_summary">Поможет получить более точное значение</string>
     <string name="should_enough_time_with_current_charge_notification">До разрядки:</string>
     <string name="notification_values_reset">Значения уведомления сброшены</string>
+    <string name="start_on_startup_switch">Автозапуск приложения</string>
+    <string name="start_on_startup_summary">Запуск приложения вместе с устройством</string>
 </resources>
