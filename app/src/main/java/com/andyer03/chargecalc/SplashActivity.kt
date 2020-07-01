@@ -55,6 +55,9 @@ class SplashActivity : AppCompatActivity() {
                         SplashActivity.background = getDrawable(R.drawable.gradient_10)
                     }
                     "12" -> {
+                        SplashActivity.background = getDrawable(R.drawable.gradient_11)
+                    }
+                    "13" -> {
                         SplashActivity.background = getDrawable(R.color.black)
                     }
                 }
@@ -95,6 +98,16 @@ class SplashActivity : AppCompatActivity() {
                         SplashActivity.background = getDrawable(R.drawable.gradient_10)
                     }
                     "12" -> {
+                        SplashActivity.background = getDrawable(R.drawable.gradient_11)
+                    }
+                    "13" -> {
+                        SplashActivity.background = getDrawable(R.drawable.gradient_12)
+                    }
+
+                    "14" -> {
+                        SplashActivity.background = getDrawable(R.drawable.gradient_13)
+                    }
+                    "15" -> {
                         SplashActivity.background = getDrawable(R.color.black)
                     }
                 }

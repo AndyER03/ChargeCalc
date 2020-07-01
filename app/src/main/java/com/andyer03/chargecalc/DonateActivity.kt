@@ -272,6 +272,18 @@ class DonateActivity : AppCompatActivity() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
             "12" -> {
+                DonateLayout.background = getDrawable(R.drawable.gradient_11)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            "13" -> {
+                DonateLayout.background = getDrawable(R.drawable.gradient_12)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            "14" -> {
+                DonateLayout.background = getDrawable(R.drawable.gradient_13)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            "15" -> {
                 DonateLayout.background = getDrawable(R.color.black)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }

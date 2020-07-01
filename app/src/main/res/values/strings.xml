@@ -76,6 +76,9 @@
         <item>Versus</item>
         <item>Rainbow</item>
         <item>Breeze</item>
+        <item>Apple</item>
+        <item>Purple</item>
+        <item>Mauve</item>
         <item>Black</item>
     </string-array>
     <string-array name="background_value">
@@ -91,6 +94,9 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
     </string-array>
     <string name="result_channel_name">Autonomy calculation result</string>
     <string name="result_channel_description">Show autonomy result</string>

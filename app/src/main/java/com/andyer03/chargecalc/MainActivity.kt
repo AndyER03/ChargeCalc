@@ -186,6 +186,18 @@ class MainActivity : AppCompatActivity() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
             "12" -> {
+                MainLayout.background = getDrawable(R.drawable.gradient_11)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            "13" -> {
+                MainLayout.background = getDrawable(R.drawable.gradient_12)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            "14" -> {
+                MainLayout.background = getDrawable(R.drawable.gradient_13)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+            "15" -> {
                 MainLayout.background = getDrawable(R.color.black)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
