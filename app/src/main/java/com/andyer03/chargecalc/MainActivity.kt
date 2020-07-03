@@ -309,6 +309,15 @@ class MainActivity : AppCompatActivity() {
                 color = 0xFF00A7D1.toInt()
             }
             "12" -> {
+                color = 0xFF5F981C.toInt()
+            }
+            "13" -> {
+                color = 0xFF9C27B0.toInt()
+            }
+            "14" -> {
+                color = 0xFF9C27B0.toInt()
+            }
+            "15" -> {
                 color = 0xFF000000.toInt()
             }
         }
