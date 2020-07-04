@@ -1,5 +1,6 @@
 package com.andyer03.chargecalc
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -269,6 +270,7 @@ class MainActivity : AppCompatActivity() {
         submit_button.text = getString(R.string.submit_button)
     }
 
+    @SuppressLint("InlinedApi")
     private fun notification() {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
@@ -276,49 +278,83 @@ class MainActivity : AppCompatActivity() {
         val curCharge = valuesChest.getInt("curCharge", 0)
         val timeLeft = valuesChest.getString("timeLeft", "0").toString()
         val remainingInt = valuesChest.getString("remainingTime", "0").toString()
-        var color = 0
+        var notificationColor = 0
         when (sp.getString("bg_option", "1")) {
             "2" -> {
-                color = 0xFF5C3F9F.toInt()
+                notificationColor = 0xFF5C3F9F.toInt()
             }
             "3" -> {
-                color = 0xFFA81A84.toInt()
+                notificationColor = 0xFFA81A84.toInt()
             }
             "4" -> {
-                color = 0xFF009FB3.toInt()
+                notificationColor = 0xFF009FB3.toInt()
             }
             "5" -> {
-                color = 0xFFE69152.toInt()
+                notificationColor = 0xFFE69152.toInt()
             }
             "6" -> {
-                color = 0xFFFF9800.toInt()
+                notificationColor = 0xFFFF9800.toInt()
             }
             "7" -> {
-                color = 0xFF5F981C.toInt()
+                notificationColor = 0xFF5F981C.toInt()
             }
             "8" -> {
-                color = 0xFF9C27B0.toInt()
+                notificationColor = 0xFF9C27B0.toInt()
             }
             "9" -> {
-                color = 0xFF673AB7.toInt()
+                notificationColor = 0xFF673AB7.toInt()
             }
             "10" -> {
-                color = 0xFF0092A5.toInt()
+                notificationColor = 0xFF0092A5.toInt()
             }
             "11" -> {
-                color = 0xFF00A7D1.toInt()
+                notificationColor = 0xFF00A7D1.toInt()
             }
             "12" -> {
-                color = 0xFF5F981C.toInt()
+                notificationColor = 0xFF5F981C.toInt()
             }
             "13" -> {
-                color = 0xFF9C27B0.toInt()
+                notificationColor = 0xFF9C27B0.toInt()
             }
             "14" -> {
-                color = 0xFF9C27B0.toInt()
+                notificationColor = 0xFF9C27B0.toInt()
             }
             "15" -> {
-                color = 0xFF000000.toInt()
+                notificationColor = 0xFF000000.toInt()
+            }
+        }
+
+        val notificationOngoing = when (sp.getBoolean("ongoing_notification_switch", false)) {
+            true -> {
+                true
+            }
+            false -> {
+                false
+            }
+        }
+        
+        var notificationPriority = 3
+        var notificationImportance = NotificationManager.IMPORTANCE_NONE
+        when (sp.getString("notification_priority_option", "3")) {
+            "1" -> {
+                notificationPriority = NotificationCompat.PRIORITY_MAX
+                notificationImportance = NotificationManager.IMPORTANCE_MAX
+            }
+            "2" -> {
+                notificationPriority = NotificationCompat.PRIORITY_HIGH
+                notificationImportance = NotificationManager.IMPORTANCE_HIGH
+            }
+            "3" -> {
+                notificationPriority = NotificationCompat.PRIORITY_DEFAULT
+                notificationImportance = NotificationManager.IMPORTANCE_DEFAULT
+            }
+            "4" -> {
+                notificationPriority = NotificationCompat.PRIORITY_LOW
+                notificationImportance = NotificationManager.IMPORTANCE_LOW
+            }
+            "5" -> {
+                notificationPriority = NotificationCompat.PRIORITY_MIN
+                notificationImportance = NotificationManager.IMPORTANCE_MIN
             }
         }
 
@@ -329,7 +365,7 @@ class MainActivity : AppCompatActivity() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
                     val name = getString(R.string.result_channel_name)
-                    val importance = NotificationManager.IMPORTANCE_MIN
+                    val importance = notificationImportance
                     val mChannel = NotificationChannel(channelId, name, importance)
                     mChannel.description = getString(R.string.result_channel_description)
                     val notificationManager =
@@ -349,10 +385,10 @@ class MainActivity : AppCompatActivity() {
                         .setContentText("$curCharge%")
                         .setProgress(100, curCharge, false)
                         .setSubText(getString(R.string.time_left_value) + " $timeLeft")
-                        .setOngoing(true)
-                        .setColor(color)
+                        .setOngoing(notificationOngoing)
+                        .setColor(notificationColor)
                         .setShowWhen(false)
-                        .setPriority(NotificationCompat.PRIORITY_MIN)
+                        .setPriority(notificationPriority)
                         .setContentIntent(pendingIntent)
                     notificationManager.notify(1, notificationBuilder.build())
                 } else {
@@ -369,10 +405,10 @@ class MainActivity : AppCompatActivity() {
                         .setColor(Color.GREEN)
                         .setProgress(100, curCharge, false)
                         .setSubText(getString(R.string.time_left_value) + " $timeLeft")
-                        .setOngoing(true)
-                        .setColor(color)
+                        .setOngoing(notificationOngoing)
+                        .setColor(notificationColor)
                         .setShowWhen(false)
-                        .setPriority(NotificationCompat.PRIORITY_MIN)
+                        .setPriority(notificationPriority)
                         .setContentIntent(pendingIntent)
                     notificationManager.notify(1, notificationBuilder.build())
                 }
