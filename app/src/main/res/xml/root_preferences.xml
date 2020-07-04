@@ -76,7 +76,25 @@
             android:icon="@drawable/ic_baseline_notifications_24"
             android:key="notification_switch"
             android:summary="@string/notification_summary"
-            android:title="@string/notification_title_switch" />
+            android:title="@string/notification_switch" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notification_switch"
+            android:icon="@drawable/ic_ongoing_notification_24"
+            android:key="ongoing_notification_switch"
+            android:summary="@string/ongoing_notification_summary"
+            android:title="@string/ongoing_notification_switch" />
+
+        <ListPreference
+            android:defaultValue="3"
+            android:dependency="notification_switch"
+            android:entries="@array/notification_priority"
+            android:entryValues="@array/notification_priority_value"
+            android:icon="@drawable/ic_notification_priority_24"
+            android:key="notification_priority_option"
+            android:title="@string/notification_priority_title"
+            app:useSimpleSummaryProvider="true" />
 
         <SwitchPreference
             android:defaultValue="true"
