@@ -324,7 +324,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val notificationOngoing = when (sp.getBoolean("bg_option", false)) {
+        val notificationOngoing = when (sp.getBoolean("ongoing_notification_switch", false)) {
             true -> {
                 true
             }
