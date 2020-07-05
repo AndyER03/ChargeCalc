@@ -27,7 +27,7 @@
     <string name="ui_title_preference">Интерфейс</string>
     <string name="version_title">Версия:</string>
     <string name="bg_title_preference">Тема приложения</string>
-    <string name="other_title_preference">Прочее</string>
+    <string name="notification_title_preference">Уведомления</string>
     <string name="vibration_title_switch">Вибрация</string>
     <string name="vibration_summary">Вибрировать при длительном нажатии кнопки сохранения</string>
     <string name="title_activity_settings">Настройки ChargeCalc</string>

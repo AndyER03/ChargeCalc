@@ -808,6 +808,7 @@ class MainActivity : AppCompatActivity() {
     private fun aboutDialog() {
         val builder = AlertDialog.Builder(this)
             .setTitle(R.string.about_title)
+            .setIcon(R.drawable.ic_info_24)
             .setMessage(
                 getString(R.string.version_title) + " " + BuildConfig.VERSION_NAME + "\n" +
                         getString(R.string.created_by) + "\n\n" +

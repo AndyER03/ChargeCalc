@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import androidx.preference.SwitchPreference
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -14,9 +15,9 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
         supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.settings, SettingsFragment())
-                .commit()
+            .beginTransaction()
+            .replace(R.id.settings, SettingsFragment())
+            .commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -100,7 +101,12 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
-            findPreference<Preference>("about_preference")?.title = getString(R.string.app_name) + " " + "v" + BuildConfig.VERSION_NAME
+            findPreference<Preference>("about_preference")?.title =
+                getString(R.string.app_name) + " " + "v" + BuildConfig.VERSION_NAME
+            findPreference<Preference>("about_preference")?.summary =
+                getString(R.string.created_by) + "\n\n" +
+                        getString(R.string.support_in_developing) + "\n" +
+                        getString(R.string.who_support_in_developing)
         }
     }
 }

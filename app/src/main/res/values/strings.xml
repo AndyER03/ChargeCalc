@@ -27,7 +27,7 @@
     <string name="ui_title_preference">Interface</string>
     <string name="version_title">Build version:</string>
     <string name="bg_title_preference">App theme</string>
-    <string name="other_title_preference">Other</string>
+    <string name="notification_title_preference">Notifications</string>
     <string name="vibration_title_switch">Vibration</string>
     <string name="vibration_summary">Vibrate when the save button is pressed for a long time</string>
     <string name="title_activity_settings">ChargeCalc Settings</string>
