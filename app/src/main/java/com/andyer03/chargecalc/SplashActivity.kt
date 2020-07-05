@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
             true -> {
                 when (sp.getString("splash_bg_option", "1")) {
                     "1" -> {
-                        SplashActivity.background = getDrawable(R.color.gray)
+                        SplashActivity.background = getDrawable(R.drawable.gradient)
                     }
                     "2" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient)
@@ -58,6 +58,13 @@ class SplashActivity : AppCompatActivity() {
                         SplashActivity.background = getDrawable(R.drawable.gradient_11)
                     }
                     "13" -> {
+                        SplashActivity.background = getDrawable(R.drawable.gradient_12)
+                    }
+
+                    "14" -> {
+                        SplashActivity.background = getDrawable(R.drawable.gradient_13)
+                    }
+                    "15" -> {
                         SplashActivity.background = getDrawable(R.color.black)
                     }
                 }

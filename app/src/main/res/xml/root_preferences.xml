@@ -5,6 +5,7 @@
 
         <ListPreference
             android:defaultValue="1"
+            android:dialogIcon="@drawable/ic_background_24dp"
             android:entries="@array/background"
             android:entryValues="@array/background_value"
             android:icon="@drawable/ic_background_24dp"
@@ -29,11 +30,50 @@
         <ListPreference
             android:defaultValue="1"
             android:dependency="splash_bg_switch"
+            android:dialogIcon="@drawable/ic_background_24dp"
             android:entries="@array/background"
             android:entryValues="@array/background_value"
             android:icon="@drawable/ic_background_24dp"
             android:key="splash_bg_option"
             android:title="@string/splash_bg_title_preference"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/notification_title_preference">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_baseline_notifications_24"
+            android:key="notification_switch"
+            android:summary="@string/notification_summary"
+            android:title="@string/notification_switch" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notification_switch"
+            android:icon="@drawable/ic_ongoing_notification_24"
+            android:key="ongoing_notification_switch"
+            android:summary="@string/ongoing_notification_summary"
+            android:title="@string/ongoing_notification_switch" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notification_switch"
+            android:icon="@drawable/ic_null_notification_24"
+            android:key="null_notification_switch"
+            android:summary="@string/null_notification_summary"
+            android:title="@string/null_notification_switch" />
+
+        <ListPreference
+            android:defaultValue="3"
+            android:dependency="notification_switch"
+            android:dialogIcon="@drawable/ic_notification_priority_24"
+            android:entries="@array/notification_priority"
+            android:entryValues="@array/notification_priority_value"
+            android:icon="@drawable/ic_notification_priority_24"
+            android:key="notification_priority_option"
+            android:title="@string/notification_priority_title"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
@@ -67,41 +107,23 @@
             android:summary="@string/alternative_clear_summary"
             android:title="@string/alternative_clear_switch" />
 
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/other_title_preference">
-
-        <SwitchPreference
-            android:defaultValue="false"
-            android:icon="@drawable/ic_baseline_notifications_24"
-            android:key="notification_switch"
-            android:summary="@string/notification_summary"
-            android:title="@string/notification_switch" />
-
-        <SwitchPreference
-            android:defaultValue="false"
-            android:dependency="notification_switch"
-            android:icon="@drawable/ic_ongoing_notification_24"
-            android:key="ongoing_notification_switch"
-            android:summary="@string/ongoing_notification_summary"
-            android:title="@string/ongoing_notification_switch" />
-
-        <ListPreference
-            android:defaultValue="3"
-            android:dependency="notification_switch"
-            android:entries="@array/notification_priority"
-            android:entryValues="@array/notification_priority_value"
-            android:icon="@drawable/ic_notification_priority_24"
-            android:key="notification_priority_option"
-            android:title="@string/notification_priority_title"
-            app:useSimpleSummaryProvider="true" />
-
         <SwitchPreference
             android:defaultValue="true"
             android:icon="@drawable/ic_vibration_24dp"
             android:key="vibration_switch"
             android:summary="@string/vibration_summary"
             android:title="@string/vibration_title_switch" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/about_title">
+
+        <Preference
+            android:icon="@drawable/ic_info_24"
+            android:key="about_preference"
+            android:summary="@string/created_by"
+            android:title="@string/app_name">
+        </Preference>
 
     </PreferenceCategory>
 
