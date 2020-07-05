@@ -50,8 +50,8 @@
     <string name="easter_egg_magic_part2">Зажми Мистера Мороженку!</string>
     <string name="easter_egg_forgive_on_text">Мистер Мороженка успокоился. =)</string>
     <string name="splash_title_switch">Экран приветствия</string>
-    <string name="splash_bg_title_preference">Фон экрана приветствия</string>
-    <string name="splash_bg_title_switch">Отдельный фон для экрана приветствия</string>
+    <string name="splash_bg_title_preference">Тема экрана приветствия</string>
+    <string name="splash_bg_title_switch">Отдельная тема экрана приветствия</string>
     <string name="splash_summary_option">Возможны некритичные баги</string>
     <string name="exit_title">Выход</string>
     <string name="exit_dialog">Вы действительно хотите выйти?</string>
@@ -72,24 +72,24 @@
     <string name="estimated_autonomy_days_number_summary">Поможет получить более точное значение</string>
     <string name="should_enough_time_with_current_charge_notification">До разрядки:</string>
     <string name="notification_values_reset">Значения уведомления сброшены</string>
-    <string name="notification_priority_title">Настроить приоритет</string>
+    <string name="notification_priority_title">Приоритет</string>
     <string name="ongoing_notification_switch">Постоянное уведомление</string>
     <string name="ongoing_notification_summary">Запретить удалять уведомление</string>
     <string-array name="background">
         <item>По умолчанию</item>
         <item>Синий</item>
         <item>Розовый</item>
-        <item>Лазурный</item>
+        <item>Циан</item>
         <item>Персиковый</item>
         <item>Апельсиновый</item>
         <item>Лаймовый</item>
-        <item>Красное вино</item>
+        <item>Шербет</item>
         <item>Противостояние</item>
         <item>Радужный</item>
         <item>Ветерок</item>
         <item>Яблоко</item>
         <item>Пурпурный</item>
-        <item>Серобуромалиновый</item>
+        <item>Сливовый</item>
         <item>Чёрный</item>
     </string-array>
     <string-array name="background_value">
@@ -123,4 +123,6 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <string name="null_notification_switch">Скрыть пустое уведомление</string>
+    <string name="null_notification_summary">Скрыть уведомление без значений</string>
 </resources>

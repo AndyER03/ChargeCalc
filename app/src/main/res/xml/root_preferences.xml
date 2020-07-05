@@ -57,6 +57,14 @@
             android:summary="@string/ongoing_notification_summary"
             android:title="@string/ongoing_notification_switch" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notification_switch"
+            android:icon="@drawable/ic_null_notification_24"
+            android:key="null_notification_switch"
+            android:summary="@string/null_notification_summary"
+            android:title="@string/null_notification_switch" />
+
         <ListPreference
             android:defaultValue="3"
             android:dependency="notification_switch"

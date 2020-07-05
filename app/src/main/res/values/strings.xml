@@ -50,8 +50,8 @@
     <string name="easter_egg_magic_part2">Press on Mr. IceCream!</string>
     <string name="easter_egg_forgive_on_text">Mr. IceCream calmed down. =)</string>
     <string name="splash_title_switch">Splash screen</string>
-    <string name="splash_bg_title_preference">Splashscreen\'s background</string>
-    <string name="splash_bg_title_switch">Separate splashscreen\'s background</string>
+    <string name="splash_bg_title_preference">Splashscreen\'s theme</string>
+    <string name="splash_bg_title_switch">Separate splashscreen\'s theme</string>
     <string name="splash_summary_option">Non-critical bugs are possible</string>
     <string name="exit_title">Exit</string>
     <string name="exit_dialog">Are you sure you want to exit?</string>
@@ -72,24 +72,24 @@
     <string name="estimated_autonomy_days_number_summary">Helps to get more accurate value</string>
     <string name="should_enough_time_with_current_charge_notification">Days left:</string>
     <string name="notification_values_reset">Notification values ​​reset</string>
-    <string name="notification_priority_title">Change priority</string>
+    <string name="notification_priority_title">Priority</string>
     <string name="ongoing_notification_switch">Ongoing notification</string>
     <string name="ongoing_notification_summary">Deny to delete notification</string>
     <string-array name="background">
         <item>Default</item>
         <item>Blue</item>
         <item>Pink</item>
-        <item>Azure</item>
+        <item>Cyan</item>
         <item>Peach</item>
         <item>Orange</item>
         <item>Lime</item>
-        <item>Rose wine</item>
+        <item>Sherbet</item>
         <item>Versus</item>
         <item>Rainbow</item>
         <item>Breeze</item>
         <item>Apple</item>
         <item>Purple</item>
-        <item>Mauve</item>
+        <item>Plum</item>
         <item>Black</item>
     </string-array>
     <string-array name="background_value">
@@ -123,4 +123,6 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <string name="null_notification_switch">Hide empty notification</string>
+    <string name="null_notification_summary">Hide notification without values</string>
 </resources>

@@ -278,8 +278,9 @@ class MainActivity : AppCompatActivity() {
         val curCharge = valuesChest.getInt("curCharge", 0)
         val timeLeft = valuesChest.getString("timeLeft", "0").toString()
         val remainingInt = valuesChest.getString("remainingTime", "0").toString()
+        val hideNullNotification = sp.getBoolean("null_notification_switch", false)
 
-        if ((curCharge == 0) && (timeLeft == "0")) {
+        if ((hideNullNotification) && ((curCharge == 0) && (timeLeft == "0"))) {
             notificationManager.cancelAll()
         } else {
             var notificationColor = 0
