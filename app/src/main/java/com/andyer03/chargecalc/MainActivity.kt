@@ -655,11 +655,6 @@ class MainActivity : AppCompatActivity() {
         } else if ((current_charge_value_input.text.toString() == "236") && (time_left_value_input.text.toString() == "3")) {
             current_charge_value_input.text.clear()
             time_left_value_input.text.clear()
-            aboutDialog()
-            return true
-        } else if ((current_charge_value_input.text.toString() == "236") && (time_left_value_input.text.toString() == "4")) {
-            current_charge_value_input.text.clear()
-            time_left_value_input.text.clear()
             exitDialog()
             return true
         }
@@ -796,27 +791,8 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
-            R.id.about -> {
-                aboutDialog()
-            }
-            R.id.exit -> {
-                exitDialog()
-            }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun aboutDialog() {
-        val builder = AlertDialog.Builder(this)
-            .setTitle(R.string.about_title)
-            .setIcon(R.drawable.ic_info_24)
-            .setMessage(
-                getString(R.string.version_title) + " " + BuildConfig.VERSION_NAME + "\n" +
-                        getString(R.string.created_by) + "\n\n" +
-                        getString(R.string.support_in_developing) + "\n" +
-                        getString(R.string.who_support_in_developing)
-            )
-        builder.show()
     }
 
     private fun exitDialog() {

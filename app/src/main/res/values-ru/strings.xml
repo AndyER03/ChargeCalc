@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="background">
+        <item>По умолчанию</item>
+        <item>Синий</item>
+        <item>Розовый</item>
+        <item>Циан</item>
+        <item>Персиковый</item>
+        <item>Апельсиновый</item>
+        <item>Лаймовый</item>
+        <item>Шербет</item>
+        <item>Противостояние</item>
+        <item>Радужный</item>
+        <item>Ветерок</item>
+        <item>Яблоко</item>
+        <item>Пурпурный</item>
+        <item>Сливовый</item>
+        <item>Чёрный</item>
+    </string-array>
+    <string-array name="background_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+    <string-array name="notification_priority">
+        <item>Максимальный</item>
+        <item>Высокий</item>
+        <item>По умолчанию</item>
+        <item>Низкий</item>
+        <item>Минимальный</item>
+    </string-array>
+    <string-array name="notification_priority_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
     <string name="current_charge_title">Текущий заряд батареи</string>
     <string name="time_left_header">Прошло дней после полной зарядки</string>
     <string name="submit_button">Подсчитать</string>
@@ -66,8 +114,8 @@
     <string name="notification_summary">Показать уведомление с текущим результатом</string>
     <string name="result_channel_name">Результат подсчета автономности</string>
     <string name="result_channel_description">Показывать результат автономности</string>
-    <string name="estimated_autonomy_days_number_header">Примерное количество дней автономности</string>
-    <string name="estimated_autonomy_days_number_hint">Количество дней (необязательно)</string>
+    <string name="estimated_autonomy_days_number_header">Число дней автономности</string>
+    <string name="estimated_autonomy_days_number_hint">Количество дней</string>
     <string name="estimated_autonomy_days_number_switch">Поле ввода количества дней автономности</string>
     <string name="estimated_autonomy_days_number_summary">Поможет получить более точное значение</string>
     <string name="should_enough_time_with_current_charge_notification">До разрядки:</string>
@@ -75,54 +123,6 @@
     <string name="notification_priority_title">Приоритет</string>
     <string name="ongoing_notification_switch">Постоянное уведомление</string>
     <string name="ongoing_notification_summary">Запретить удалять уведомление</string>
-    <string-array name="background">
-        <item>По умолчанию</item>
-        <item>Синий</item>
-        <item>Розовый</item>
-        <item>Циан</item>
-        <item>Персиковый</item>
-        <item>Апельсиновый</item>
-        <item>Лаймовый</item>
-        <item>Шербет</item>
-        <item>Противостояние</item>
-        <item>Радужный</item>
-        <item>Ветерок</item>
-        <item>Яблоко</item>
-        <item>Пурпурный</item>
-        <item>Сливовый</item>
-        <item>Чёрный</item>
-    </string-array>
-    <string-array name="background_value">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-    </string-array>
-    <string-array name="notification_priority">
-        <item>Максимальный</item>
-        <item>Высокий</item>
-        <item>По умолчанию</item>
-        <item>Низкий</item>
-        <item>Минимальный</item>
-    </string-array>
-    <string-array name="notification_priority_value">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </string-array>
     <string name="null_notification_switch">Скрыть пустое уведомление</string>
     <string name="null_notification_summary">Скрыть уведомление без значений</string>
 </resources>

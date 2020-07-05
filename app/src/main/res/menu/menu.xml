@@ -14,16 +14,4 @@
         android:title="@string/title_activity_settings"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/about"
-        android:icon="@drawable/ic_info_white_24dp"
-        android:title="@string/about_title"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/exit"
-        android:icon="@drawable/ic_exit_white_24dp"
-        android:title="@string/exit_title"
-        app:showAsAction="ifRoom" />
-
 </menu>

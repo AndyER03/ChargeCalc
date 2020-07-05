@@ -1,4 +1,52 @@
 <resources>
+    <string-array name="background">
+        <item>Default</item>
+        <item>Blue</item>
+        <item>Pink</item>
+        <item>Cyan</item>
+        <item>Peach</item>
+        <item>Orange</item>
+        <item>Lime</item>
+        <item>Sherbet</item>
+        <item>Versus</item>
+        <item>Rainbow</item>
+        <item>Breeze</item>
+        <item>Apple</item>
+        <item>Purple</item>
+        <item>Plum</item>
+        <item>Black</item>
+    </string-array>
+    <string-array name="background_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+    <string-array name="notification_priority">
+        <item>MAX</item>
+        <item>HIGH</item>
+        <item>Default</item>
+        <item>LOW</item>
+        <item>MIN</item>
+    </string-array>
+    <string-array name="notification_priority_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
     <string name="app_name" translatable="false">ChargeCalc</string>
     <string name="current_charge_title">Current charge in percents</string>
     <string name="time_left_header">Days count after disconnect charger</string>
@@ -66,63 +114,15 @@
     <string name="notification_summary">Show notification with current result</string>
     <string name="result_channel_name">Autonomy calculation result</string>
     <string name="result_channel_description">Show autonomy result</string>
-    <string name="estimated_autonomy_days_number_header">Estimated autonomy days number</string>
-    <string name="estimated_autonomy_days_number_hint">Days number (not important)</string>
-    <string name="estimated_autonomy_days_number_switch">Autonomy days number field</string>
+    <string name="estimated_autonomy_days_number_header">Estimated autonomy days count</string>
+    <string name="estimated_autonomy_days_number_hint">Days count</string>
+    <string name="estimated_autonomy_days_number_switch">Autonomy days count field</string>
     <string name="estimated_autonomy_days_number_summary">Helps to get more accurate value</string>
     <string name="should_enough_time_with_current_charge_notification">Days left:</string>
     <string name="notification_values_reset">Notification values ​​reset</string>
     <string name="notification_priority_title">Priority</string>
     <string name="ongoing_notification_switch">Ongoing notification</string>
     <string name="ongoing_notification_summary">Deny to delete notification</string>
-    <string-array name="background">
-        <item>Default</item>
-        <item>Blue</item>
-        <item>Pink</item>
-        <item>Cyan</item>
-        <item>Peach</item>
-        <item>Orange</item>
-        <item>Lime</item>
-        <item>Sherbet</item>
-        <item>Versus</item>
-        <item>Rainbow</item>
-        <item>Breeze</item>
-        <item>Apple</item>
-        <item>Purple</item>
-        <item>Plum</item>
-        <item>Black</item>
-    </string-array>
-    <string-array name="background_value">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-    </string-array>
-    <string-array name="notification_priority">
-        <item>MAX</item>
-        <item>HIGH</item>
-        <item>Default</item>
-        <item>LOW</item>
-        <item>MIN</item>
-    </string-array>
-    <string-array name="notification_priority_value">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </string-array>
     <string name="null_notification_switch">Hide empty notification</string>
     <string name="null_notification_summary">Hide notification without values</string>
 </resources>
