@@ -105,4 +105,14 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/about_title">
+
+        <Preference android:icon="@drawable/ic_info_24"
+            android:key="about_preference"
+            android:summary="@string/created_by"
+            android:title="@string/app_name">
+        </Preference>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

@@ -64,6 +64,17 @@
     <string name="functionality_title_preference">Функционал</string>
     <string name="notification_switch">Уведомление с результатом</string>
     <string name="notification_summary">Показать уведомление с текущим результатом</string>
+    <string name="result_channel_name">Результат подсчета автономности</string>
+    <string name="result_channel_description">Показывать результат автономности</string>
+    <string name="estimated_autonomy_days_number_header">Примерное количество дней автономности</string>
+    <string name="estimated_autonomy_days_number_hint">Количество дней (необязательно)</string>
+    <string name="estimated_autonomy_days_number_switch">Поле ввода количества дней автономности</string>
+    <string name="estimated_autonomy_days_number_summary">Поможет получить более точное значение</string>
+    <string name="should_enough_time_with_current_charge_notification">До разрядки:</string>
+    <string name="notification_values_reset">Значения уведомления сброшены</string>
+    <string name="notification_priority_title">Настроить приоритет</string>
+    <string name="ongoing_notification_switch">Постоянное уведомление</string>
+    <string name="ongoing_notification_summary">Запретить удалять уведомление</string>
     <string-array name="background">
         <item>По умолчанию</item>
         <item>Синий</item>
@@ -112,15 +123,4 @@
         <item>4</item>
         <item>5</item>
     </string-array>
-    <string name="result_channel_name">Результат подсчета автономности</string>
-    <string name="result_channel_description">Показывать результат автономности</string>
-    <string name="estimated_autonomy_days_number_header">Примерное количество дней автономности</string>
-    <string name="estimated_autonomy_days_number_hint">Количество дней (необязательно)</string>
-    <string name="estimated_autonomy_days_number_switch">Поле ввода количества дней автономности</string>
-    <string name="estimated_autonomy_days_number_summary">Поможет получить более точное значение</string>
-    <string name="should_enough_time_with_current_charge_notification">До разрядки:</string>
-    <string name="notification_values_reset">Значения уведомления сброшены</string>
-    <string name="notification_priority_title">Настроить приоритет</string>
-    <string name="ongoing_notification_switch">Постоянное уведомление</string>
-    <string name="ongoing_notification_summary">Запретить удалять уведомление</string>
 </resources>

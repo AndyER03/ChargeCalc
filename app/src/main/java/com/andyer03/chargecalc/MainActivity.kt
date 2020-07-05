@@ -278,143 +278,148 @@ class MainActivity : AppCompatActivity() {
         val curCharge = valuesChest.getInt("curCharge", 0)
         val timeLeft = valuesChest.getString("timeLeft", "0").toString()
         val remainingInt = valuesChest.getString("remainingTime", "0").toString()
-        var notificationColor = 0
-        when (sp.getString("bg_option", "1")) {
-            "2" -> {
-                notificationColor = 0xFF5C3F9F.toInt()
-            }
-            "3" -> {
-                notificationColor = 0xFFA81A84.toInt()
-            }
-            "4" -> {
-                notificationColor = 0xFF009FB3.toInt()
-            }
-            "5" -> {
-                notificationColor = 0xFFE69152.toInt()
-            }
-            "6" -> {
-                notificationColor = 0xFFFF9800.toInt()
-            }
-            "7" -> {
-                notificationColor = 0xFF5F981C.toInt()
-            }
-            "8" -> {
-                notificationColor = 0xFF9C27B0.toInt()
-            }
-            "9" -> {
-                notificationColor = 0xFF673AB7.toInt()
-            }
-            "10" -> {
-                notificationColor = 0xFF0092A5.toInt()
-            }
-            "11" -> {
-                notificationColor = 0xFF00A7D1.toInt()
-            }
-            "12" -> {
-                notificationColor = 0xFF5F981C.toInt()
-            }
-            "13" -> {
-                notificationColor = 0xFF9C27B0.toInt()
-            }
-            "14" -> {
-                notificationColor = 0xFF9C27B0.toInt()
-            }
-            "15" -> {
-                notificationColor = 0xFF000000.toInt()
-            }
-        }
 
-        val notificationOngoing = when (sp.getBoolean("ongoing_notification_switch", false)) {
-            true -> {
-                true
-            }
-            false -> {
-                false
-            }
-        }
-        
-        var notificationPriority = 3
-        var notificationImportance = NotificationManager.IMPORTANCE_NONE
-        when (sp.getString("notification_priority_option", "3")) {
-            "1" -> {
-                notificationPriority = NotificationCompat.PRIORITY_MAX
-                notificationImportance = NotificationManager.IMPORTANCE_MAX
-            }
-            "2" -> {
-                notificationPriority = NotificationCompat.PRIORITY_HIGH
-                notificationImportance = NotificationManager.IMPORTANCE_HIGH
-            }
-            "3" -> {
-                notificationPriority = NotificationCompat.PRIORITY_DEFAULT
-                notificationImportance = NotificationManager.IMPORTANCE_DEFAULT
-            }
-            "4" -> {
-                notificationPriority = NotificationCompat.PRIORITY_LOW
-                notificationImportance = NotificationManager.IMPORTANCE_LOW
-            }
-            "5" -> {
-                notificationPriority = NotificationCompat.PRIORITY_MIN
-                notificationImportance = NotificationManager.IMPORTANCE_MIN
-            }
-        }
-
-        when (sp.getBoolean("notification_switch", false)) {
-            true -> {
-                val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-                    val name = getString(R.string.result_channel_name)
-                    val importance = notificationImportance
-                    val mChannel = NotificationChannel(channelId, name, importance)
-                    mChannel.description = getString(R.string.result_channel_description)
-                    val notificationManager =
-                        getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-                    notificationManager.createNotificationChannel(mChannel)
-
-                    val notificationBuilder = NotificationCompat.Builder(this, name)
-                        .setChannelId(channelId)
-                        .setLargeIcon(
-                            BitmapFactory.decodeResource(
-                                resources,
-                                R.mipmap.ic_launcher
-                            )
-                        )
-                        .setSmallIcon(R.drawable.ic_notification)
-                        .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
-                        .setContentText("$curCharge%")
-                        .setProgress(100, curCharge, false)
-                        .setSubText(getString(R.string.time_left_value) + " $timeLeft")
-                        .setOngoing(notificationOngoing)
-                        .setColor(notificationColor)
-                        .setShowWhen(false)
-                        .setPriority(notificationPriority)
-                        .setContentIntent(pendingIntent)
-                    notificationManager.notify(1, notificationBuilder.build())
-                } else {
-                    val notificationBuilder = NotificationCompat.Builder(this)
-                        .setLargeIcon(
-                            BitmapFactory.decodeResource(
-                                resources,
-                                R.mipmap.ic_launcher
-                            )
-                        )
-                        .setSmallIcon(R.drawable.ic_notification)
-                        .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
-                        .setContentText("$curCharge%")
-                        .setColor(Color.GREEN)
-                        .setProgress(100, curCharge, false)
-                        .setSubText(getString(R.string.time_left_value) + " $timeLeft")
-                        .setOngoing(notificationOngoing)
-                        .setColor(notificationColor)
-                        .setShowWhen(false)
-                        .setPriority(notificationPriority)
-                        .setContentIntent(pendingIntent)
-                    notificationManager.notify(1, notificationBuilder.build())
+        if ((curCharge == 0) && (timeLeft == "0")) {
+            notificationManager.cancelAll()
+        } else {
+            var notificationColor = 0
+            when (sp.getString("bg_option", "1")) {
+                "2" -> {
+                    notificationColor = 0xFF5C3F9F.toInt()
+                }
+                "3" -> {
+                    notificationColor = 0xFFA81A84.toInt()
+                }
+                "4" -> {
+                    notificationColor = 0xFF009FB3.toInt()
+                }
+                "5" -> {
+                    notificationColor = 0xFFE69152.toInt()
+                }
+                "6" -> {
+                    notificationColor = 0xFFFF9800.toInt()
+                }
+                "7" -> {
+                    notificationColor = 0xFF5F981C.toInt()
+                }
+                "8" -> {
+                    notificationColor = 0xFF9C27B0.toInt()
+                }
+                "9" -> {
+                    notificationColor = 0xFF673AB7.toInt()
+                }
+                "10" -> {
+                    notificationColor = 0xFF0092A5.toInt()
+                }
+                "11" -> {
+                    notificationColor = 0xFF00A7D1.toInt()
+                }
+                "12" -> {
+                    notificationColor = 0xFF5F981C.toInt()
+                }
+                "13" -> {
+                    notificationColor = 0xFF9C27B0.toInt()
+                }
+                "14" -> {
+                    notificationColor = 0xFF9C27B0.toInt()
+                }
+                "15" -> {
+                    notificationColor = 0xFF000000.toInt()
                 }
             }
-            false -> {
-                notificationManager.cancelAll()
+
+            val notificationOngoing = when (sp.getBoolean("ongoing_notification_switch", false)) {
+                true -> {
+                    true
+                }
+                false -> {
+                    false
+                }
+            }
+
+            var notificationPriority = 3
+            var notificationImportance = NotificationManager.IMPORTANCE_NONE
+            when (sp.getString("notification_priority_option", "3")) {
+                "1" -> {
+                    notificationPriority = NotificationCompat.PRIORITY_MAX
+                    notificationImportance = NotificationManager.IMPORTANCE_MAX
+                }
+                "2" -> {
+                    notificationPriority = NotificationCompat.PRIORITY_HIGH
+                    notificationImportance = NotificationManager.IMPORTANCE_HIGH
+                }
+                "3" -> {
+                    notificationPriority = NotificationCompat.PRIORITY_DEFAULT
+                    notificationImportance = NotificationManager.IMPORTANCE_DEFAULT
+                }
+                "4" -> {
+                    notificationPriority = NotificationCompat.PRIORITY_LOW
+                    notificationImportance = NotificationManager.IMPORTANCE_LOW
+                }
+                "5" -> {
+                    notificationPriority = NotificationCompat.PRIORITY_MIN
+                    notificationImportance = NotificationManager.IMPORTANCE_MIN
+                }
+            }
+
+            when (sp.getBoolean("notification_switch", false)) {
+                true -> {
+                    val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+                        val name = getString(R.string.result_channel_name)
+                        val importance = notificationImportance
+                        val mChannel = NotificationChannel(channelId, name, importance)
+                        mChannel.description = getString(R.string.result_channel_description)
+                        val notificationManager =
+                            getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+                        notificationManager.createNotificationChannel(mChannel)
+
+                        val notificationBuilder = NotificationCompat.Builder(this, name)
+                            .setChannelId(channelId)
+                            .setLargeIcon(
+                                BitmapFactory.decodeResource(
+                                    resources,
+                                    R.mipmap.ic_launcher
+                                )
+                            )
+                            .setSmallIcon(R.drawable.ic_notification)
+                            .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
+                            .setContentText("$curCharge%")
+                            .setProgress(100, curCharge, false)
+                            .setSubText(getString(R.string.time_left_value) + " $timeLeft")
+                            .setOngoing(notificationOngoing)
+                            .setColor(notificationColor)
+                            .setShowWhen(false)
+                            .setPriority(notificationPriority)
+                            .setContentIntent(pendingIntent)
+                        notificationManager.notify(1, notificationBuilder.build())
+                    } else {
+                        val notificationBuilder = NotificationCompat.Builder(this)
+                            .setLargeIcon(
+                                BitmapFactory.decodeResource(
+                                    resources,
+                                    R.mipmap.ic_launcher
+                                )
+                            )
+                            .setSmallIcon(R.drawable.ic_notification)
+                            .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
+                            .setContentText("$curCharge%")
+                            .setColor(Color.GREEN)
+                            .setProgress(100, curCharge, false)
+                            .setSubText(getString(R.string.time_left_value) + " $timeLeft")
+                            .setOngoing(notificationOngoing)
+                            .setColor(notificationColor)
+                            .setShowWhen(false)
+                            .setPriority(notificationPriority)
+                            .setContentIntent(pendingIntent)
+                        notificationManager.notify(1, notificationBuilder.build())
+                    }
+                }
+                false -> {
+                    notificationManager.cancelAll()
+                }
             }
         }
     }

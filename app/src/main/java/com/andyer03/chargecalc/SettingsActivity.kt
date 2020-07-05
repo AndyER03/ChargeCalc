@@ -3,6 +3,7 @@ package com.andyer03.chargecalc
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -98,7 +99,8 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+            findPreference<Preference>("about_preference")?.title = getString(R.string.about_title) + " " + "v" + BuildConfig.VERSION_NAME
         }
     }
-
 }
