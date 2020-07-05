@@ -100,7 +100,7 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
-            findPreference<Preference>("about_preference")?.title = getString(R.string.about_title) + " " + "v" + BuildConfig.VERSION_NAME
+            findPreference<Preference>("about_preference")?.title = getString(R.string.app_name) + " " + "v" + BuildConfig.VERSION_NAME
         }
     }
 }
