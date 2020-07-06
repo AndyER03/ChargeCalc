@@ -128,4 +128,6 @@
     <string name="silent_notification_switch">Notification sound</string>
     <string name="silent_notification_summary_on">Enabled</string>
     <string name="silent_notification_summary_off">Disabled</string>
+    <string name="restore_btn_notification_switch">Restore button</string>
+    <string name="restore_btn_notification_summary_on">Result button holding will restore deleted notification</string>
 </resources>

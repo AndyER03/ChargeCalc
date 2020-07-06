@@ -82,6 +82,14 @@
             android:title="@string/notification_priority_title"
             app:useSimpleSummaryProvider="true" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notification_switch"
+            android:icon="@drawable/ic_restore_24"
+            android:key="restore_btn_notification_switch"
+            android:summaryOn="@string/restore_btn_notification_summary_on"
+            android:title="@string/restore_btn_notification_switch" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/functionality_title_preference">

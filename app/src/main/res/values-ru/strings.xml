@@ -128,4 +128,6 @@
     <string name="silent_notification_switch">Звук уведомления</string>
     <string name="silent_notification_summary_on">Включен</string>
     <string name="silent_notification_summary_off">Выключен</string>
+    <string name="restore_btn_notification_switch">Кнопка восстановления</string>
+    <string name="restore_btn_notification_summary_on">Удержание кнопки результата восстановит удаленное уведомление</string>
 </resources>

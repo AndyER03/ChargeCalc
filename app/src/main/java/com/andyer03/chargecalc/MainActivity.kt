@@ -41,10 +41,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        submit_button.setOnLongClickListener {
-            advancedResult()
-        }
-
         clearBtn.setOnClickListener {
             current_charge_value_input.requestFocus()
             allFieldsClear()
@@ -80,6 +76,17 @@ class MainActivity : AppCompatActivity() {
 
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
+
+        submit_button.setOnLongClickListener {
+            when (sp.getBoolean("restore_btn_notification_switch", false)) {
+                true -> {
+                    notification()
+                }
+                false -> {
+                    advancedResult()
+                }
+            }
+        }
 
         saveBtn.setOnClickListener {
             if (valuesChest.getString("counter", "0").toString() == "0") {
@@ -270,7 +277,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("InlinedApi")
-    private fun notification() {
+    private fun notification(): Boolean {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
@@ -433,6 +440,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        return true
     }
 
     private fun allFieldsClear() {
