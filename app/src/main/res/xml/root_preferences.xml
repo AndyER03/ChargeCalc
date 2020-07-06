@@ -16,7 +16,6 @@
             android:defaultValue="true"
             android:icon="@drawable/ic_splash_24dp"
             android:key="splash_option"
-            android:summaryOn="@string/splash_summary_option"
             android:title="@string/splash_title_switch" />
 
         <SwitchPreference
@@ -44,7 +43,6 @@
             android:defaultValue="false"
             android:icon="@drawable/ic_show_notification_24"
             android:key="notification_switch"
-            android:summaryOn="@string/notification_summary"
             android:title="@string/notification_switch" />
 
         <SwitchPreference
@@ -52,7 +50,6 @@
             android:dependency="notification_switch"
             android:icon="@drawable/ic_ongoing_notification_24"
             android:key="ongoing_notification_switch"
-            android:summaryOn="@string/ongoing_notification_summary"
             android:title="@string/ongoing_notification_switch" />
 
         <SwitchPreference
@@ -60,7 +57,6 @@
             android:dependency="notification_switch"
             android:icon="@drawable/ic_null_notification_24"
             android:key="null_notification_switch"
-            android:summaryOn="@string/null_notification_summary"
             android:title="@string/null_notification_switch" />
 
         <SwitchPreference
@@ -104,7 +100,6 @@
             android:defaultValue="false"
             android:icon="@drawable/ic_autonomy_field_24dp"
             android:key="estimated_autonomy_days_switch"
-            android:summaryOn="@string/estimated_autonomy_days_number_summary"
             android:title="@string/estimated_autonomy_days_number_switch" />
 
         <SwitchPreference
@@ -118,7 +113,6 @@
             android:dependency="clear_btn_switch"
             android:icon="@drawable/ic_alternative_24dp"
             android:key="alternative_clear_switch"
-            android:summaryOn="@string/alternative_clear_summary"
             android:title="@string/alternative_clear_switch" />
 
         <SwitchPreference
