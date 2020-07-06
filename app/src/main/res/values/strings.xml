@@ -125,4 +125,7 @@
     <string name="ongoing_notification_summary">Deny to delete notification</string>
     <string name="null_notification_switch">Hide empty notification</string>
     <string name="null_notification_summary">Hide notification without values</string>
+    <string name="silent_notification_switch">Notification sound</string>
+    <string name="silent_notification_summary_on">Enabled</string>
+    <string name="silent_notification_summary_off">Disabled</string>
 </resources>

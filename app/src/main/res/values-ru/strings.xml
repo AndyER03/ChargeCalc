@@ -125,4 +125,7 @@
     <string name="ongoing_notification_summary">Запретить удалять уведомление</string>
     <string name="null_notification_switch">Скрыть пустое уведомление</string>
     <string name="null_notification_summary">Скрыть уведомление без значений</string>
+    <string name="silent_notification_switch">Звук уведомления</string>
+    <string name="silent_notification_summary_on">Включен</string>
+    <string name="silent_notification_summary_off">Выключен</string>
 </resources>

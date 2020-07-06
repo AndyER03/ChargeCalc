@@ -9,6 +9,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.media.RingtoneManager
 import android.os.*
 import android.view.Menu
 import android.view.MenuItem
@@ -20,6 +21,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -74,8 +76,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
-        notification()
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -338,6 +338,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+            val notificationSound = when (sp.getBoolean("silent_notification_switch", true)) {
+                true -> {
+                    RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+                }
+                false -> {
+                    null
+                }
+            }
+
             var notificationPriority = 3
             var notificationImportance = NotificationManager.IMPORTANCE_NONE
             when (sp.getString("notification_priority_option", "3")) {
@@ -395,6 +404,7 @@ class MainActivity : AppCompatActivity() {
                             .setShowWhen(false)
                             .setPriority(notificationPriority)
                             .setContentIntent(pendingIntent)
+                            .setSound(notificationSound)
                         notificationManager.notify(1, notificationBuilder.build())
                     } else {
                         val notificationBuilder = NotificationCompat.Builder(this)
@@ -415,6 +425,7 @@ class MainActivity : AppCompatActivity() {
                             .setShowWhen(false)
                             .setPriority(notificationPriority)
                             .setContentIntent(pendingIntent)
+                            .setSound(notificationSound)
                         notificationManager.notify(1, notificationBuilder.build())
                     }
                 }

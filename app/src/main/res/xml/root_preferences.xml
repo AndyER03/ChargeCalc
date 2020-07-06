@@ -29,7 +29,6 @@
         <ListPreference
             android:defaultValue="1"
             android:dependency="splash_bg_switch"
-            android:dialogIcon="@drawable/ic_background_24dp"
             android:entries="@array/background"
             android:entryValues="@array/background_value"
             android:icon="@drawable/ic_background_24dp"
@@ -45,7 +44,7 @@
             android:defaultValue="false"
             android:icon="@drawable/ic_baseline_notifications_24"
             android:key="notification_switch"
-            android:summary="@string/notification_summary"
+            android:summaryOn="@string/notification_summary"
             android:title="@string/notification_switch" />
 
         <SwitchPreference
@@ -53,7 +52,7 @@
             android:dependency="notification_switch"
             android:icon="@drawable/ic_ongoing_notification_24"
             android:key="ongoing_notification_switch"
-            android:summary="@string/ongoing_notification_summary"
+            android:summaryOn="@string/ongoing_notification_summary"
             android:title="@string/ongoing_notification_switch" />
 
         <SwitchPreference
@@ -61,13 +60,21 @@
             android:dependency="notification_switch"
             android:icon="@drawable/ic_null_notification_24"
             android:key="null_notification_switch"
-            android:summary="@string/null_notification_summary"
+            android:summaryOn="@string/null_notification_summary"
             android:title="@string/null_notification_switch" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="notification_switch"
+            android:icon="@drawable/ic_silent_notification_24"
+            android:key="silent_notification_switch"
+            android:summaryOff="@string/silent_notification_summary_off"
+            android:summaryOn="@string/silent_notification_summary_on"
+            android:title="@string/silent_notification_switch" />
 
         <ListPreference
             android:defaultValue="3"
             android:dependency="notification_switch"
-            android:dialogIcon="@drawable/ic_notification_priority_24"
             android:entries="@array/notification_priority"
             android:entryValues="@array/notification_priority_value"
             android:icon="@drawable/ic_notification_priority_24"
@@ -89,7 +96,7 @@
             android:defaultValue="false"
             android:icon="@drawable/ic_autonomy_field_24dp"
             android:key="estimated_autonomy_days_switch"
-            android:summary="@string/estimated_autonomy_days_number_summary"
+            android:summaryOn="@string/estimated_autonomy_days_number_summary"
             android:title="@string/estimated_autonomy_days_number_switch" />
 
         <SwitchPreference
@@ -103,14 +110,14 @@
             android:dependency="clear_btn_switch"
             android:icon="@drawable/ic_alternative_24dp"
             android:key="alternative_clear_switch"
-            android:summary="@string/alternative_clear_summary"
+            android:summaryOn="@string/alternative_clear_summary"
             android:title="@string/alternative_clear_switch" />
 
         <SwitchPreference
             android:defaultValue="true"
             android:icon="@drawable/ic_vibration_24dp"
             android:key="vibration_switch"
-            android:summary="@string/vibration_summary"
+            android:summaryOn="@string/vibration_summary"
             android:title="@string/vibration_title_switch" />
 
     </PreferenceCategory>
