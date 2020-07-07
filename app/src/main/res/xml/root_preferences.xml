@@ -128,6 +128,7 @@
             android:defaultValue="true"
             android:icon="@drawable/ic_vibration_24dp"
             android:key="vibration_btn_switch"
+            android:summaryOn="@string/vibration_btn_summary"
             android:title="@string/vibration_btn_title_switch" />
 
     </PreferenceCategory>
