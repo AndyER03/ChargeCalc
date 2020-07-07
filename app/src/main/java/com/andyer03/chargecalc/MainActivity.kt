@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
             notification()
             Toast.makeText(this, R.string.notification_values_reset, Toast.LENGTH_SHORT).show()
-            vibration()
+            btnVibration()
 
             return@setOnLongClickListener true
         }
@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity() {
                 saveBtn.text = getString(R.string.save_values_btn)
                 Toast.makeText(this, R.string.toast_values_reset, Toast.LENGTH_SHORT).show()
 
-                vibration()
+                btnVibration()
             }
             return@setOnLongClickListener true
         }
@@ -252,9 +252,29 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun vibration() {
+    private fun btnVibration() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val vibrationSwitch = sp.getBoolean("vibration_switch", true)
+        val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+        if (vibrationSwitch) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                v.vibrate(
+                    VibrationEffect.createOneShot(
+                        100,
+                        VibrationEffect.DEFAULT_AMPLITUDE
+                    )
+                )
+            } else {
+                //deprecated in API 26
+                v.vibrate(100)
+            }
+        }
+    }
+
+    private fun notificationVibration() {
+        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        val vibrationSwitch = sp.getBoolean("vibration_notification_switch", true)
         val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         if (vibrationSwitch) {
@@ -412,6 +432,7 @@ class MainActivity : AppCompatActivity() {
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
                         notificationManager.notify(1, notificationBuilder.build())
+                        notificationVibration()
                     } else {
                         val notificationBuilder = NotificationCompat.Builder(this)
                             .setLargeIcon(
@@ -433,6 +454,7 @@ class MainActivity : AppCompatActivity() {
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
                         notificationManager.notify(1, notificationBuilder.build())
+                        notificationVibration()
                     }
                 }
                 false -> {

@@ -64,9 +64,18 @@
             android:dependency="notification_switch"
             android:icon="@drawable/ic_silent_notification_24"
             android:key="silent_notification_switch"
-            android:summaryOff="@string/silent_notification_summary_off"
-            android:summaryOn="@string/silent_notification_summary_on"
+            android:summaryOff="@string/option_summary_off"
+            android:summaryOn="@string/option_summary_on"
             android:title="@string/silent_notification_switch" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="notification_switch"
+            android:icon="@drawable/ic_vibration_24dp"
+            android:key="vibration_notification_switch"
+            android:summaryOff="@string/option_summary_off"
+            android:summaryOn="@string/option_summary_on"
+            android:title="@string/vibration_title_switch" />
 
         <ListPreference
             android:defaultValue="3"
@@ -88,7 +97,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/functionality_title_preference">
+    <PreferenceCategory android:title="@string/calculator_title_preference">
 
         <SwitchPreference
             android:defaultValue="false"
@@ -118,9 +127,8 @@
         <SwitchPreference
             android:defaultValue="true"
             android:icon="@drawable/ic_vibration_24dp"
-            android:key="vibration_switch"
-            android:summaryOn="@string/vibration_summary"
-            android:title="@string/vibration_title_switch" />
+            android:key="vibration_btn_switch"
+            android:title="@string/vibration_btn_title_switch" />
 
     </PreferenceCategory>
 
@@ -130,8 +138,8 @@
             android:icon="@drawable/ic_info_24"
             android:key="about_preference"
             android:summary="@string/created_by"
-            android:title="@string/app_name">
-        </Preference>
+            android:title="@string/app_name" />
+
 
     </PreferenceCategory>
 

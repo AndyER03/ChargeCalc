@@ -77,7 +77,6 @@
     <string name="bg_title_preference">App theme</string>
     <string name="notification_title_preference">Notifications</string>
     <string name="vibration_title_switch">Vibration</string>
-    <string name="vibration_summary">Vibrate when the save button is pressed for a long time</string>
     <string name="title_activity_settings">ChargeCalc Settings</string>
     <string name="support_in_developing">Participated in testing:</string>
     <string name="who_support_in_developing">Leshij and Boy77ruS</string>
@@ -107,7 +106,7 @@
     <string name="alternative_clear_switch">Spare fields clear method</string>
     <string name="always_advanced_result_switch">Advanced result</string>
     <string name="show_clear_title_switch">Clear fields button</string>
-    <string name="functionality_title_preference">Functionality</string>
+    <string name="calculator_title_preference">Calculator</string>
     <string name="notification_switch">Result notification</string>
     <string name="result_channel_name">Autonomy calculation result</string>
     <string name="result_channel_description">Show autonomy result</string>
@@ -120,8 +119,9 @@
     <string name="ongoing_notification_switch">Ongoing notification</string>
     <string name="null_notification_switch">Hide empty notification</string>
     <string name="silent_notification_switch">Notification sound</string>
-    <string name="silent_notification_summary_on">Enabled</string>
-    <string name="silent_notification_summary_off">Disabled</string>
+    <string name="option_summary_on">Enabled</string>
+    <string name="option_summary_off">Disabled</string>
     <string name="restore_btn_notification_switch">Restore button</string>
     <string name="restore_btn_notification_summary_on">Result button holding will restore deleted notification</string>
+    <string name="vibration_btn_title_switch">Vibration while reset</string>
 </resources>

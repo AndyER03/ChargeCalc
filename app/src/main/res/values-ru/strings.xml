@@ -77,7 +77,6 @@
     <string name="bg_title_preference">Тема приложения</string>
     <string name="notification_title_preference">Уведомления</string>
     <string name="vibration_title_switch">Вибрация</string>
-    <string name="vibration_summary">Вибрировать при удержании кнопки сохранения</string>
     <string name="title_activity_settings">Настройки ChargeCalc</string>
     <string name="support_in_developing">Участвовали в тестировании:</string>
     <string name="who_support_in_developing">Leshij и Boy77ruS</string>
@@ -107,7 +106,7 @@
     <string name="alternative_clear_switch">Запасная очистка</string>
     <string name="always_advanced_result_switch">Подробный результат</string>
     <string name="show_clear_title_switch">Кнопка очистки полей</string>
-    <string name="functionality_title_preference">Функционал</string>
+    <string name="calculator_title_preference">Калькулятор</string>
     <string name="notification_switch">Вывод результата</string>
     <string name="result_channel_name">Результат подсчета автономности</string>
     <string name="result_channel_description">Показывать результат автономности</string>
@@ -120,8 +119,9 @@
     <string name="ongoing_notification_switch">Запрет удаления</string>
     <string name="null_notification_switch">Только с результатом</string>
     <string name="silent_notification_switch">Звук уведомления</string>
-    <string name="silent_notification_summary_on">Включен</string>
-    <string name="silent_notification_summary_off">Выключен</string>
+    <string name="option_summary_on">Вкл</string>
+    <string name="option_summary_off">Выкл</string>
     <string name="restore_btn_notification_switch">Кнопка повтора</string>
     <string name="restore_btn_notification_summary_on">Удержание кнопки результата восстановит удаленное уведомление</string>
+    <string name="vibration_btn_title_switch">Вибрация при сбросе</string>
 </resources>
