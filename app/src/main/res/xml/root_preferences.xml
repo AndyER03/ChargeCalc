@@ -48,14 +48,14 @@
         <SwitchPreference
             android:defaultValue="false"
             android:dependency="notification_switch"
-            android:icon="@drawable/ic_ongoing_notification_24"
+            android:icon="@drawable/ic_notification_remove_ban_24"
             android:key="ongoing_notification_switch"
             android:title="@string/ongoing_notification_switch" />
 
         <SwitchPreference
             android:defaultValue="false"
             android:dependency="notification_switch"
-            android:icon="@drawable/ic_null_notification_24"
+            android:icon="@drawable/ic_full_notification_24"
             android:key="null_notification_switch"
             android:title="@string/null_notification_switch" />
 
@@ -140,7 +140,6 @@
             android:key="about_preference"
             android:summary="@string/created_by"
             android:title="@string/app_name" />
-
 
     </PreferenceCategory>
 
