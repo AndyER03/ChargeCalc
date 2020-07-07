@@ -254,7 +254,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun btnVibration() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
-        val vibrationSwitch = sp.getBoolean("vibration_switch", true)
+        val vibrationSwitch = sp.getBoolean("vibration_btn_switch", true)
         val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         if (vibrationSwitch) {
