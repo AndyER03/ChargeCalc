@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
+import kotlinx.android.synthetic.main.activity_donate.*
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
@@ -20,101 +22,93 @@ class SplashActivity : AppCompatActivity() {
         when (sp.getBoolean("splash_bg_switch", false)) {
 
             true -> {
-                when (sp.getString("splash_bg_option", "1")) {
-                    "1" -> {
+                when (sp.getString("splash_bg_option", "Blue")) {
+                    "Blue" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient)
                     }
-                    "2" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient)
-                    }
-                    "3" -> {
+                    "Pink" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_2)
                     }
-                    "4" -> {
+                    "Cyan" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_3)
                     }
-                    "5" -> {
+                    "Peach" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_4)
                     }
-                    "6" -> {
+                    "Orange" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_5)
                     }
-                    "7" -> {
+                    "Lime" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_6)
                     }
-                    "8" -> {
+                    "Sherbet" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_7)
                     }
-                    "9" -> {
+                    "Versus" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_8)
                     }
-                    "10" -> {
+                    "Rainbow" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_9)
                     }
-                    "11" -> {
+                    "Breeze" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_10)
                     }
-                    "12" -> {
+                    "Apple" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_11)
                     }
-                    "13" -> {
+                    "Purple" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_12)
                     }
-
-                    "14" -> {
+                    "Plum" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_13)
                     }
-                    "15" -> {
+                    "Black" -> {
                         SplashActivity.background = getDrawable(R.color.black)
                     }
                 }
             }
             false -> {
-                when (sp.getString("bg_option", "1")) {
-                    "1" -> {
+                when (sp.getString("bg_option", "Blue")) {
+                    "Blue" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient)
                     }
-                    "2" -> {
-                        SplashActivity.background = getDrawable(R.drawable.gradient)
-                    }
-                    "3" -> {
+                    "Pink" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_2)
                     }
-                    "4" -> {
+                    "Cyan" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_3)
                     }
-                    "5" -> {
+                    "Peach" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_4)
                     }
-                    "6" -> {
+                    "Orange" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_5)
                     }
-                    "7" -> {
+                    "Lime" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_6)
                     }
-                    "8" -> {
+                    "Sherbet" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_7)
                     }
-                    "9" -> {
+                    "Versus" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_8)
                     }
-                    "10" -> {
+                    "Rainbow" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_9)
                     }
-                    "11" -> {
+                    "Breeze" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_10)
                     }
-                    "12" -> {
+                    "Apple" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_11)
                     }
-                    "13" -> {
+                    "Purple" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_12)
                     }
-
-                    "14" -> {
+                    "Plum" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient_13)
                     }
-                    "15" -> {
+                    "Black" -> {
                         SplashActivity.background = getDrawable(R.color.black)
                     }
                 }

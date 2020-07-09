@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="background">
-        <item>По умолчанию</item>
         <item>Синий</item>
         <item>Розовый</item>
         <item>Циан</item>
@@ -18,21 +17,20 @@
         <item>Чёрный</item>
     </string-array>
     <string-array name="background_value">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
+        <item>Blue</item>
+        <item>Pink</item>
+        <item>Cyan</item>
+        <item>Peach</item>
+        <item>Orange</item>
+        <item>Lime</item>
+        <item>Sherbet</item>
+        <item>Versus</item>
+        <item>Rainbow</item>
+        <item>Breeze</item>
+        <item>Apple</item>
+        <item>Purple</item>
+        <item>Plum</item>
+        <item>Black</item>
     </string-array>
     <string-array name="notification_priority">
         <item>Максимальный</item>

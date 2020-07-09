@@ -147,64 +147,60 @@ class MainActivity : AppCompatActivity() {
             return@setOnLongClickListener true
         }
 
-        when (sp.getString("bg_option", "1")) {
-            "1" -> {
-                MainLayout.background = getDrawable(R.color.gray)
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-            "2" -> {
+        when (sp.getString("bg_option", "Blue")) {
+            "Blue" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "3" -> {
+            "Pink" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_2)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "4" -> {
+            "Cyan" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_3)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "5" -> {
+            "Peach" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_4)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "6" -> {
+            "Orange" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_5)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "7" -> {
+            "Lime" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_6)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "8" -> {
+            "Sherbet" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_7)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "9" -> {
+            "Versus" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_8)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "10" -> {
+            "Rainbow" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_9)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "11" -> {
+            "Breeze" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_10)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "12" -> {
+            "Apple" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_11)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "13" -> {
+            "Purple" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_12)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "14" -> {
+            "Plum" -> {
                 MainLayout.background = getDrawable(R.drawable.gradient_13)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "15" -> {
+            "Black" -> {
                 MainLayout.background = getDrawable(R.color.black)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
