@@ -40,11 +40,6 @@ class MainActivity : AppCompatActivity() {
                 saveBtn.text = getString(R.string.restore_values_btn)
             }
         }
-
-        clearBtn.setOnClickListener {
-            current_charge_value_input.requestFocus()
-            allFieldsClear()
-        }
     }
 
     override fun onResume() {
@@ -123,6 +118,17 @@ class MainActivity : AppCompatActivity() {
                 btnVibration()
             }
             return@setOnLongClickListener true
+        }
+
+        clearBtn.setOnClickListener {
+            if ((current_charge_value_input.text.toString() != "") && (time_left_value_input.text.toString() != "")) {
+                current_charge_value_input.requestFocus()
+                allFieldsClear()
+                btnVibration()
+            }
+            else {
+                Toast.makeText(this, R.string.toast_values_not_reset, Toast.LENGTH_SHORT).show()
+            }
         }
 
         clearBtn.setOnLongClickListener {
