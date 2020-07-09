@@ -13,8 +13,9 @@
         <item>Радужный</item>
         <item>Ветерок</item>
         <item>Яблоко</item>
-        <item>Пурпурный</item>
         <item>Сливовый</item>
+        <item>Пурпурный</item>
+        <item>Сияние</item>
         <item>Чёрный</item>
     </string-array>
     <string-array name="background_value">
@@ -30,8 +31,9 @@
         <item>Rainbow</item>
         <item>Breeze</item>
         <item>Apple</item>
-        <item>Purple</item>
         <item>Plum</item>
+        <item>Purple</item>
+        <item>Shine</item>
         <item>Black</item>
     </string-array>
     <string-array name="notification_priority">

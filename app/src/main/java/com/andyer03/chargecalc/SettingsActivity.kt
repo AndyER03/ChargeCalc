@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -73,12 +74,16 @@ class SettingsActivity : AppCompatActivity() {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_11)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
+            "Plum" -> {
+                SettingsLayout.background = getDrawable(R.drawable.gradient_13)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
             "Purple" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_12)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Plum" -> {
-                SettingsLayout.background = getDrawable(R.drawable.gradient_13)
+            "Shine" -> {
+                SettingsLayout.background = getDrawable(R.drawable.gradient_14)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
             "Black" -> {

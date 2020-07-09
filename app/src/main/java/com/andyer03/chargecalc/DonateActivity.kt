@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_donate.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class DonateActivity : AppCompatActivity() {
 
@@ -275,12 +276,16 @@ class DonateActivity : AppCompatActivity() {
                 DonateLayout.background = getDrawable(R.drawable.gradient_11)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
+            "Plum" -> {
+                DonateLayout.background = getDrawable(R.drawable.gradient_13)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
             "Purple" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_12)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Plum" -> {
-                DonateLayout.background = getDrawable(R.drawable.gradient_13)
+            "Shine" -> {
+                DonateLayout.background = getDrawable(R.drawable.gradient_14)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
             "Black" -> {

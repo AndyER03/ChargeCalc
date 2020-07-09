@@ -4,7 +4,7 @@
     <PreferenceCategory android:title="@string/ui_title_preference">
 
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="Default"
             android:entries="@array/background"
             android:entryValues="@array/background_value"
             android:icon="@drawable/ic_background_24dp"
@@ -26,7 +26,7 @@
             android:title="@string/splash_bg_title_switch" />
 
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="Default"
             android:dependency="splash_bg_switch"
             android:entries="@array/background"
             android:entryValues="@array/background_value"
