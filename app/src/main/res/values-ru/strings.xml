@@ -18,21 +18,21 @@
         <item>Чёрный</item>
     </string-array>
     <string-array name="background_value">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
+        <item>Default</item>
+        <item>Blue</item>
+        <item>Pink</item>
+        <item>Cyan</item>
+        <item>Peach</item>
+        <item>Orange</item>
+        <item>Lime</item>
+        <item>Sherbet</item>
+        <item>Versus</item>
+        <item>Rainbow</item>
+        <item>Breeze</item>
+        <item>Apple</item>
+        <item>Purple</item>
+        <item>Plum</item>
+        <item>Black</item>
     </string-array>
     <string-array name="notification_priority">
         <item>Максимальный</item>
@@ -74,7 +74,7 @@
     <string name="toast_values_not_reset">В памяти нет значений для сброса!</string>
     <string name="ui_title_preference">Интерфейс</string>
     <string name="version_title">Версия:</string>
-    <string name="bg_title_preference">Тема приложения</string>
+    <string name="bg_title_preference">Фон приложения</string>
     <string name="notification_title_preference">Уведомления</string>
     <string name="vibration_title_switch">Вибрация</string>
     <string name="title_activity_settings">Настройки ChargeCalc</string>
@@ -97,8 +97,8 @@
     <string name="easter_egg_magic_part2">Зажми Мистера Мороженку!</string>
     <string name="easter_egg_forgive_on_text">Мистер Мороженка успокоился. =)</string>
     <string name="splash_title_switch">Заставка</string>
-    <string name="splash_bg_title_preference">Тема заставки</string>
-    <string name="splash_bg_title_switch">Своя тема заставки</string>
+    <string name="splash_bg_title_preference">Фон заставки</string>
+    <string name="splash_bg_title_switch">Свой фон заставки</string>
     <string name="exit_title">Выход</string>
     <string name="exit_dialog">Вы действительно хотите выйти?</string>
     <string name="no_button">Нет</string>
