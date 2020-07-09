@@ -379,24 +379,24 @@ class MainActivity : AppCompatActivity() {
 
             var notificationPriority = 3
             var notificationImportance = NotificationManager.IMPORTANCE_NONE
-            when (sp.getString("notification_priority_option", "3")) {
-                "1" -> {
+            when (sp.getString("notification_priority_option", "Default")) {
+                "MAX" -> {
                     notificationPriority = NotificationCompat.PRIORITY_MAX
                     notificationImportance = NotificationManager.IMPORTANCE_MAX
                 }
-                "2" -> {
+                "HIGH" -> {
                     notificationPriority = NotificationCompat.PRIORITY_HIGH
                     notificationImportance = NotificationManager.IMPORTANCE_HIGH
                 }
-                "3" -> {
+                "Default" -> {
                     notificationPriority = NotificationCompat.PRIORITY_DEFAULT
                     notificationImportance = NotificationManager.IMPORTANCE_DEFAULT
                 }
-                "4" -> {
+                "LOW" -> {
                     notificationPriority = NotificationCompat.PRIORITY_LOW
                     notificationImportance = NotificationManager.IMPORTANCE_LOW
                 }
-                "5" -> {
+                "MIN" -> {
                     notificationPriority = NotificationCompat.PRIORITY_MIN
                     notificationImportance = NotificationManager.IMPORTANCE_MIN
                 }

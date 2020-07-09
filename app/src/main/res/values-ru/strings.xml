@@ -44,11 +44,11 @@
         <item>Минимальный</item>
     </string-array>
     <string-array name="notification_priority_value">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
+        <item>MAX</item>
+        <item>HIGH</item>
+        <item>Default</item>
+        <item>LOW</item>
+        <item>MIN</item>
     </string-array>
     <string name="current_charge_title">Текущий заряд батареи</string>
     <string name="time_left_header">Прошло дней после полной зарядки</string>

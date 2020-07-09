@@ -78,7 +78,7 @@
             android:title="@string/vibration_title_switch" />
 
         <ListPreference
-            android:defaultValue="3"
+            android:defaultValue="Default"
             android:dependency="notification_switch"
             android:entries="@array/notification_priority"
             android:entryValues="@array/notification_priority_value"
