@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         clearBtn.setOnClickListener {
-            if ((current_charge_value_input.text.toString() != "") && (time_left_value_input.text.toString() != "")) {
+            if ((current_charge_value_input.text.toString() != "") || (time_left_value_input.text.toString() != "") || (estimated_autonomy_days_number_input.text.toString() != "")) {
                 current_charge_value_input.requestFocus()
                 allFieldsClear()
                 btnVibration()
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         clearBtn.setOnLongClickListener {
-            when (sp.getBoolean("notification_switch", false)) {
+            when (sp.getBoolean("clear_btn_notification_switch", false)) {
                 true -> {
                     val editor = valuesChest.edit()
                     editor.putInt(
@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity() {
                     btnVibration()
                 }
                 false -> {
-                    if ((current_charge_value_input.text.toString() != "") && (time_left_value_input.text.toString() != "")) {
+                    if ((current_charge_value_input.text.toString() != "") || (time_left_value_input.text.toString() != "")) {
                         current_charge_value_input.requestFocus()
                         allFieldsClear()
                         btnVibration()

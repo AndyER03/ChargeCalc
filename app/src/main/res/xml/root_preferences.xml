@@ -95,6 +95,14 @@
             android:summaryOn="@string/restore_btn_notification_summary_on"
             android:title="@string/restore_btn_notification_switch" />
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notification_switch"
+            android:icon="@drawable/ic_clear_24dp"
+            android:key="clear_btn_notification_switch"
+            android:summaryOn="@string/clear_btn_notification_summary_on"
+            android:title="@string/clear_btn_notification_title_switch"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/calculator_title_preference">
