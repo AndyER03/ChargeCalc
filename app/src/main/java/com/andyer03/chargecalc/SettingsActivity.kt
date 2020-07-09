@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -25,7 +24,7 @@ class SettingsActivity : AppCompatActivity() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
 
         //deprecated in API 26
-        when (sp.getString("bg_option", "1")) {
+        when (sp.getString("bg_option", "Default")) {
             "Default" -> {
                 SettingsLayout.background = getDrawable(R.color.gray)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

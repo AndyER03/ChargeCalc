@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_donate.*
-import kotlinx.android.synthetic.main.activity_settings.*
 
 class DonateActivity : AppCompatActivity() {
 
@@ -227,7 +226,7 @@ class DonateActivity : AppCompatActivity() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
 
         //deprecated in API 26
-        when (sp.getString("bg_option", "1")) {
+        when (sp.getString("bg_option", "Default")) {
             "Default" -> {
                 DonateLayout.background = getDrawable(R.color.gray)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

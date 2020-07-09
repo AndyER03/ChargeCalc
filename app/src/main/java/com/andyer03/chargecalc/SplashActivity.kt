@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
         when (sp.getBoolean("splash_bg_switch", false)) {
 
             true -> {
-                when (sp.getString("splash_bg_option", "1")) {
+                when (sp.getString("splash_bg_option", "Default")) {
                     "Default" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient)
                     }
@@ -69,7 +69,7 @@ class SplashActivity : AppCompatActivity() {
                 }
             }
             false -> {
-                when (sp.getString("bg_option", "1")) {
+                when (sp.getString("bg_option", "Default")) {
                     "Default" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient)
                     }
