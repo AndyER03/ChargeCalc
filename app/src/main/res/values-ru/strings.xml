@@ -126,5 +126,5 @@
     <string name="restore_btn_notification_switch">Кнопка повтора</string>
     <string name="restore_btn_notification_summary_on">Удержание кнопки результата восстановит удаленное уведомление</string>
     <string name="vibration_btn_title_switch">Вибрация при сбросе</string>
-    <string name="vibration_btn_summary">Вибрировать при удержании кнопки сохранения</string>
+    <string name="vibration_btn_summary">Вибрировать при очистке</string>
 </resources>

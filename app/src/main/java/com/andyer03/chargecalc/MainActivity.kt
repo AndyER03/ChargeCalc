@@ -45,28 +45,6 @@ class MainActivity : AppCompatActivity() {
             current_charge_value_input.requestFocus()
             allFieldsClear()
         }
-
-        clearBtn.setOnLongClickListener {
-            val editor = valuesChest.edit()
-            editor.putInt(
-                "curCharge",
-                0
-            )
-            editor.putString(
-                "timeLeft",
-                0.toString().trim()
-            )
-            editor.putString(
-                "remainingTime",
-                0.toString().trim()
-            )
-            editor.apply()
-            notification()
-            Toast.makeText(this, R.string.notification_values_reset, Toast.LENGTH_SHORT).show()
-            btnVibration()
-
-            return@setOnLongClickListener true
-        }
     }
 
     override fun onResume() {
@@ -143,6 +121,42 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.toast_values_reset, Toast.LENGTH_SHORT).show()
 
                 btnVibration()
+            }
+            return@setOnLongClickListener true
+        }
+
+        clearBtn.setOnLongClickListener {
+            when (sp.getBoolean("notification_switch", false)) {
+                true -> {
+                    val editor = valuesChest.edit()
+                    editor.putInt(
+                        "curCharge",
+                        0
+                    )
+                    editor.putString(
+                        "timeLeft",
+                        0.toString().trim()
+                    )
+                    editor.putString(
+                        "remainingTime",
+                        0.toString().trim()
+                    )
+                    editor.apply()
+                    notification()
+                    Toast.makeText(this, R.string.notification_values_reset, Toast.LENGTH_SHORT)
+                        .show()
+                    btnVibration()
+                }
+                false -> {
+                    if ((current_charge_value_input.text.toString() != "") && (time_left_value_input.text.toString() != "")) {
+                        current_charge_value_input.requestFocus()
+                        allFieldsClear()
+                        btnVibration()
+                    }
+                    else {
+                        Toast.makeText(this, R.string.toast_values_not_reset, Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
             return@setOnLongClickListener true
         }
