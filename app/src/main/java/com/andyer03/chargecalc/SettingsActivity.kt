@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -24,65 +25,60 @@ class SettingsActivity : AppCompatActivity() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
 
         //deprecated in API 26
-        when (sp.getString("bg_option", "1")) {
-            "1" -> {
-                SettingsLayout.background = getDrawable(R.color.gray)
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-            "2" -> {
+        when (sp.getString("bg_option", "Blue")) {
+            "Blue" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "3" -> {
+            "Pink" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_2)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "4" -> {
+            "Cyan" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_3)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "5" -> {
+            "Peach" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_4)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "6" -> {
+            "Orange" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_5)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "7" -> {
+            "Lime" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_6)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "8" -> {
+            "Sherbet" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_7)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "9" -> {
+            "Versus" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_8)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "10" -> {
+            "Rainbow" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_9)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "11" -> {
+            "Breeze" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_10)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "12" -> {
+            "Apple" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_11)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "13" -> {
+            "Purple" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_12)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-
-            "14" -> {
+            "Plum" -> {
                 SettingsLayout.background = getDrawable(R.drawable.gradient_13)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "15" -> {
+            "Black" -> {
                 SettingsLayout.background = getDrawable(R.color.black)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
