@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_donate.*
-import kotlinx.android.synthetic.main.activity_settings.*
 
 class DonateActivity : AppCompatActivity() {
 
@@ -227,60 +226,64 @@ class DonateActivity : AppCompatActivity() {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
 
         //deprecated in API 26
-        when (sp.getString("bg_option", "Blue")) {
-            "Blue" -> {
+        when (sp.getString("bg_option", "1")) {
+            "1" -> {
+                DonateLayout.background = getDrawable(R.color.gray)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+            "2" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Pink" -> {
+            "3" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_2)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Cyan" -> {
+            "4" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_3)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Peach" -> {
+            "5" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_4)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Orange" -> {
+            "6" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_5)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Lime" -> {
+            "7" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_6)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Sherbet" -> {
+            "8" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_7)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Versus" -> {
+            "9" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_8)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Rainbow" -> {
+            "10" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_9)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Breeze" -> {
+            "11" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_10)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Apple" -> {
+            "12" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_11)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Purple" -> {
+            "13" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_12)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Plum" -> {
+            "14" -> {
                 DonateLayout.background = getDrawable(R.drawable.gradient_13)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
-            "Black" -> {
+            "15" -> {
                 DonateLayout.background = getDrawable(R.color.black)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
