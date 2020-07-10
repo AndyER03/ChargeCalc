@@ -20,8 +20,8 @@
 
         <SwitchPreference
             android:defaultValue="false"
-            android:dependency="splash_option"
-            android:icon="@drawable/ic_splash_24dp"
+            android:dependency="splash_switch"
+            android:icon="@drawable/ic_background_24dp"
             android:key="splash_bg_switch"
             android:title="@string/splash_bg_title_switch" />
 
@@ -86,7 +86,7 @@
 
         <ListPreference
             android:defaultValue="Default"
-            android:dependency="led_notification_switch"
+            android:dependency="led_notification_color_switch"
             android:entries="@array/background"
             android:entryValues="@array/background_value"
             android:icon="@drawable/ic_background_24dp"
