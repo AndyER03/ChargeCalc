@@ -15,7 +15,7 @@
         <SwitchPreference
             android:defaultValue="true"
             android:icon="@drawable/ic_splash_24dp"
-            android:key="splash_option"
+            android:key="splash_switch"
             android:title="@string/splash_title_switch" />
 
         <SwitchPreference
@@ -73,7 +73,26 @@
             android:dependency="notification_switch"
             android:icon="@drawable/ic_led_notification_24"
             android:key="led_notification_switch"
+            android:summaryOff="@string/option_summary_off"
+            android:summaryOn="@string/option_summary_on"
             android:title="@string/led_notification_switch" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="led_notification_switch"
+            android:icon="@drawable/ic_background_24dp"
+            android:key="led_notification_color_switch"
+            android:title="@string/led_notification_color_switch" />
+
+        <ListPreference
+            android:defaultValue="Default"
+            android:dependency="led_notification_switch"
+            android:entries="@array/background"
+            android:entryValues="@array/background_value"
+            android:icon="@drawable/ic_background_24dp"
+            android:key="led_notification_color_option"
+            android:title="@string/led_notification_color_title_preference"
+            app:useSimpleSummaryProvider="true" />
 
         <SwitchPreference
             android:defaultValue="true"

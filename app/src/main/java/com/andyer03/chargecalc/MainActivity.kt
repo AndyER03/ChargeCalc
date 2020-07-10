@@ -416,54 +416,110 @@ class MainActivity : AppCompatActivity() {
 
             when (sp.getBoolean("led_notification_switch", true)) {
                 true -> {
-                    when (sp.getString("bg_option", "Default")) {
-                        "Default" -> {
-                            notificationLedColor = 0xFF000000.toInt()
+                    when (sp.getBoolean("led_notification_color_switch", false)) {
+                        true -> {
+                            when (sp.getString("led_notification_color_option", "Default")) {
+                                "Default" -> {
+                                    notificationLedColor = 0xFF000000.toInt()
+                                }
+                                "Blue" -> {
+                                    notificationLedColor = 0xFF0088FF.toInt()
+                                }
+                                "Pink" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Cyan" -> {
+                                    notificationLedColor = 0xFF0088FF.toInt()
+                                }
+                                "Peach" -> {
+                                    notificationLedColor = 0xFFFF8800.toInt()
+                                }
+                                "Orange" -> {
+                                    notificationLedColor = 0xFFFF8800.toInt()
+                                }
+                                "Lime" -> {
+                                    notificationLedColor = 0xFF00FF00.toInt()
+                                }
+                                "Sherbet" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Versus" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Rainbow" -> {
+                                    notificationLedColor = 0xFFFF8800.toInt()
+                                }
+                                "Breeze" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Apple" -> {
+                                    notificationLedColor = 0xFFFF0000.toInt()
+                                }
+                                "Plum" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Purple" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Shine" -> {
+                                    notificationLedColor = 0xFF0088FF.toInt()
+                                }
+                                "Black" -> {
+                                    notificationLedColor = 0xFF0000FF.toInt()
+                                }
+                            }
                         }
-                        "Blue" -> {
-                            notificationLedColor = 0xFF0088FF.toInt()
-                        }
-                        "Pink" -> {
-                            notificationLedColor = 0xFFFF00FF.toInt()
-                        }
-                        "Cyan" -> {
-                            notificationLedColor = 0xFF0088FF.toInt()
-                        }
-                        "Peach" -> {
-                            notificationLedColor = 0xFFFF8800.toInt()
-                        }
-                        "Orange" -> {
-                            notificationLedColor = 0xFFFF8800.toInt()
-                        }
-                        "Lime" -> {
-                            notificationLedColor = 0xFF00FF00.toInt()
-                        }
-                        "Sherbet" -> {
-                            notificationLedColor = 0xFFFF00FF.toInt()
-                        }
-                        "Versus" -> {
-                            notificationLedColor = 0xFFFF00FF.toInt()
-                        }
-                        "Rainbow" -> {
-                            notificationLedColor = 0xFFFF8800.toInt()
-                        }
-                        "Breeze" -> {
-                            notificationLedColor = 0xFFFF00FF.toInt()
-                        }
-                        "Apple" -> {
-                            notificationLedColor = 0xFFFF0000.toInt()
-                        }
-                        "Plum" -> {
-                            notificationLedColor = 0xFFFF00FF.toInt()
-                        }
-                        "Purple" -> {
-                            notificationLedColor = 0xFFFF00FF.toInt()
-                        }
-                        "Shine" -> {
-                            notificationLedColor = 0xFF0088FF.toInt()
-                        }
-                        "Black" -> {
-                            notificationLedColor = 0xFF0000FF.toInt()
+                        false -> {
+                            when (sp.getString("bg_option", "Default")) {
+                                "Default" -> {
+                                    notificationLedColor = 0xFF000000.toInt()
+                                }
+                                "Blue" -> {
+                                    notificationLedColor = 0xFF0088FF.toInt()
+                                }
+                                "Pink" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Cyan" -> {
+                                    notificationLedColor = 0xFF0088FF.toInt()
+                                }
+                                "Peach" -> {
+                                    notificationLedColor = 0xFFFF8800.toInt()
+                                }
+                                "Orange" -> {
+                                    notificationLedColor = 0xFFFF8800.toInt()
+                                }
+                                "Lime" -> {
+                                    notificationLedColor = 0xFF00FF00.toInt()
+                                }
+                                "Sherbet" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Versus" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Rainbow" -> {
+                                    notificationLedColor = 0xFFFF8800.toInt()
+                                }
+                                "Breeze" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Apple" -> {
+                                    notificationLedColor = 0xFFFF0000.toInt()
+                                }
+                                "Plum" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Purple" -> {
+                                    notificationLedColor = 0xFFFF00FF.toInt()
+                                }
+                                "Shine" -> {
+                                    notificationLedColor = 0xFF0088FF.toInt()
+                                }
+                                "Black" -> {
+                                    notificationLedColor = 0xFF0000FF.toInt()
+                                }
+                            }
                         }
                     }
                 }
