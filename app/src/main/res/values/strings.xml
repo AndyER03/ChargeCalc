@@ -129,4 +129,5 @@
     <string name="clear_btn_notification_title_switch">Clear button</string>
     <string name="clear_btn_notification_summary_on">Clear fields button holding will clear notification values</string>
     <string name="turn_on_notifications">Enable notifications!</string>
+    <string name="led_notification_switch">LED indicator</string>
 </resources>

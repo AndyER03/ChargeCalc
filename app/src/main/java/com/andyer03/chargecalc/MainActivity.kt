@@ -365,6 +365,7 @@ class MainActivity : AppCompatActivity() {
             notificationManager.cancelAll()
         } else {
             var notificationColor = 0
+            var notificationLedColor = 0
             when (sp.getString("bg_option", "Default")) {
                 "Blue" -> {
                     notificationColor = 0xFF5C3F9F.toInt()
@@ -385,7 +386,7 @@ class MainActivity : AppCompatActivity() {
                     notificationColor = 0xFF5F981C.toInt()
                 }
                 "Sherbet" -> {
-                    notificationColor = 0xFF9C27B0.toInt()
+                    notificationColor = 0xFF7769FF.toInt()
                 }
                 "Versus" -> {
                     notificationColor = 0xFF673AB7.toInt()
@@ -397,7 +398,7 @@ class MainActivity : AppCompatActivity() {
                     notificationColor = 0xFF00A7D1.toInt()
                 }
                 "Apple" -> {
-                    notificationColor = 0xFF5F981C.toInt()
+                    notificationColor = 0xFFBB0000.toInt()
                 }
                 "Plum" -> {
                     notificationColor = 0xFF9C27B0.toInt()
@@ -410,6 +411,64 @@ class MainActivity : AppCompatActivity() {
                 }
                 "Black" -> {
                     notificationColor = 0xFF000000.toInt()
+                }
+            }
+
+            when (sp.getBoolean("led_notification_switch", true)) {
+                true -> {
+                    when (sp.getString("bg_option", "Default")) {
+                        "Default" -> {
+                            notificationLedColor = 0xFF000000.toInt()
+                        }
+                        "Blue" -> {
+                            notificationLedColor = 0xFF0088FF.toInt()
+                        }
+                        "Pink" -> {
+                            notificationLedColor = 0xFFFF00FF.toInt()
+                        }
+                        "Cyan" -> {
+                            notificationLedColor = 0xFF0088FF.toInt()
+                        }
+                        "Peach" -> {
+                            notificationLedColor = 0xFFFF8800.toInt()
+                        }
+                        "Orange" -> {
+                            notificationLedColor = 0xFFFF8800.toInt()
+                        }
+                        "Lime" -> {
+                            notificationLedColor = 0xFF00FF00.toInt()
+                        }
+                        "Sherbet" -> {
+                            notificationLedColor = 0xFFFF00FF.toInt()
+                        }
+                        "Versus" -> {
+                            notificationLedColor = 0xFFFF00FF.toInt()
+                        }
+                        "Rainbow" -> {
+                            notificationLedColor = 0xFFFF8800.toInt()
+                        }
+                        "Breeze" -> {
+                            notificationLedColor = 0xFFFF00FF.toInt()
+                        }
+                        "Apple" -> {
+                            notificationLedColor = 0xFFFF0000.toInt()
+                        }
+                        "Plum" -> {
+                            notificationLedColor = 0xFFFF00FF.toInt()
+                        }
+                        "Purple" -> {
+                            notificationLedColor = 0xFFFF00FF.toInt()
+                        }
+                        "Shine" -> {
+                            notificationLedColor = 0xFF0088FF.toInt()
+                        }
+                        "Black" -> {
+                            notificationLedColor = 0xFF0000FF.toInt()
+                        }
+                    }
+                }
+                false -> {
+                    notificationLedColor = 0
                 }
             }
 
@@ -489,6 +548,7 @@ class MainActivity : AppCompatActivity() {
                             .setPriority(notificationPriority)
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
+                            .setLights(0, 1000, 1000)
                         notificationManager.notify(1, notificationBuilder.build())
                         notificationVibration()
                     } else {
@@ -502,7 +562,6 @@ class MainActivity : AppCompatActivity() {
                             .setSmallIcon(R.drawable.ic_notification)
                             .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
                             .setContentText("$curCharge%")
-                            .setColor(Color.GREEN)
                             .setProgress(100, curCharge, false)
                             .setSubText(getString(R.string.time_left_value) + " $timeLeft")
                             .setOngoing(notificationOngoing)
@@ -511,6 +570,7 @@ class MainActivity : AppCompatActivity() {
                             .setPriority(notificationPriority)
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
+                            .setLights(notificationLedColor, 1000, 1000)
                         notificationManager.notify(1, notificationBuilder.build())
                         notificationVibration()
                     }

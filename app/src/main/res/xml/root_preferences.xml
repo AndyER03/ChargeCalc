@@ -71,6 +71,13 @@
         <SwitchPreference
             android:defaultValue="true"
             android:dependency="notification_switch"
+            android:icon="@drawable/ic_led_notification_24"
+            android:key="led_notification_switch"
+            android:title="@string/led_notification_switch" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:dependency="notification_switch"
             android:icon="@drawable/ic_vibration_24dp"
             android:key="vibration_notification_switch"
             android:summaryOff="@string/option_summary_off"

@@ -129,4 +129,5 @@
     <string name="clear_btn_notification_title_switch">Кнопка очистки</string>
     <string name="clear_btn_notification_summary_on">Удержание кнопки очистки полей удалит значения уведомления</string>
     <string name="turn_on_notifications">Включите уведомления!</string>
+    <string name="led_notification_switch">LED индикация</string>
 </resources>
