@@ -135,9 +135,8 @@ class MainActivity : AppCompatActivity() {
 
                 saveBtn.text = getString(R.string.save_values_btn)
                 Toast.makeText(this, R.string.toast_values_reset, Toast.LENGTH_SHORT).show()
-
-                btnVibration()
             }
+            btnVibration()
             return@setOnLongClickListener true
         }
 
@@ -145,7 +144,6 @@ class MainActivity : AppCompatActivity() {
             if ((current_charge_value_input.text.toString() != "") || (time_left_value_input.text.toString() != "") || (estimated_autonomy_days_number_input.text.toString() != "")) {
                 current_charge_value_input.requestFocus()
                 allFieldsClear()
-                btnVibration()
             }
             else {
                 Toast.makeText(this, R.string.toast_values_not_reset, Toast.LENGTH_SHORT).show()
@@ -184,19 +182,18 @@ class MainActivity : AppCompatActivity() {
                                 .show()
                         }
                     }
-                    btnVibration()
                 }
                 false -> {
                     if ((current_charge_value_input.text.toString() != "") || (time_left_value_input.text.toString() != "")) {
                         current_charge_value_input.requestFocus()
                         allFieldsClear()
-                        btnVibration()
                     }
                     else {
                         Toast.makeText(this, R.string.toast_values_not_reset, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
+            btnVibration()
             return@setOnLongClickListener true
         }
 
