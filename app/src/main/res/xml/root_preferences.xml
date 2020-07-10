@@ -97,7 +97,7 @@
 
         <SwitchPreference
             android:defaultValue="false"
-            android:dependency="notification_switch"
+            android:dependency="clear_btn_switch"
             android:icon="@drawable/ic_clear_24dp"
             android:key="clear_btn_notification_switch"
             android:summaryOn="@string/clear_btn_notification_summary_on"
@@ -136,7 +136,6 @@
             android:defaultValue="true"
             android:icon="@drawable/ic_vibration_24dp"
             android:key="vibration_btn_switch"
-            android:summaryOn="@string/vibration_btn_summary"
             android:title="@string/vibration_btn_title_switch" />
 
     </PreferenceCategory>

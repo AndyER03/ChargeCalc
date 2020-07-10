@@ -53,12 +53,33 @@ class MainActivity : AppCompatActivity() {
         submit_button.setOnLongClickListener {
             when (sp.getBoolean("restore_btn_notification_switch", false)) {
                 true -> {
+                    val curChargeBackup = valuesChest.getInt("curChargeBackup", 0)
+                    val timeLeftBackup = valuesChest.getString("timeLeftBackup", "0").toString()
+                    val remainingIntBackup =
+                        valuesChest.getString("remainingTimeBackup", "0").toString()
+
+                    val editor = valuesChest.edit()
+                    editor.putInt(
+                        "curCharge",
+                        curChargeBackup
+                    )
+                    editor.putString(
+                        "timeLeft",
+                        timeLeftBackup.trim()
+                    )
+                    editor.putString(
+                        "remainingTime",
+                        remainingIntBackup.trim()
+                    )
+                    editor.apply()
+
                     notification()
                 }
                 false -> {
                     advancedResult()
                 }
             }
+            btnVibration()
         }
 
         saveBtn.setOnClickListener {
@@ -134,23 +155,35 @@ class MainActivity : AppCompatActivity() {
         clearBtn.setOnLongClickListener {
             when (sp.getBoolean("clear_btn_notification_switch", false)) {
                 true -> {
-                    val editor = valuesChest.edit()
-                    editor.putInt(
-                        "curCharge",
-                        0
-                    )
-                    editor.putString(
-                        "timeLeft",
-                        0.toString().trim()
-                    )
-                    editor.putString(
-                        "remainingTime",
-                        0.toString().trim()
-                    )
-                    editor.apply()
-                    notification()
-                    Toast.makeText(this, R.string.notification_values_reset, Toast.LENGTH_SHORT)
-                        .show()
+                    when (sp.getBoolean("notification_switch", false)) {
+                        true -> {
+                            val editor = valuesChest.edit()
+                            editor.putInt(
+                                "curCharge",
+                                0
+                            )
+                            editor.putString(
+                                "timeLeft",
+                                0.toString().trim()
+                            )
+                            editor.putString(
+                                "remainingTime",
+                                0.toString().trim()
+                            )
+                            editor.apply()
+                            notification()
+                            Toast.makeText(
+                                this,
+                                R.string.notification_values_reset,
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
+                        false -> {
+                            Toast.makeText(this, R.string.turn_on_notifications, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
                     btnVibration()
                 }
                 false -> {
@@ -276,7 +309,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun btnVibration() {
+    private fun btnVibration(): Boolean {
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
         val vibrationSwitch = sp.getBoolean("vibration_btn_switch", true)
         val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
@@ -294,6 +327,7 @@ class MainActivity : AppCompatActivity() {
                 v.vibrate(100)
             }
         }
+        return true
     }
 
     private fun notificationVibration() {
@@ -334,47 +368,50 @@ class MainActivity : AppCompatActivity() {
             notificationManager.cancelAll()
         } else {
             var notificationColor = 0
-            when (sp.getString("bg_option", "1")) {
-                "2" -> {
+            when (sp.getString("bg_option", "Default")) {
+                "Blue" -> {
                     notificationColor = 0xFF5C3F9F.toInt()
                 }
-                "3" -> {
+                "Pink" -> {
                     notificationColor = 0xFFA81A84.toInt()
                 }
-                "4" -> {
+                "Cyan" -> {
                     notificationColor = 0xFF009FB3.toInt()
                 }
-                "5" -> {
+                "Peach" -> {
                     notificationColor = 0xFFE69152.toInt()
                 }
-                "6" -> {
+                "Orange" -> {
                     notificationColor = 0xFFFF9800.toInt()
                 }
-                "7" -> {
+                "Lime" -> {
                     notificationColor = 0xFF5F981C.toInt()
                 }
-                "8" -> {
+                "Sherbet" -> {
                     notificationColor = 0xFF9C27B0.toInt()
                 }
-                "9" -> {
+                "Versus" -> {
                     notificationColor = 0xFF673AB7.toInt()
                 }
-                "10" -> {
+                "Rainbow" -> {
                     notificationColor = 0xFF0092A5.toInt()
                 }
-                "11" -> {
+                "Breeze" -> {
                     notificationColor = 0xFF00A7D1.toInt()
                 }
-                "12" -> {
+                "Apple" -> {
                     notificationColor = 0xFF5F981C.toInt()
                 }
-                "13" -> {
+                "Plum" -> {
                     notificationColor = 0xFF9C27B0.toInt()
                 }
-                "14" -> {
+                "Purple" -> {
                     notificationColor = 0xFF9C27B0.toInt()
                 }
-                "15" -> {
+                "Shine" -> {
+                    notificationColor = 0xFF00A7D1.toInt()
+                }
+                "Black" -> {
                     notificationColor = 0xFF000000.toInt()
                 }
             }
@@ -690,6 +727,18 @@ class MainActivity : AppCompatActivity() {
                                 "remainingTime",
                                 submit_button.text.toString().trim()
                             )
+                            editor.putInt(
+                                "curChargeBackup",
+                                curCharge.toInt()
+                            )
+                            editor.putString(
+                                "timeLeftBackup",
+                                timeAfterCharge.toInt().toString().trim()
+                            )
+                            editor.putString(
+                                "remainingTimeBackup",
+                                submit_button.text.toString().trim()
+                            )
                             editor.apply()
 
                             notification()
@@ -826,6 +875,18 @@ class MainActivity : AppCompatActivity() {
                 )
                 editor.putString(
                     "remainingTime",
+                    submit_button.text.toString().trim()
+                )
+                editor.putInt(
+                    "curChargeBackup",
+                    curCharge.toInt()
+                )
+                editor.putString(
+                    "timeLeftBackup",
+                    timeAfterCharge.toInt().toString().trim()
+                )
+                editor.putString(
+                    "remainingTimeBackup",
                     submit_button.text.toString().trim()
                 )
                 editor.apply()

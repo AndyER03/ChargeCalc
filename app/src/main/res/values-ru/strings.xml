@@ -125,8 +125,8 @@
     <string name="option_summary_off">Выкл</string>
     <string name="restore_btn_notification_switch">Кнопка повтора</string>
     <string name="restore_btn_notification_summary_on">Удержание кнопки результата восстановит удаленное уведомление</string>
-    <string name="vibration_btn_title_switch">Вибрация при сбросе</string>
-    <string name="vibration_btn_summary">Вибрировать при очистке</string>
+    <string name="vibration_btn_title_switch">Вибрация при удержании кнопок</string>
     <string name="clear_btn_notification_title_switch">Кнопка очистки</string>
-    <string name="clear_btn_notification_summary_on">Удержание кнопки очистки удалит значения уведомления</string>
+    <string name="clear_btn_notification_summary_on">Удержание кнопки очистки полей удалит значения уведомления</string>
+    <string name="turn_on_notifications">Включите уведомления!</string>
 </resources>

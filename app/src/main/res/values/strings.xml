@@ -125,8 +125,8 @@
     <string name="option_summary_off">Disabled</string>
     <string name="restore_btn_notification_switch">Restore button</string>
     <string name="restore_btn_notification_summary_on">Result button holding will restore deleted notification</string>
-    <string name="vibration_btn_title_switch">Vibration while reset</string>
-    <string name="vibration_btn_summary">Vibrate when clearing</string>
+    <string name="vibration_btn_title_switch">Vibration while buttons holding</string>
     <string name="clear_btn_notification_title_switch">Clear button</string>
-    <string name="clear_btn_notification_summary_on">Clear button holding will clear notification values</string>
+    <string name="clear_btn_notification_summary_on">Clear fields button holding will clear notification values</string>
+    <string name="turn_on_notifications">Enable notifications!</string>
 </resources>
