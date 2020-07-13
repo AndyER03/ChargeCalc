@@ -86,7 +86,7 @@
     <string name="time_left_header">Days count after disconnect charger</string>
     <string name="submit_button">Submit</string>
     <string name="current_charge_value">Current charge:</string>
-    <string name="time_left_value">Days count:</string>
+    <string name="time_left_value">Count:</string>
     <string name="warning_input_values">Please input value!</string>
     <string name="advanced_result_title">Advanced result</string>
     <string name="battery_charge_left">Charge left:</string>
@@ -147,7 +147,7 @@
     <string name="estimated_autonomy_days_number_header">Estimated autonomy days count</string>
     <string name="estimated_autonomy_days_number_hint">Days count</string>
     <string name="estimated_autonomy_days_number_switch">Autonomy days count field</string>
-    <string name="should_enough_time_with_current_charge_notification">Days left:</string>
+    <string name="should_enough_time_with_current_charge_notification">Left:</string>
     <string name="notification_values_reset">Notification values ​​reset</string>
     <string name="notification_priority_title">Priority</string>
     <string name="ongoing_notification_switch">Ongoing notification</string>
@@ -164,4 +164,5 @@
     <string name="led_notification_switch">LED indicator</string>
     <string name="led_notification_color_title_preference">LED color</string>
     <string name="led_anim_speed">LED animation speed</string>
+    <string name="left_days_count_checkbox">Show left days count</string>
 </resources>

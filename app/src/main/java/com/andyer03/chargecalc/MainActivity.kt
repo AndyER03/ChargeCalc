@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationCompat.FLAG_SHOW_LIGHTS
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -417,25 +418,25 @@ class MainActivity : AppCompatActivity() {
                 true -> {
                     when (sp.getString("led_notification_color_option", "White")) {
                         "White" -> {
-                            notificationLedColor = 0xFFFFFF
+                            notificationLedColor = 0xFFFFFFFF.toInt()
                         }
                         "Red" -> {
-                            notificationLedColor = 0xFF0000
+                            notificationLedColor = 0xFFFF0000.toInt()
                         }
                         "Magenta" -> {
-                            notificationLedColor = 0xFF00FF
+                            notificationLedColor = 0xFFFF00FF.toInt()
                         }
                         "Yellow" -> {
-                            notificationLedColor = 0x00FFFF
+                            notificationLedColor = 0xFF00FFFF.toInt()
                         }
                         "Cyan" -> {
-                            notificationLedColor = 0x00FFFF
+                            notificationLedColor = 0xFF00FFFF.toInt()
                         }
                         "Green" -> {
-                            notificationLedColor = 0x00FF00
+                            notificationLedColor = 0xFF00FF00.toInt()
                         }
                         "Blue" -> {
-                            notificationLedColor = 0x0000FF
+                            notificationLedColor = 0xFF0000FF.toInt()
                         }
                     }
                 }
@@ -506,6 +507,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+            var ContentText = when (sp.getBoolean("left_days_count_checkbox", false)) {
+                true -> {
+                    "$curCharge%" + " (" + getString(R.string.time_left_value) + " $timeLeft"+ ")"
+                }
+                false -> {
+                    "$curCharge%"
+                }
+            }
+
             when (sp.getBoolean("notification_switch", false)) {
                 true -> {
                     val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
@@ -530,9 +540,8 @@ class MainActivity : AppCompatActivity() {
                             )
                             .setSmallIcon(R.drawable.ic_notification)
                             .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
-                            .setContentText("$curCharge%")
+                            .setContentText(ContentText)
                             .setProgress(100, curCharge, false)
-                            .setSubText(getString(R.string.time_left_value) + " $timeLeft")
                             .setOngoing(notificationOngoing)
                             .setColor(notificationColor)
                             .setShowWhen(false)
@@ -540,6 +549,7 @@ class MainActivity : AppCompatActivity() {
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
                             .setLights(notificationLedColor, ledAnimSpeed, ledAnimSpeed)
+                            .setDefaults(FLAG_SHOW_LIGHTS)
                         notificationManager.notify(1, notificationBuilder.build())
                         notificationVibration()
                     } else {
@@ -552,15 +562,15 @@ class MainActivity : AppCompatActivity() {
                             )
                             .setSmallIcon(R.drawable.ic_notification)
                             .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
-                            .setContentText("$curCharge%")
+                            .setContentText(ContentText)
                             .setProgress(100, curCharge, false)
-                            .setSubText(getString(R.string.time_left_value) + " $timeLeft")
                             .setOngoing(notificationOngoing)
                             .setColor(notificationColor)
                             .setShowWhen(false)
                             .setPriority(notificationPriority)
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
+                            .setDefaults(FLAG_SHOW_LIGHTS)
                             .setLights(notificationLedColor, ledAnimSpeed, ledAnimSpeed)
                         notificationManager.notify(1, notificationBuilder.build())
                         notificationVibration()

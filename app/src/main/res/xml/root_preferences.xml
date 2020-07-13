@@ -59,6 +59,12 @@
             android:key="null_notification_switch"
             android:title="@string/null_notification_switch" />
 
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="estimated_days_count"
+            android:icon="@drawable/ic_time_24"
+            android:title="Check box preference" />
+
         <SwitchPreference
             android:defaultValue="true"
             android:dependency="notification_switch"
