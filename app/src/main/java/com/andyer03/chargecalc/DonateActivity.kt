@@ -9,13 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_donate.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class DonateActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         IceCream.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.yasobe.ru/na/AndyER03"))
@@ -293,5 +293,10 @@ class DonateActivity : AppCompatActivity() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.media.RingtoneManager
 import android.os.*
 import android.view.Menu
@@ -416,110 +415,27 @@ class MainActivity : AppCompatActivity() {
 
             when (sp.getBoolean("led_notification_switch", true)) {
                 true -> {
-                    when (sp.getBoolean("led_notification_color_switch", false)) {
-                        true -> {
-                            when (sp.getString("led_notification_color_option", "Default")) {
-                                "Default" -> {
-                                    notificationLedColor = 0xFF000000.toInt()
-                                }
-                                "Blue" -> {
-                                    notificationLedColor = 0xFF0088FF.toInt()
-                                }
-                                "Pink" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Cyan" -> {
-                                    notificationLedColor = 0xFF0088FF.toInt()
-                                }
-                                "Peach" -> {
-                                    notificationLedColor = 0xFFFF8800.toInt()
-                                }
-                                "Orange" -> {
-                                    notificationLedColor = 0xFFFF8800.toInt()
-                                }
-                                "Lime" -> {
-                                    notificationLedColor = 0xFF00FF00.toInt()
-                                }
-                                "Sherbet" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Versus" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Rainbow" -> {
-                                    notificationLedColor = 0xFFFF8800.toInt()
-                                }
-                                "Breeze" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Apple" -> {
-                                    notificationLedColor = 0xFFFF0000.toInt()
-                                }
-                                "Plum" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Purple" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Shine" -> {
-                                    notificationLedColor = 0xFF0088FF.toInt()
-                                }
-                                "Black" -> {
-                                    notificationLedColor = 0xFF0000FF.toInt()
-                                }
-                            }
+                    when (sp.getString("led_notification_color_option", "White")) {
+                        "White" -> {
+                            notificationLedColor = 0xFFFFFF
                         }
-                        false -> {
-                            when (sp.getString("bg_option", "Default")) {
-                                "Default" -> {
-                                    notificationLedColor = 0xFF000000.toInt()
-                                }
-                                "Blue" -> {
-                                    notificationLedColor = 0xFF0088FF.toInt()
-                                }
-                                "Pink" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Cyan" -> {
-                                    notificationLedColor = 0xFF0088FF.toInt()
-                                }
-                                "Peach" -> {
-                                    notificationLedColor = 0xFFFF8800.toInt()
-                                }
-                                "Orange" -> {
-                                    notificationLedColor = 0xFFFF8800.toInt()
-                                }
-                                "Lime" -> {
-                                    notificationLedColor = 0xFF00FF00.toInt()
-                                }
-                                "Sherbet" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Versus" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Rainbow" -> {
-                                    notificationLedColor = 0xFFFF8800.toInt()
-                                }
-                                "Breeze" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Apple" -> {
-                                    notificationLedColor = 0xFFFF0000.toInt()
-                                }
-                                "Plum" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Purple" -> {
-                                    notificationLedColor = 0xFFFF00FF.toInt()
-                                }
-                                "Shine" -> {
-                                    notificationLedColor = 0xFF0088FF.toInt()
-                                }
-                                "Black" -> {
-                                    notificationLedColor = 0xFF0000FF.toInt()
-                                }
-                            }
+                        "Red" -> {
+                            notificationLedColor = 0xFF0000
+                        }
+                        "Magenta" -> {
+                            notificationLedColor = 0xFF00FF
+                        }
+                        "Yellow" -> {
+                            notificationLedColor = 0x00FFFF
+                        }
+                        "Cyan" -> {
+                            notificationLedColor = 0x00FFFF
+                        }
+                        "Green" -> {
+                            notificationLedColor = 0x00FF00
+                        }
+                        "Blue" -> {
+                            notificationLedColor = 0x0000FF
                         }
                     }
                 }
@@ -546,8 +462,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            var notificationPriority = 3
-            var notificationImportance = NotificationManager.IMPORTANCE_NONE
+            var notificationPriority = NotificationCompat.PRIORITY_DEFAULT
+            var notificationImportance = NotificationManager.IMPORTANCE_DEFAULT
             when (sp.getString("notification_priority_option", "Default")) {
                 "MAX" -> {
                     notificationPriority = NotificationCompat.PRIORITY_MAX
@@ -568,6 +484,25 @@ class MainActivity : AppCompatActivity() {
                 "MIN" -> {
                     notificationPriority = NotificationCompat.PRIORITY_MIN
                     notificationImportance = NotificationManager.IMPORTANCE_MIN
+                }
+            }
+
+            var ledAnimSpeed = 0
+            when (sp.getString("led_anim_speed", "Default")) {
+                "MAX" -> {
+                    ledAnimSpeed = 250
+                }
+                "HIGH" -> {
+                    ledAnimSpeed = 500
+                }
+                "Default" -> {
+                    ledAnimSpeed = 1000
+                }
+                "LOW" -> {
+                    ledAnimSpeed = 2000
+                }
+                "0" -> {
+                    ledAnimSpeed = 1
                 }
             }
 
@@ -604,7 +539,7 @@ class MainActivity : AppCompatActivity() {
                             .setPriority(notificationPriority)
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
-                            .setLights(0, 1000, 1000)
+                            .setLights(notificationLedColor, ledAnimSpeed, ledAnimSpeed)
                         notificationManager.notify(1, notificationBuilder.build())
                         notificationVibration()
                     } else {
@@ -626,7 +561,7 @@ class MainActivity : AppCompatActivity() {
                             .setPriority(notificationPriority)
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
-                            .setLights(notificationLedColor, 1000, 1000)
+                            .setLights(notificationLedColor, ledAnimSpeed, ledAnimSpeed)
                         notificationManager.notify(1, notificationBuilder.build())
                         notificationVibration()
                     }

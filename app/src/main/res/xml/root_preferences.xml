@@ -26,7 +26,7 @@
             android:title="@string/splash_bg_title_switch" />
 
         <ListPreference
-            android:defaultValue="Default"
+            android:defaultValue="Blue"
             android:dependency="splash_bg_switch"
             android:entries="@array/background"
             android:entryValues="@array/background_value"
@@ -77,21 +77,24 @@
             android:summaryOn="@string/option_summary_on"
             android:title="@string/led_notification_switch" />
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:dependency="led_notification_switch"
-            android:icon="@drawable/ic_background_24dp"
-            android:key="led_notification_color_switch"
-            android:title="@string/led_notification_color_switch" />
-
         <ListPreference
-            android:defaultValue="Default"
-            android:dependency="led_notification_color_switch"
-            android:entries="@array/background"
-            android:entryValues="@array/background_value"
+            android:defaultValue="White"
+            android:dependency="led_notification_switch"
+            android:entries="@array/led_color"
+            android:entryValues="@array/led_color_value"
             android:icon="@drawable/ic_background_24dp"
             android:key="led_notification_color_option"
             android:title="@string/led_notification_color_title_preference"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:defaultValue="Default"
+            android:dependency="led_notification_switch"
+            android:entries="@array/led_anim_speed"
+            android:entryValues="@array/led_anim_speed_value"
+            android:key="led_anim_speed"
+            android:icon="@drawable/ic_speed_24"
+            android:title="@string/led_anim_speed"
             app:useSimpleSummaryProvider="true" />
 
         <SwitchPreference

@@ -50,6 +50,38 @@
         <item>LOW</item>
         <item>MIN</item>
     </string-array>
+    <string-array name="led_color">
+        <item>Белый</item>
+        <item>Красный</item>
+        <item>Маджента</item>
+        <item>Желтый</item>
+        <item>Циан</item>
+        <item>Зеленый</item>
+        <item>Синий</item>
+    </string-array>
+    <string-array name="led_color_value">
+        <item>White</item>
+        <item>Red</item>
+        <item>Magenta</item>
+        <item>Yellow</item>
+        <item>Cyan</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
+    <string-array name="led_anim_speed">
+        <item>Максимальная</item>
+        <item>Быстрая</item>
+        <item>Обычная</item>
+        <item>Медленная</item>
+        <item>Выкл</item>
+    </string-array>
+    <string-array name="led_anim_speed_value">
+        <item>MAX</item>
+        <item>HIGH</item>
+        <item>Default</item>
+        <item>LOW</item>
+        <item>0</item>
+    </string-array>
     <string name="current_charge_title">Текущий заряд батареи</string>
     <string name="time_left_header">Прошло дней после полной зарядки</string>
     <string name="submit_button">Подсчитать</string>
@@ -130,6 +162,6 @@
     <string name="clear_btn_notification_summary_on">Удержание кнопки очистки полей удалит значения уведомления</string>
     <string name="turn_on_notifications">Включите уведомления!</string>
     <string name="led_notification_switch">LED индикация</string>
-    <string name="led_notification_color_switch">Свой LED цвет</string>
-    <string name="led_notification_color_title_preference">LED цвет</string>
+    <string name="led_notification_color_title_preference">Цвет LED индикатора</string>
+    <string name="led_anim_speed">Скорость анимации LED</string>
 </resources>

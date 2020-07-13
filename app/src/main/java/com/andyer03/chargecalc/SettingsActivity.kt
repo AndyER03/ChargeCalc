@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -108,6 +107,7 @@ class SettingsActivity : AppCompatActivity() {
                 getString(R.string.created_by) + "\n\n" +
                         getString(R.string.support_in_developing) + "\n" +
                         getString(R.string.who_support_in_developing)
+            findPreference<EditTextPreference>("outgoing_led_speed_text")?.text?.length?.rangeTo(3)
         }
     }
 }

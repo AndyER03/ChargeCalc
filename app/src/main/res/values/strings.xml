@@ -49,6 +49,38 @@
         <item>LOW</item>
         <item>MIN</item>
     </string-array>
+    <string-array name="led_color">
+        <item>White</item>
+        <item>Red</item>
+        <item>Magenta</item>
+        <item>Yellow</item>
+        <item>Cyan</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
+    <string-array name="led_color_value">
+        <item>White</item>
+        <item>Red</item>
+        <item>Magenta</item>
+        <item>Yellow</item>
+        <item>Cyan</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
+    <string-array name="led_anim_speed">
+        <item>Max</item>
+        <item>Fast</item>
+        <item>Default</item>
+        <item>Slow</item>
+        <item>Off</item>
+    </string-array>
+    <string-array name="led_anim_speed_value">
+        <item>MAX</item>
+        <item>HIGH</item>
+        <item>Default</item>
+        <item>LOW</item>
+        <item>0</item>
+    </string-array>
     <string name="app_name" translatable="false">ChargeCalc</string>
     <string name="current_charge_title">Current charge in percents</string>
     <string name="time_left_header">Days count after disconnect charger</string>
@@ -130,6 +162,6 @@
     <string name="clear_btn_notification_summary_on">Clear fields button holding will clear notification values</string>
     <string name="turn_on_notifications">Enable notifications!</string>
     <string name="led_notification_switch">LED indicator</string>
-    <string name="led_notification_color_switch">Separate LED color</string>
     <string name="led_notification_color_title_preference">LED color</string>
+    <string name="led_anim_speed">LED animation speed</string>
 </resources>
