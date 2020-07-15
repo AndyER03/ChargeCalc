@@ -224,10 +224,10 @@ class DonateActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        val preferenceScreen = PreferenceManager.getDefaultSharedPreferences(this)
 
         //deprecated in API 26
-        when (sp.getString("bg_option", "Default")) {
+        when (preferenceScreen.getString("bg_option", "Default")) {
             "Default" -> {
                 DonateLayout.background = getDrawable(R.color.gray)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

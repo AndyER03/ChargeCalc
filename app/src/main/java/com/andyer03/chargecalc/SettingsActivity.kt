@@ -3,7 +3,10 @@ package com.andyer03.chargecalc
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.*
+import androidx.preference.EditTextPreference
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_settings.*
 
 class SettingsActivity : AppCompatActivity() {
@@ -21,10 +24,10 @@ class SettingsActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        val preferenceScreen = PreferenceManager.getDefaultSharedPreferences(this)
 
         //deprecated in API 26
-        when (sp.getString("bg_option", "Default")) {
+        when (preferenceScreen.getString("bg_option", "Default")) {
             "Default" -> {
                 SettingsLayout.background = getDrawable(R.color.gray)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

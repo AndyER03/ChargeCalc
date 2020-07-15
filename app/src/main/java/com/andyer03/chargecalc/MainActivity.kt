@@ -354,19 +354,19 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("InlinedApi")
     private fun notification(): Boolean {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        val preferenceScreen = PreferenceManager.getDefaultSharedPreferences(this)
         val valuesChest = getSharedPreferences("Values_Chest", Context.MODE_PRIVATE)
         val curCharge = valuesChest.getInt("curCharge", 0)
         val timeLeft = valuesChest.getString("timeLeft", "0").toString()
         val remainingInt = valuesChest.getString("remainingTime", "0").toString()
-        val hideNullNotification = sp.getBoolean("null_notification_switch", false)
+        val hideNullNotification = preferenceScreen.getBoolean("null_notification_switch", false)
 
         if ((hideNullNotification) && ((curCharge == 0) && (timeLeft == "0"))) {
             notificationManager.cancelAll()
         } else {
             var notificationColor = 0
             var notificationLedColor = 0
-            when (sp.getString("bg_option", "Default")) {
+            when (preferenceScreen.getString("bg_option", "Default")) {
                 "Blue" -> {
                     notificationColor = 0xFF5C3F9F.toInt()
                 }
@@ -414,9 +414,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            when (sp.getBoolean("led_notification_switch", true)) {
+            when (preferenceScreen.getBoolean("led_notification_switch", true)) {
                 true -> {
-                    when (sp.getString("led_notification_color_option", "White")) {
+                    when (preferenceScreen.getString("led_notification_color_option", "White")) {
                         "White" -> {
                             notificationLedColor = 0xFFFFFFFF.toInt()
                         }
@@ -445,27 +445,29 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            val notificationOngoing = when (sp.getBoolean("ongoing_notification_switch", false)) {
-                true -> {
-                    true
+            val notificationOngoing =
+                when (preferenceScreen.getBoolean("ongoing_notification_switch", false)) {
+                    true -> {
+                        true
+                    }
+                    false -> {
+                        false
+                    }
                 }
-                false -> {
-                    false
-                }
-            }
 
-            val notificationSound = when (sp.getBoolean("silent_notification_switch", true)) {
-                true -> {
-                    RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+            val notificationSound =
+                when (preferenceScreen.getBoolean("silent_notification_switch", true)) {
+                    true -> {
+                        RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+                    }
+                    false -> {
+                        null
+                    }
                 }
-                false -> {
-                    null
-                }
-            }
 
             var notificationPriority = NotificationCompat.PRIORITY_DEFAULT
             var notificationImportance = NotificationManager.IMPORTANCE_DEFAULT
-            when (sp.getString("notification_priority_option", "Default")) {
+            when (preferenceScreen.getString("notification_priority_option", "Default")) {
                 "MAX" -> {
                     notificationPriority = NotificationCompat.PRIORITY_MAX
                     notificationImportance = NotificationManager.IMPORTANCE_MAX
@@ -489,7 +491,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             var ledAnimSpeed = 0
-            when (sp.getString("led_anim_speed", "Default")) {
+            when (preferenceScreen.getString("led_anim_speed", "Default")) {
                 "MAX" -> {
                     ledAnimSpeed = 250
                 }
@@ -507,7 +509,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            val subText = when (sp.getBoolean("left_days_count_switch", false)) {
+            val subText = when (preferenceScreen.getBoolean("left_days_count_switch", false)) {
                 true -> {
                     getString(R.string.time_left_value) + " $timeLeft"
                 }
@@ -516,7 +518,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            when (sp.getBoolean("notification_switch", false)) {
+            when (preferenceScreen.getBoolean("notification_switch", false)) {
                 true -> {
                     val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
@@ -549,8 +551,8 @@ class MainActivity : AppCompatActivity() {
                             .setPriority(notificationPriority)
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
-                            .setLights(notificationLedColor, ledAnimSpeed, ledAnimSpeed)
                             .setDefaults(FLAG_SHOW_LIGHTS)
+                            .setLights(notificationLedColor, ledAnimSpeed, ledAnimSpeed)
                         notificationManager.notify(1, notificationBuilder.build())
                         notificationVibration()
                     } else {

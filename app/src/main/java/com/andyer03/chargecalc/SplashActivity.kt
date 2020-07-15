@@ -15,12 +15,12 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         appVer.text = BuildConfig.VERSION_NAME
 
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
+        val preferenceScreen = PreferenceManager.getDefaultSharedPreferences(this)
 
-        when (sp.getBoolean("splash_bg_switch", false)) {
+        when (preferenceScreen.getBoolean("splash_bg_switch", false)) {
 
             true -> {
-                when (sp.getString("splash_bg_option", "Default")) {
+                when (preferenceScreen.getString("splash_bg_option", "Default")) {
                     "Default" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient)
                     }
@@ -72,7 +72,7 @@ class SplashActivity : AppCompatActivity() {
                 }
             }
             false -> {
-                when (sp.getString("bg_option", "Default")) {
+                when (preferenceScreen.getString("bg_option", "Default")) {
                     "Default" -> {
                         SplashActivity.background = getDrawable(R.drawable.gradient)
                     }
@@ -125,7 +125,7 @@ class SplashActivity : AppCompatActivity() {
             }
         }
 
-        when (sp.getBoolean("splash_option", true)) {
+        when (preferenceScreen.getBoolean("splash_option", true)) {
             false -> {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
