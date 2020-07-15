@@ -86,7 +86,7 @@
     <string name="time_left_header">Прошло дней после полной зарядки</string>
     <string name="submit_button">Подсчитать</string>
     <string name="current_charge_value">Текущий заряд:</string>
-    <string name="time_left_value">Прошло:</string>
+    <string name="time_left_value">Прошло дней:</string>
     <string name="warning_input_values">Введите значение!</string>
     <string name="advanced_result_title">Подробный результат</string>
     <string name="battery_charge_left">Ушло заряда:</string>
@@ -164,5 +164,5 @@
     <string name="led_notification_switch">LED индикация</string>
     <string name="led_notification_color_title_preference">Цвет LED индикатора</string>
     <string name="led_anim_speed">Скорость анимации LED</string>
-    <string name="left_days_count_checkbox">Показывать количество прошедших дней</string>
+    <string name="left_days_count_switch">Количество прошедших дней</string>
 </resources>

@@ -164,5 +164,5 @@
     <string name="led_notification_switch">LED indicator</string>
     <string name="led_notification_color_title_preference">LED color</string>
     <string name="led_anim_speed">LED animation speed</string>
-    <string name="left_days_count_checkbox">Show left days count</string>
+    <string name="left_days_count_switch">Left days count</string>
 </resources>

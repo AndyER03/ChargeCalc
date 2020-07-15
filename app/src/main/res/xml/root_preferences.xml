@@ -59,11 +59,12 @@
             android:key="null_notification_switch"
             android:title="@string/null_notification_switch" />
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
-            android:key="estimated_days_count"
+            android:dependency="notification_switch"
             android:icon="@drawable/ic_time_24"
-            android:title="Check box preference" />
+            android:key="left_days_count_switch"
+            android:title="@string/left_days_count_switch" />
 
         <SwitchPreference
             android:defaultValue="true"
@@ -98,8 +99,8 @@
             android:dependency="led_notification_switch"
             android:entries="@array/led_anim_speed"
             android:entryValues="@array/led_anim_speed_value"
-            android:key="led_anim_speed"
             android:icon="@drawable/ic_speed_24"
+            android:key="led_anim_speed"
             android:title="@string/led_anim_speed"
             app:useSimpleSummaryProvider="true" />
 

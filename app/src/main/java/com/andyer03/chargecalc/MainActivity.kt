@@ -507,12 +507,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            var ContentText = when (sp.getBoolean("left_days_count_checkbox", false)) {
+            val subText = when (sp.getBoolean("left_days_count_switch", false)) {
                 true -> {
-                    "$curCharge%" + " (" + getString(R.string.time_left_value) + " $timeLeft"+ ")"
+                    getString(R.string.time_left_value) + " $timeLeft"
                 }
                 false -> {
-                    "$curCharge%"
+                    null
                 }
             }
 
@@ -540,11 +540,12 @@ class MainActivity : AppCompatActivity() {
                             )
                             .setSmallIcon(R.drawable.ic_notification)
                             .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
-                            .setContentText(ContentText)
+                            .setContentText("$curCharge%")
                             .setProgress(100, curCharge, false)
                             .setOngoing(notificationOngoing)
                             .setColor(notificationColor)
                             .setShowWhen(false)
+                            .setSubText(subText)
                             .setPriority(notificationPriority)
                             .setContentIntent(pendingIntent)
                             .setSound(notificationSound)
@@ -562,7 +563,8 @@ class MainActivity : AppCompatActivity() {
                             )
                             .setSmallIcon(R.drawable.ic_notification)
                             .setContentTitle(getString(R.string.should_enough_time_with_current_charge_notification) + " $remainingInt")
-                            .setContentText(ContentText)
+                            .setContentText("$curCharge%")
+                            .setSubText(subText)
                             .setProgress(100, curCharge, false)
                             .setOngoing(notificationOngoing)
                             .setColor(notificationColor)
